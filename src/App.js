@@ -1,5 +1,6 @@
 import React from "react";
 import NavBar from "./components/NavBar";
+import Home from "./components/Home"
 
 // New - import the React Router components, and the Profile page component
 import { Router, Route, Switch } from "react-router-dom";
@@ -16,7 +17,7 @@ function App() {
           <NavBar />
         </header>
         <Switch>
-          <Route path="/" exact />
+          <Route path="/" exact component={Home} />
           <PrivateRoute path="/profile" component={Profile} />
         </Switch>
       </Router>
