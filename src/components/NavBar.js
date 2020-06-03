@@ -41,7 +41,7 @@ const NavBar = () => {
                         <button onClick={() => loginWithRedirect({})}>Log in</button>
                     )}
 
-                    {isAuthenticated && <button onClick={() => logout()}>Log out</button>}
+                    {isAuthenticated && <Button onClick={() => logout()}>Log out</Button>}
                     {isAuthenticated && (
                         <span>
                             <Link to="/">
