@@ -65,7 +65,6 @@
 | id             |  integer  | not null, primary key |
 | setId          |  integer  | not null, foreign key |
 | userId         |  integer  | not null, foreign key |
-| upvote         |  boolean  |                       |
-| downvote       |  boolean  |                       |
+| isUpvote       |  boolean  |                       |
 | createdAt      | timestamp |              not null |
 | updatedAt      | timestamp |              not null |

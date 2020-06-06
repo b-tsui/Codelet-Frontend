@@ -1,4 +1,5 @@
 {
     "domain": "codelet-app.auth0.com",
-    "clientId": "dzjXX5xJH6DgRpTtOGfZqZN1noGwBBGD"
+    "clientId": "dzjXX5xJH6DgRpTtOGfZqZN1noGwBBGD",
+    "audience": "codelet_api"
 }
