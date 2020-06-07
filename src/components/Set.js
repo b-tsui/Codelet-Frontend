@@ -44,7 +44,7 @@ export default function Set({ set }) {
     let date = Date.parse(set.created_at)
 
     return (
-        <Card className={classes.root}>
+        <Card className={classes.root} style={{ margin: '10px' }}>
             <Link to={{
                 pathname: `/sets/${set.id}`,
                 set
