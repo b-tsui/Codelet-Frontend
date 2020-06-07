@@ -28,7 +28,7 @@ export default function IndividualCard({ card }) {
     const bull = <span className={classes.bullet}>•</span>;
 
     return (
-        <>
+        <div className="card-pair-container">
             <Card className={classes.root} variant="outlined">
                 <CardContent>
                     <Typography className={classes.title} color="textSecondary" gutterBottom>
@@ -49,6 +49,6 @@ export default function IndividualCard({ card }) {
                     </Typography>
                 </CardContent>
             </Card>
-        </>
+        </div>
     );
 }

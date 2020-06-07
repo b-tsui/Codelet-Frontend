@@ -54,7 +54,7 @@ export default function Set({ set }) {
                     avatar={
                         <Avatar aria-label="recipe" className={classes.avatar}>
                             R
-          </Avatar>
+                        </Avatar>
                     }
                     action={
                         <IconButton aria-label="settings">

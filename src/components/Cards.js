@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import { useAuth0 } from "../react-auth0-spa"
 import { api } from "../config"
 import IndividualCard from "./IndividualCard"
+import "../styles/cards.css"
 
 export default function Cards({ location }) {
     const { user } = useAuth0();
