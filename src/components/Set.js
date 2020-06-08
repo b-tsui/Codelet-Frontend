@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom"
 import "../styles/sets.css"
-
+import { useAuth0 } from "../react-auth0-spa"
+import { api } from "../config"
 
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -15,6 +16,9 @@ import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -41,9 +45,64 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Set({ set }) {
-    const classes = useStyles();
 
+    const [upvotes, setUpvotes] = useState(set.votes.filter(vote => vote.is_upvote).length);
+    const [downvotes, setDownvotes] = useState(set.votes.filter(vote => vote.is_upvote === false).length);
+    //const [fetched, setFetched] = useState(false)
+    const [isUpvoted, setIsUpvoted] = useState(null);
+
+
+    const { user, getTokenSilently } = useAuth0()
+    const classes = useStyles();
     let date = Date.parse(set.created_at)
+
+    //sets clients vote state
+    useEffect(() => {
+        const getVotes = () => {
+            if (user) {
+                set.votes.forEach(vote => {
+                    if (vote.user_id === user.userId) {
+                        if (vote.is_upvote) {
+                            setIsUpvoted(true)
+                        } else if (vote.is_upvote === false) {
+                            setIsUpvoted(false)
+                        }
+                    }
+                })
+            }
+        }
+        getVotes();
+    }, [set.votes, user])
+
+    const voteHandler = async (e, upvoteButton) => {
+        if (user) {
+            const token = await getTokenSilently();
+
+            let res = await fetch(`${api}/sets/${set.id}/votes`, {
+                method: "POST",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json"
+                },
+                //if upvote button is clickes sets body isupvote to true else sets to false
+                body: JSON.stringify({ isUpvote: upvoteButton ? true : false })
+
+            });
+            //updates upvoted state
+            if (isUpvoted) {
+                setIsUpvoted(upvoteButton ? null : false)
+                setUpvotes(upvotes - 1)
+                !upvoteButton && setDownvotes(downvotes + 1)
+            } else if (isUpvoted === false) {
+                setIsUpvoted(upvoteButton ? true : null)
+                setDownvotes(downvotes - 1)
+                upvoteButton && setUpvotes(upvotes + 1)
+            } else {
+                setIsUpvoted(upvoteButton ? true : false)
+                upvoteButton ? setUpvotes(upvotes + 1) : setDownvotes(downvotes + 1)
+            }
+        }
+    }
 
     return (
         <Card className={classes.root, "single-set"} >
@@ -81,12 +140,25 @@ export default function Set({ set }) {
                 </CardContent>
             </Link>
             <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
-                    <FavoriteIcon />
-                </IconButton>
-                <IconButton aria-label="share">
-                    <ShareIcon />
-                </IconButton>
+                <div>
+                    <IconButton aria-label="add to favorites">
+                        <FavoriteIcon />
+                    </IconButton>
+                </div>
+                <div className="set-votes-container">
+
+                    <>
+                        <IconButton id='upvote-button' onClick={(e) => voteHandler(e, true)} style={{ padding: '5px', color: isUpvoted ? 'rgb(0,0,255,.6)' : 'black' }}>
+                            <KeyboardArrowUpIcon />
+                            <Typography variant="subtitle1">{upvotes}</Typography>
+                        </IconButton>
+                        <IconButton id='downvote-button' onClick={(e) => voteHandler(e, false)} style={{ padding: '5px', color: isUpvoted === false ? 'rgb(0,0,255,.6)' : 'black' }}>
+                            <KeyboardArrowDownIcon />
+                            <Typography variant="subtitle1">{-1 * downvotes}</Typography>
+                        </IconButton>
+                    </>
+
+                </div>
             </CardActions>
         </Card >
     );
