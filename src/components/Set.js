@@ -18,6 +18,8 @@ import ShareIcon from '@material-ui/icons/Share';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
+import ThumbDownAltIcon from '@material-ui/icons/ThumbDownAlt';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -139,7 +141,8 @@ export default function Set({ set }) {
                     </Typography>
                 </CardContent>
             </Link>
-            <CardActions disableSpacing>
+            <CardActions className="single-set-actions-container" >
+
                 <div>
                     <IconButton aria-label="add to favorites">
                         <FavoriteIcon />
@@ -147,18 +150,16 @@ export default function Set({ set }) {
                 </div>
                 <div className="set-votes-container">
 
-                    <>
-                        <IconButton id='upvote-button' onClick={(e) => voteHandler(e, true)} style={{ padding: '5px', color: isUpvoted ? 'rgb(0,0,255,.6)' : 'black' }}>
-                            <KeyboardArrowUpIcon />
-                            <Typography variant="subtitle1">{upvotes}</Typography>
-                        </IconButton>
-                        <IconButton id='downvote-button' onClick={(e) => voteHandler(e, false)} style={{ padding: '5px', color: isUpvoted === false ? 'rgb(0,0,255,.6)' : 'black' }}>
-                            <KeyboardArrowDownIcon />
-                            <Typography variant="subtitle1">{-1 * downvotes}</Typography>
-                        </IconButton>
-                    </>
-
+                    <IconButton id='upvote-button' onClick={(e) => voteHandler(e, true)} style={{ padding: '2px', color: isUpvoted ? 'rgb(0,0,255,.6)' : 'grey' }}>
+                        <ThumbUpAltIcon style={{ padding: '2px' }} />
+                        <Typography variant="subtitle1">{upvotes}</Typography>
+                    </IconButton>
+                    <IconButton id='downvote-button' onClick={(e) => voteHandler(e, false)} style={{ padding: '2px', color: isUpvoted === false ? 'rgb(0,0,255,.6)' : 'grey' }}>
+                        <ThumbDownAltIcon style={{ padding: '2px' }} />
+                        <Typography variant="subtitle1">{-1 * downvotes}</Typography>
+                    </IconButton>
                 </div>
+
             </CardActions>
         </Card >
     );

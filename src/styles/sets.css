@@ -21,3 +21,8 @@
     overflow: hidden;
     height: 32px;
 }
+
+.single-set-actions-container{
+    display: flex;
+    justify-content: space-between;
+}
