@@ -66,10 +66,10 @@ export default function Set({ set }) {
                     subheader={
                         <div className="single-set-subheader" >
                             <div>
-                                {`Created by author on ${new Date(date).toLocaleDateString('en-US')}`}
+                                {`Created by ${set.author} on ${new Date(date).toLocaleDateString('en-US')}`}
                             </div>
                             <div>
-                                {`# of cards`}
+                                {`${set.card_count} cards`}
                             </div>
                         </ div>
                     }
