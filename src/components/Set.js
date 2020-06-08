@@ -19,6 +19,7 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
 import ThumbDownAltIcon from "@material-ui/icons/ThumbDownAlt";
 import StarIcon from "@material-ui/icons/Star";
+import StarsIcon from "@material-ui/icons/Stars";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -144,7 +145,7 @@ export default function Set({ set }) {
       >
         <CardHeader
           action={
-            <IconButton aria-label="settings">
+            <IconButton aria-label="settings" style={{ padding: "8px" }}>
               <MoreVertIcon />
             </IconButton>
           }
@@ -171,7 +172,10 @@ export default function Set({ set }) {
           <IconButton
             aria-label="add to favorites"
             onClick={favoriteHandler}
-            style={{ color: isFavorited ? "rgb(255,0,0,.6)" : "grey" }}
+            style={{
+              padding: "2px",
+              color: isFavorited ? "rgb(220,0,0,.6)" : "grey",
+            }}
           >
             <StarIcon />
           </IconButton>
