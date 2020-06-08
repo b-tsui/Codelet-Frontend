@@ -3,7 +3,7 @@ import NavBar from "./components/NavBar";
 import Home from "./components/Home"
 import ExternalApi from "./views/ExternalApi";
 import Cards from "./components/Cards"
-
+import CreateSetForm from './components/CreateSetForm'
 
 import { Router, Route, Switch } from "react-router-dom";
 import Profile from "./components/Profile";
@@ -22,6 +22,7 @@ function App() {
           <Route path="/" exact component={Home} />
           <PrivateRoute path="/profile" component={Profile} />
           <PrivateRoute path="/external-api" component={ExternalApi} />
+          <PrivateRoute path="/sets/new-set" component={CreateSetForm}/>
           <Route path="/sets/:id" component={Cards} />
         </Switch>
       </Router>

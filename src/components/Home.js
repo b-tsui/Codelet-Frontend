@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import { useAuth0 } from "../react-auth0-spa"
 import { api } from "../config"
 import Set from "./Set"
+import CreateSet from './CreateSet'
 import "../styles/home-page.css"
 
 const Home = () => {
@@ -26,7 +27,7 @@ const Home = () => {
                 {!loading &&
                     <>
                         <h1 className="home-welcome">Welcome to Codelet!</h1>
-                        <div className="sets-container">
+                    <div className="sets-container">
                             {fetched && sets.map((set) => <Set set={set} key={set.id} />)}
                         </div>
                     </>
@@ -40,6 +41,7 @@ const Home = () => {
                 {loading && <div>loading</div>}
                 {!loading && <h1 className="home-welcome">Welcome, {user.name}</h1>}
                 <div className="sets-container">
+                    <CreateSet />
                     {fetched && sets.map((set) => <Set set={set} key={set.id} />)}
                 </div>
             </>

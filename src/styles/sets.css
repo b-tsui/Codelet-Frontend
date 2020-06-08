@@ -26,3 +26,16 @@
     display: flex;
     justify-content: space-between;
 }
+.create-set {
+    opacity: 0.7;
+    margin: 10px;
+    width: 300px; 
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+   box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);
+}
+.create-set:hover {
+    opacity: 1.0;
+
+}
