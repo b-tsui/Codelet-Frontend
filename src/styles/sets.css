@@ -1,0 +1,23 @@
+.single-set{
+    margin: 10px;
+    width: 300px; 
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+
+}
+#single-set-description{
+    overflow: hidden;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: 30px;
+}
+
+.single-set-subheader{
+    font-size: 12px;
+}
+
+.single-set-title{
+    overflow: hidden;
+    height: 32px;
+}

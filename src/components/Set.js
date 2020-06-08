@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom"
+import "../styles/sets.css"
 
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -36,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
     avatar: {
         backgroundColor: red[500],
     },
+
 }));
 
 export default function Set({ set }) {
@@ -44,27 +46,35 @@ export default function Set({ set }) {
     let date = Date.parse(set.created_at)
 
     return (
-        <Card className={classes.root} style={{ margin: '10px' }}>
+        <Card className={classes.root, "single-set"} >
             <Link to={{
                 pathname: `/sets/${set.id}`,
                 set
             }}
             >
                 <CardHeader
-                    avatar={
-                        <Avatar aria-label="recipe" className={classes.avatar}>
-                            R
-                        </Avatar>
-                    }
                     action={
                         <IconButton aria-label="settings">
                             <MoreVertIcon />
                         </IconButton>
                     }
-                    title={set.title}
-                    subheader={`Created: ${new Date(date).toLocaleDateString('en-US')}`}
+                    title={
+                        <div className="single-set-title">
+                            {set.title}
+                        </div>
+                    }
+                    subheader={
+                        <div className="single-set-subheader" >
+                            <div>
+                                {`Created by author on ${new Date(date).toLocaleDateString('en-US')}`}
+                            </div>
+                            <div>
+                                {`# of cards`}
+                            </div>
+                        </ div>
+                    }
                 />
-                <CardContent>
+                <CardContent id={"single-set-description"}>
                     <Typography variant="body2" color="textSecondary" component="p">
                         {set.description}
                     </Typography>
