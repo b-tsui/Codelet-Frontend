@@ -77,7 +77,7 @@ const Profile = () => {
       const data = await res.json();
       setFetched(true);
       setUserSets(data.userSets);
-      setFavoriteSets(data.userFavSets);
+      setFavoriteSets(data.favoriteSets);
     };
     loadSets();
   }, []);
@@ -109,7 +109,7 @@ const Profile = () => {
       </Paper>
       <TabPanel value={value} index={0}>
         <div>
-          <h1>favorited sets:</h1>
+          <h1>Favorited sets:</h1>
           <div className="sets-container">
             {fetched && favoriteSets.map((set) => <Set set={set} key={set.id} />)}
           </div>
@@ -117,7 +117,7 @@ const Profile = () => {
       </TabPanel>
       <TabPanel value={value} index={1}>
         <div>
-          <h1>my sets:</h1>
+          <h1>My sets:</h1>
           <div className="sets-container">
             {fetched && userSets.map((set) => <Set set={set} key={set.id} />)}
           </div>

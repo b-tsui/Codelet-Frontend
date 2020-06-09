@@ -6,9 +6,12 @@ import CreateSet from './CreateSet'
 import "../styles/home-page.css"
 
 const Home = () => {
-    const { user, loading } = useAuth0();
+    const { user, loading, getTokenSilently } = useAuth0();
     const [sets, setSets] = useState([]);
-    const [fetched, setFetched] = useState(false)
+    const [userInfo, setUserInfo] = useState([])
+    const [fetched, setFetched] = useState(false);
+
+
 
     useEffect(() => {
         const loadSets = async () => {
@@ -27,7 +30,7 @@ const Home = () => {
                 {!loading &&
                     <>
                         <h1 className="home-welcome">Welcome to Codelet!</h1>
-                    <div className="sets-container">
+                        <div className="sets-container">
                             {fetched && sets.map((set) => <Set set={set} key={set.id} />)}
                         </div>
                     </>
