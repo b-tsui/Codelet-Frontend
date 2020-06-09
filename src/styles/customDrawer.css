@@ -1,0 +1,8 @@
+.MuiTabs-flexContainer {
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+    color: #3f51b5;
+}
+
+
