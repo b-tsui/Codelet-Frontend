@@ -2,12 +2,69 @@ import React, { useState, useEffect } from "react";
 import { useAuth0 } from "../react-auth0-spa";
 import Set from "./Set";
 import { api } from "../config";
+import "../styles/home-page.css"
+
+import Paper from '@material-ui/core/Paper';
+import PropTypes from 'prop-types';
+import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
+
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box p={3}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
+
+TabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.any.isRequired,
+  value: PropTypes.any.isRequired,
+};
+
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
+  };
+}
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.paper,
+  },
+}));
 
 const Profile = () => {
+  const classes = useStyles();
+
   const { user, loading, getTokenSilently } = useAuth0();
   const [userSets, setUserSets] = useState([]);
   const [favoriteSets, setFavoriteSets] = useState([]);
   const [fetched, setFetched] = useState(false);
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
   useEffect(() => {
     const loadSets = async () => {
@@ -32,22 +89,40 @@ const Profile = () => {
   return (
     <>
       <img src={user.picture} alt="Profile" />
-
       <h2>{user.name}</h2>
       <p>{user.email}</p>
-      <code>{JSON.stringify(user, null, 2)}</code>
-      <div>
-        <h1>favorited sets:</h1>
+      <Paper square>
+        <Tabs
+          value={value}
+          indicatorColor="primary"
+          textColor="primary"
+          onChange={handleChange}
+          aria-label="disabled tabs example"
+        >
+          <Tab label="Favorited Sets" {...a11yProps(0)} />
+          <Tab label="My Sets" {...a11yProps(1)} />
+          <Tab label="My Info" {...a11yProps(2)} />
+        </Tabs>
+      </Paper>
+      <TabPanel value={value} index={0}>
         <div>
-          {fetched && favoriteSets.map((set) => <Set set={set} key={set.id} />)}
+          <h1>favorited sets:</h1>
+          <div className="sets-container">
+            {fetched && favoriteSets.map((set) => <Set set={set} key={set.id} />)}
+          </div>
         </div>
-      </div>
-      <div>
-        <h1>my sets:</h1>
+      </TabPanel>
+      <TabPanel value={value} index={1}>
         <div>
-          {fetched && userSets.map((set) => <Set set={set} key={set.id} />)}
+          <h1>my sets:</h1>
+          <div className="sets-container">
+            {fetched && userSets.map((set) => <Set set={set} key={set.id} />)}
+          </div>
         </div>
-      </div>
+      </TabPanel>
+      <TabPanel value={value} index={2}>
+        <code>{JSON.stringify(user, null, 2)}</code>
+      </TabPanel>
     </>
   );
 };
