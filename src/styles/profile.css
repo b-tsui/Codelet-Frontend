@@ -1,0 +1,18 @@
+.sets-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: space-around;
+}
+
+.profile-tabs-container{
+    display: flex;
+    justify-content: center;
+}
+
+.user-info-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 25px;
+}
