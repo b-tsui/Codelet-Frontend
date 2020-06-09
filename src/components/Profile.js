@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useAuth0 } from "../react-auth0-spa";
 import Set from "./Set";
 import { api } from "../config";
-import "../styles/home-page.css"
+import "../styles/profile.css"
 
 import Paper from '@material-ui/core/Paper';
 import PropTypes from 'prop-types';
@@ -88,10 +88,13 @@ const Profile = () => {
 
   return (
     <>
-      <img src={user.picture} alt="Profile" />
-      <h2>{user.name}</h2>
-      <p>{user.email}</p>
-      <Paper square>
+      <div className="user-info-container">
+        <img src={user.picture} alt="Profile" style={{ 'border-radius': '50%' }} />
+        <h2>{user.name}</h2>
+        <p>{user.email}</p>
+      </div>
+
+      <Paper square className="profile-tabs-container">
         <Tabs
           value={value}
           indicatorColor="primary"
