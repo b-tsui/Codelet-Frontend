@@ -80,7 +80,7 @@ export default function Set({ set }) {
     const getFavorites = () => {
       if (user) {
         set.favorites.forEach((favorite) => {
-          favorite.user_id === user.userId
+          favorite.id === user.userId
             ? setIsFavorited(true)
             : setIsFavorited(false);
         });
