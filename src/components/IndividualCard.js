@@ -30,7 +30,7 @@ export default function IndividualCard({ card }) {
     return (
         <div className="card-pair-container">
             <Card className={classes.root} variant="outlined">
-                <CardContent>
+                <CardContent className='card-pair-container-term'>
                     <Typography className={classes.title} color="textSecondary" gutterBottom>
                         Term:
                     </Typography>
@@ -40,11 +40,11 @@ export default function IndividualCard({ card }) {
                 </CardContent>
             </Card>
             <Card className={classes.root} variant="outlined">
-                <CardContent>
+                <CardContent className='card-pair-container-def'>
                     <Typography className={classes.title} color="textSecondary" gutterBottom>
                         Definition:
                     </Typography>
-                    <Typography variant="h5" component="h2">
+                    <Typography variant="h6" component="h2">
                         {card.definition}
                     </Typography>
                 </CardContent>
