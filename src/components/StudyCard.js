@@ -18,9 +18,23 @@ import {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 400,
+    maxWidth: 600,
     flexGrow: 1,
   },
+  card: {
+    display: "flex",
+    minWidth: 500,
+    minHeight: 350,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  title: {
+    fontSize: 14,
+  },
+  //   cardText: {
+  //     alignItems: "center",
+  //     justifyContent: "center",
+  //   },
 }));
 
 export default function StudyCard({ cards }) {
@@ -46,11 +60,19 @@ export default function StudyCard({ cards }) {
   return (
     <div className={classes.root}>
       <ReactCardFlip isFlipped={isFlipped} flipDirection="vertical">
-        <Card onClick={handleClick}>
-          <CardContent>{cards[activeStep].term}</CardContent>
+        <Card className={classes.card} onClick={handleClick}>
+          <CardContent className={classes.cardText}>
+            <Typography component="h3" variant={classes.title}>
+              {cards[activeStep].term}
+            </Typography>
+          </CardContent>
         </Card>
-        <Card onClick={handleClick}>
-          <CardContent>{cards[activeStep].definition}</CardContent>
+        <Card className={classes.card} onClick={handleClick}>
+          <CardContent className={classes.cardText}>
+            <Typography component="h3" variant={classes.title}>
+              {cards[activeStep].definition}
+            </Typography>
+          </CardContent>
         </Card>
       </ReactCardFlip>
       <MobileStepper

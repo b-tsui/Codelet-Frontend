@@ -190,7 +190,11 @@ export default function CustomDrawer({ location, addCard, cards }) {
       <TabPanel value={value} index={2}>
         Item Three
       </TabPanel>
-      <TabPanel value={value} index={3}>
+      <TabPanel
+        style={{ display: "flex", justifyContent: "center" }}
+        value={value}
+        index={3}
+      >
         <StudyCard cards={cards} />
       </TabPanel>
     </div>
