@@ -59,11 +59,15 @@ export default function IndividualCard({ card, setFetched }) {
 
   return (
     <div className="card-pair-container">
-      <Card className={classes.root} variant="outlined">
+      <Card
+        className={classes.root}
+        id="single-card-container-term"
+        variant="outlined"
+      >
         <CardContent className="card-pair-container-term">
           <Typography
             className={classes.title}
-            color="textSecondary"
+            style={{ color: "lightgray" }}
             gutterBottom
           >
             Term:
@@ -73,7 +77,11 @@ export default function IndividualCard({ card, setFetched }) {
           </Typography>
         </CardContent>
       </Card>
-      <Card className={classes.root} variant="outlined">
+      <Card
+        className={classes.root}
+        id="single-card-container-def"
+        variant="outlined"
+      >
         <CardContent className="card-pair-container-def">
           <div className={classes.definitionContainer}>
             <IconButton id="delete-icon" onClick={handleDeleteCard}>
@@ -81,9 +89,8 @@ export default function IndividualCard({ card, setFetched }) {
             </IconButton>
             <Typography
               className={classes.title}
-              color="textSecondary"
               gutterBottom
-              style={{ maxWidth: "500px" }}
+              style={{ maxWidth: "500px", color: "lightgray" }}
             >
               Definition:
             </Typography>

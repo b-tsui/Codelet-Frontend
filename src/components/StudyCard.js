@@ -22,11 +22,13 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   card: {
+    backgroundColor: "#a69b97",
     display: "flex",
     minWidth: 500,
     minHeight: 350,
     alignItems: "center",
     justifyContent: "center",
+    borderRadius: "12px 12px 0px 0px",
   },
   title: {
     fontSize: 14,
@@ -74,6 +76,7 @@ export default function StudyCard({ cards }) {
             </Card>
           </ReactCardFlip>
           <MobileStepper
+            id="card-stepper"
             steps={maxSteps}
             position="static"
             variant="text"
