@@ -63,8 +63,9 @@ function a11yProps(index) {
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: "#263238",
   },
+  indicator: { color: "#00897b" },
 }));
 
 export default function CustomDrawer({ location, addCard, cards }) {
@@ -129,7 +130,7 @@ export default function CustomDrawer({ location, addCard, cards }) {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" id="test">
+      <AppBar position="relative" id="test">
         <Tabs
           value={value}
           onClick={handleClickOpen}
@@ -195,7 +196,11 @@ export default function CustomDrawer({ location, addCard, cards }) {
         value={value}
         index={3}
       >
-        <StudyCard cards={cards} />
+        {cards.length > 0 ? (
+          <StudyCard cards={cards} />
+        ) : (
+          <h2>There are no cards to study.</h2>
+        )}
       </TabPanel>
     </div>
   );

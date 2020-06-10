@@ -102,9 +102,10 @@ export default function CreateSet() {
   return (
     <>
       <Card
-        className={(classes.root, "create-set")}
+        className={classes.root}
         variant="outlined"
         onClick={handleClickOpen}
+        id="create-set"
       >
         <CardContent id={"single-set-description"}>
           <Typography variant="h5" component="h2" id={"single-set-subheader"}>
