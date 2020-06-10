@@ -27,7 +27,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function IndividualCard({ card, fetched, setFetched }) {
+export default function IndividualCard({ card, setFetched }) {
   const classes = useStyles();
   const { user, getTokenSilently } = useAuth0();
   const bull = <span className={classes.bullet}>•</span>;

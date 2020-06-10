@@ -5,7 +5,8 @@ import IndividualCard from "./IndividualCard";
 import CustomDrawer from "./CustomDrawer";
 import "../styles/cards.css";
 
-export default function Cards({ location }) {
+export default function Cards({ location, set }) {
+  console.log(set);
   const { user } = useAuth0();
   const [cards, setCards] = useState([]);
   const addCard = (card) => setCards([...cards, card]);
@@ -24,7 +25,7 @@ export default function Cards({ location }) {
     <>
       <h1></h1>
       <div>
-        <CustomDrawer location={location} addCard={addCard} />
+        <CustomDrawer location={location} addCard={addCard} cards={cards} />
       </div>
       <div className="cards-container">
         {fetched &&
