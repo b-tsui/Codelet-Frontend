@@ -31,10 +31,6 @@ const useStyles = makeStyles((theme) => ({
   title: {
     fontSize: 14,
   },
-  //   cardText: {
-  //     alignItems: "center",
-  //     justifyContent: "center",
-  //   },
 }));
 
 export default function StudyCard({ cards }) {
@@ -58,53 +54,61 @@ export default function StudyCard({ cards }) {
     setIsFlipped(!isFlipped);
   };
   return (
-    <div className={classes.root}>
-      <ReactCardFlip isFlipped={isFlipped} flipDirection="vertical">
-        <Card className={classes.card} onClick={handleClick}>
-          <CardContent className={classes.cardText}>
-            <Typography component="h3" variant={classes.title}>
-              {cards[activeStep].term}
-            </Typography>
-          </CardContent>
-        </Card>
-        <Card className={classes.card} onClick={handleClick}>
-          <CardContent className={classes.cardText}>
-            <Typography component="h3" variant={classes.title}>
-              {cards[activeStep].definition}
-            </Typography>
-          </CardContent>
-        </Card>
-      </ReactCardFlip>
-      <MobileStepper
-        steps={maxSteps}
-        position="static"
-        variant="text"
-        activeStep={activeStep}
-        nextButton={
-          <Button
-            size="small"
-            onClick={handleNext}
-            disabled={activeStep === maxSteps - 1}
-          >
-            Next
-            {theme.direction === "rtl" ? (
-              <KeyboardArrowLeft />
-            ) : (
-              <KeyboardArrowRight />
-            )}
-          </Button>
-        }
-        backButton={
-          <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-            {theme.direction === "rtl" ? (
-              <KeyboardArrowRight />
-            ) : (
-              <KeyboardArrowLeft />
-            )}
-            Back
-          </Button>
-        }
-      />
-    </div>
+    <>
+      {cards && (
+        <div className={classes.root}>
+          <ReactCardFlip isFlipped={isFlipped} flipDirection="vertical">
+            <Card className={classes.card} onClick={handleClick}>
+              <CardContent className={classes.cardText}>
+                <Typography component="h3" variant={classes.title}>
+                  {cards[activeStep].term}
+                </Typography>
+              </CardContent>
+            </Card>
+            <Card className={classes.card} onClick={handleClick}>
+              <CardContent className={classes.cardText}>
+                <Typography component="h3" variant={classes.title}>
+                  {cards[activeStep].definition}
+                </Typography>
+              </CardContent>
+            </Card>
+          </ReactCardFlip>
+          <MobileStepper
+            steps={maxSteps}
+            position="static"
+            variant="text"
+            activeStep={activeStep}
+            nextButton={
+              <Button
+                size="small"
+                onClick={handleNext}
+                disabled={activeStep === maxSteps - 1}
+              >
+                Next
+                {theme.direction === "rtl" ? (
+                  <KeyboardArrowLeft />
+                ) : (
+                  <KeyboardArrowRight />
+                )}
+              </Button>
+            }
+            backButton={
+              <Button
+                size="small"
+                onClick={handleBack}
+                disabled={activeStep === 0}
+              >
+                {theme.direction === "rtl" ? (
+                  <KeyboardArrowRight />
+                ) : (
+                  <KeyboardArrowLeft />
+                )}
+                Back
+              </Button>
+            }
+          />
+        </div>
+      )}
+    </>
   );
 }
