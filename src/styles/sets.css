@@ -39,3 +39,11 @@
     opacity: 1.0;
 
 }
+
+.sets-error {
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
