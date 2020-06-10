@@ -3,7 +3,7 @@ import NavBar from "./components/NavBar";
 import Home from "./components/Home";
 import ExternalApi from "./views/ExternalApi";
 import Cards from "./components/Cards";
-
+import "./styles/index.css";
 
 import { Router, Route, Switch } from "react-router-dom";
 import Profile from "./components/Profile";

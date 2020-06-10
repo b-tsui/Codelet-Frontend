@@ -195,7 +195,11 @@ export default function CustomDrawer({ location, addCard, cards }) {
         value={value}
         index={3}
       >
-        <StudyCard cards={cards} />
+        {cards.length > 0 ? (
+          <StudyCard cards={cards} />
+        ) : (
+          <h2>There are no cards to study.</h2>
+        )}
       </TabPanel>
     </div>
   );

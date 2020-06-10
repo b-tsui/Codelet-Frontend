@@ -25,6 +25,11 @@ const useStyles = makeStyles({
   pos: {
     marginBottom: 12,
   },
+  definitionContainer: {
+    display: "flex",
+    flexDirection: "row-reverse",
+    justifyContent: "space-between",
+  },
 });
 
 export default function IndividualCard({ card, setFetched }) {
@@ -63,24 +68,26 @@ export default function IndividualCard({ card, setFetched }) {
           >
             Term:
           </Typography>
-          <Typography variant="h5" component="h2">
+          <Typography variant="h6" component="h2">
             {card.term}
           </Typography>
         </CardContent>
       </Card>
       <Card className={classes.root} variant="outlined">
         <CardContent className="card-pair-container-def">
-          <IconButton id="delete-icon" onClick={handleDeleteCard}>
-            <DeleteIcon />
-          </IconButton>
-          <Typography
-            className={classes.title}
-            color="textSecondary"
-            gutterBottom
-            style={{ maxWidth: "500px" }}
-          >
-            Definition:
-          </Typography>
+          <div className={classes.definitionContainer}>
+            <IconButton id="delete-icon" onClick={handleDeleteCard}>
+              <DeleteIcon />
+            </IconButton>
+            <Typography
+              className={classes.title}
+              color="textSecondary"
+              gutterBottom
+              style={{ maxWidth: "500px" }}
+            >
+              Definition:
+            </Typography>
+          </div>
           <Typography variant="h6" component="h2">
             {card.definition}
           </Typography>

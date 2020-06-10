@@ -5,8 +5,8 @@ import IndividualCard from "./IndividualCard";
 import CustomDrawer from "./CustomDrawer";
 import "../styles/cards.css";
 
-export default function Cards({ location, set }) {
-  console.log(set);
+export default function Cards({ location }) {
+  console.log(location);
   const { user } = useAuth0();
   const [cards, setCards] = useState([]);
   const addCard = (card) => setCards([...cards, card]);
@@ -23,7 +23,11 @@ export default function Cards({ location, set }) {
   }, [fetched]);
   return (
     <>
-      <h1></h1>
+      <div className="set-info">
+        <h1>{location.state.set.title}</h1>
+        <div>{location.state.set.description}</div>
+      </div>
+
       <div>
         <CustomDrawer location={location} addCard={addCard} cards={cards} />
       </div>
