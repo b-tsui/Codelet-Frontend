@@ -12,6 +12,8 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
+import theme from './Theme'
+
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -50,6 +52,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
+    color: theme.palette.primary
   },
 }));
 
@@ -101,12 +104,17 @@ const Profile = () => {
       <Paper square className="profile-tabs-container">
         <Tabs
           value={value}
-          indicatorColor="primary"
+          // inkBarStyle={{ background: "cadetblue" }}
+          indicatorColor={theme.primary}
           textColor="primary"
           onChange={handleChange}
           aria-label="disabled tabs example"
         >
-          <Tab label="Favorited Sets" {...a11yProps(0)} />
+          <Tab
+            inkBarStyle={{ background: "cadetblue" }}
+            label="Favorited Sets"
+            {...a11yProps(0)}
+          />
           <Tab label="My Sets" {...a11yProps(1)} />
           <Tab label="My Info" {...a11yProps(2)} />
         </Tabs>

@@ -1,31 +1,36 @@
 import React from "react";
 import NavBar from "./components/NavBar";
-import Home from "./components/Home";
+import Home from "./components/Home"
 import ExternalApi from "./views/ExternalApi";
-import Cards from "./components/Cards";
+import Cards from "./components/Cards"
+// import CreateSetForm from './components/CreateSetForm'
 import "./styles/index.css";
-
-import { Router, Route, Switch } from "react-router-dom";
+import { Router, Route, Switch} from "react-router-dom";
 import Profile from "./components/Profile";
 import history from "./utils/history";
-import PrivateRoute from "./components/PrivateRoute";
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import PrivateRoute from "./components/PrivateRoute"
+import theme from './components/Theme'
+
 
 function App() {
   return (
-    <div className="App">
-      {/* Don't forget to include the history module */}
-      <Router history={history}>
-        <header>
-          <NavBar />
-        </header>
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <PrivateRoute path="/profile" component={Profile} />
-          <PrivateRoute path="/external-api" component={ExternalApi} />
-          <Route path="/sets/:id" component={Cards} />
-        </Switch>
-      </Router>
-    </div>
+     <ThemeProvider theme={theme}>
+      <div className="App">
+        {/* Don't forget to include the history module */}
+        <Router history={history}>
+          <header>
+            <NavBar />
+          </header>
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <PrivateRoute path="/profile" component={Profile} />
+            <PrivateRoute path="/external-api" component={ExternalApi} />
+            <Route path="/sets/:id" component={Cards} />
+          </Switch>
+        </Router>
+      </div>
+    </ThemeProvider>
   );
 }
 
