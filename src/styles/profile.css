@@ -8,6 +8,7 @@
 .profile-tabs-container{
     display: flex;
     justify-content: center;
+    background-color: #18212b;
 }
 
 .user-info-container{
@@ -15,4 +16,25 @@
     flex-direction: column;
     align-items: center;
     margin-top: 25px;
+}
+
+div.profile-tabs-container {
+    background-color: #18212b;
+    
+}
+
+body {
+    color: rgba(255,255,255, .8)
+}
+
+/* span.MuiTab-wrapper{
+    color: rgba(255,255,255, .8)
+} */
+/*
+span.MuiTab-wrapper:focus{
+    color: rgba(255,0,0, .8)
+} */
+
+button.MuiTab-textColorPrimary{
+    color: rgba(255,255,255, .8)
 }
