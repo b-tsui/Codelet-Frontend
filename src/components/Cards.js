@@ -26,6 +26,9 @@ export default function Cards({ location }) {
       <div className="set-info">
         <h1>{location.state.set.title}</h1>
         <div>{location.state.set.description}</div>
+        <div>Creator: {location.state.set.author}</div>
+        <div>Favorites: {location.state.set.favorites.length}</div>
+        <div>Cards: {location.state.set.card_count}</div>
       </div>
 
       <div>
