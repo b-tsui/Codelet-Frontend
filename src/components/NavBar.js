@@ -93,13 +93,12 @@ const NavBar = () => {
             <Button style={{ color: "#e8eaf6" }} onClick={() => logout()}>
               Log out
             </Button>
-          )
+          )}
           {isAuthenticated && (
             <span>
               <Link to="/">
                 <Button style={{ color: "#e8eaf6" }}>Home</Button>
               </Link>
-              &nbsp;
               <Link to="/profile">
                 <Button style={{ color: "#e8eaf6" }}>Profile</Button>
               </Link>
