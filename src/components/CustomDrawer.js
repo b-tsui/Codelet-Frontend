@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import StudyCard from "./StudyCard";
+import MatchGame from './MatchGame';
 import { makeStyles } from "@material-ui/core/styles";
 import { useAuth0 } from "../react-auth0-spa";
 import { api } from "../config";
@@ -137,12 +138,13 @@ export default function CustomDrawer({ set, addCard, cards }) {
           onChange={handleChange}
           aria-label="simple tabs example"
         >
+
           <Tab label="Terms" icon={<DescriptionIcon />} {...a11yProps(0)} />
           {/* Create card will only show if user is logged in and created that set */}
           {user && user.userId === set.user_id &&
             <Tab label="Create Card" icon={<CreateIcon />} {...a11yProps(1)} />
           }
-          <Tab label="Learn" icon={<ImportContactsIcon />} {...a11yProps(2)} />
+          <Tab label="Match" icon={<ImportContactsIcon />} {...a11yProps(2)} />
           <Tab label="Quiz" icon={<SchoolIcon />} {...a11yProps(3)} />
           <Tab label="Flashcards" icon={<NoteIcon />} {...a11yProps(4)} />
         </Tabs>
@@ -201,8 +203,10 @@ export default function CustomDrawer({ set, addCard, cards }) {
           </form>
         </Dialog>
       </TabPanel>
+
       <TabPanel value={value} index={2}>
-        Item Two
+        <MatchGame cards={cards}/>
+
       </TabPanel>
       <TabPanel value={value} index={3}>
         Item Three
