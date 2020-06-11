@@ -27,7 +27,7 @@ import ImportContactsIcon from "@material-ui/icons/ImportContacts"; //learn
 import CreateIcon from "@material-ui/icons/Create"; //create/write new card
 import SchoolIcon from "@material-ui/icons/School"; //quiz/test
 import { IconButton } from "@material-ui/core";
-
+import DescriptionIcon from '@material-ui/icons/Description';
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -138,13 +138,21 @@ export default function CustomDrawer({ set, addCard, cards }) {
           onChange={handleChange}
           aria-label="simple tabs example"
         >
-          <Tab label="Create Card" icon={<CreateIcon />} {...a11yProps(0)} />
-          <Tab label="Match" icon={<ImportContactsIcon />} {...a11yProps(1)} />
-          <Tab label="Quiz" icon={<SchoolIcon />} {...a11yProps(2)} />
-          <Tab label="Flashcards" icon={<NoteIcon />} {...a11yProps(3)} />
+
+          <Tab label="Terms" icon={<DescriptionIcon />} {...a11yProps(0)} />
+          {/* Create card will only show if user is logged in and created that set */}
+          {user && user.userId === set.user_id &&
+            <Tab label="Create Card" icon={<CreateIcon />} {...a11yProps(1)} />
+          }
+          <Tab label="Match" icon={<ImportContactsIcon />} {...a11yProps(2)} />
+          <Tab label="Quiz" icon={<SchoolIcon />} {...a11yProps(3)} />
+          <Tab label="Flashcards" icon={<NoteIcon />} {...a11yProps(4)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
+        Cards:
+      </TabPanel>
+      <TabPanel value={value} index={1}>
         <Dialog
           open={open}
           onClose={handleClose}
@@ -195,22 +203,24 @@ export default function CustomDrawer({ set, addCard, cards }) {
           </form>
         </Dialog>
       </TabPanel>
-      <TabPanel value={value} index={1}>
-        <MatchGame cards={cards}/>
-      </TabPanel>
+
       <TabPanel value={value} index={2}>
+        <MatchGame cards={cards}/>
+
+      </TabPanel>
+      <TabPanel value={value} index={3}>
         Item Three
       </TabPanel>
       <TabPanel
         style={{ display: "flex", justifyContent: "center" }}
         value={value}
-        index={3}
+        index={4}
       >
         {cards.length > 0 ? (
           <StudyCard cards={cards} />
         ) : (
-          <h2>There are no cards to study.</h2>
-        )}
+            <h2>There are no cards to study.</h2>
+          )}
       </TabPanel>
     </div>
   );

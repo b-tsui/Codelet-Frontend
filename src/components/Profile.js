@@ -105,7 +105,7 @@ const Profile = () => {
         <Tabs
           value={value}
           // inkBarStyle={{ background: "cadetblue" }}
-          indicatorColor="primary"
+          indicatorColor="primary "
           textColor="primary"
           onChange={handleChange}
           aria-label="disabled tabs example"
