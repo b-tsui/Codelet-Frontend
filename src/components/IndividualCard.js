@@ -20,14 +20,14 @@ const useStyles = makeStyles({
     transform: "scale(0.8)",
   },
   title: {
-    fontSize: 14,
+    fontSize: 14
   },
   pos: {
     marginBottom: 12,
   },
   definitionContainer: {
     display: "flex",
-    flexDirection: "row-reverse",
+    // flexDirection: "row-reverse",
     justifyContent: "space-between",
   },
 });
@@ -84,9 +84,6 @@ export default function IndividualCard({ card, setFetched, setsUserId }) {
       >
         <CardContent className="card-pair-container-def">
           <div className={classes.definitionContainer}>
-            <IconButton id="delete-icon" onClick={handleDeleteCard}>
-              <DeleteIcon />
-            </IconButton>
             <Typography
               className={classes.title}
               gutterBottom
@@ -94,6 +91,11 @@ export default function IndividualCard({ card, setFetched, setsUserId }) {
             >
               Definition:
             </Typography>
+            {user && user.userId === setsUserId &&
+              <IconButton id="delete-icon" onClick={handleDeleteCard}>
+                <DeleteIcon />
+              </IconButton>
+            }
           </div>
           <Typography variant="h6" component="h2">
             {card.definition}
