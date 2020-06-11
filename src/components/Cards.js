@@ -54,7 +54,7 @@ export default function Cards({ location }) {
       <div className="cards-container">
         {fetched &&
           cards.map((card) => (
-            <IndividualCard setFetched={setFetched} card={card} key={card.id} />
+            <IndividualCard setFetched={setFetched} card={card} key={card.id} setsUserId={set.user_id} />
           ))}
       </div>
     </>
