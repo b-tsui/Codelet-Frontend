@@ -68,7 +68,7 @@ const useStyles = makeStyles((theme) => ({
   indicator: { color: "#00897b" },
 }));
 
-export default function CustomDrawer({ location, addCard, cards }) {
+export default function CustomDrawer({ set, addCard, cards }) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
   const { user, getTokenSilently } = useAuth0();
@@ -76,7 +76,7 @@ export default function CustomDrawer({ location, addCard, cards }) {
   const [cardTerm, setCardTerm] = React.useState("");
   const [cardDef, setCardDef] = React.useState("");
   const [fetched, setFetched] = useState(false);
-  let setId = Number(location.pathname.slice(6));
+  // let setId = Number(location.pathname.slice(6));
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -112,7 +112,7 @@ export default function CustomDrawer({ location, addCard, cards }) {
         body: JSON.stringify({
           term: cardTerm,
           definition: cardDef,
-          set_id: setId,
+          set_id: set.id,
         }),
       });
       try {
