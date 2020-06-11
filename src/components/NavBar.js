@@ -80,7 +80,7 @@ const NavBar = () => {
             </div>
           </Typography>
           <NavBarSearch />
-          {!isAuthenticated && (    
+          {!isAuthenticated && (
             <button
               style={{ color: "#e8eaf6" }}
               onClick={() => loginWithRedirect({})}
@@ -93,7 +93,7 @@ const NavBar = () => {
             <Button style={{ color: "#e8eaf6" }} onClick={() => logout()}>
               Log out
             </Button>
-          )
+          )}
           {isAuthenticated && (
             <span>
               <Link to="/">

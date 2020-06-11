@@ -17,6 +17,9 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
+import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,7 +46,6 @@ export default function CreateSet() {
     const loadCategories = async () => {
       const res = await fetch(`${api}/categories`);
       const cat = await res.json();
-      console.log(cat);
       setFetched(true);
       setCategories(cat);
     };
@@ -57,16 +59,13 @@ export default function CreateSet() {
     setOpen(false);
   };
   const handleSetName = async (e) => {
-    console.log(e.target.value);
     setSetName(e.target.value);
   };
   const handleSetDesc = async (e) => {
-    console.log(e.target.value);
     setSetDesc(e.target.value);
   };
   const handleCategory = async (e) => {
     e.preventDefault();
-    console.log(e.target.id);
     setCatId(parseInt(e.target.id));
     setCategory(e.target.value);
   };
@@ -91,7 +90,6 @@ export default function CreateSet() {
       try {
         if (!res.ok) throw res;
         const set = await res.json();
-        console.log(`New Set: ${set}`);
         window.location.href = `sets/${set.id}`;
       } catch (e) {
         console.error(e);
@@ -117,18 +115,22 @@ export default function CreateSet() {
         open={open}
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
+        PaperProps={{
+          style: { borderRadius: "8px", backgroundColor: "#263238" },
+        }}
       >
         <form onSubmit={handleAddSet}>
-          <DialogTitle id="form-dialog-title">Create Set</DialogTitle>
+          <DialogTitle id="form-dialog-title" style={{ color: "beige" }}>Create Set</DialogTitle>
           <DialogContent>
-            <DialogContentText>
+            <DialogContentText style={{ color: "lightgray" }}>
               Enter the details of your new set:
             </DialogContentText>
             <TextField
               autoComplete="off"
               autoFocus
+              InputLabelProps={{ style: { color: "lightgray" } }}
               margin="dense"
-              d="set-title-input"
+              id="set-title-input"
               label="Set Title..."
               type="text"
               fullWidth
@@ -137,6 +139,7 @@ export default function CreateSet() {
             <TextField
               autoComplete="off"
               autoFocus
+              InputLabelProps={{ style: { color: "lightgray" } }}
               margin="dense"
               id="set-desc-input"
               label="Set Description..."
@@ -144,13 +147,16 @@ export default function CreateSet() {
               fullWidth
               onChange={handleSetDesc}
             />
+            <InputLabel fullWidth htmlFor="category-label">Select a category...</InputLabel>
             <Select
-              labelId="demo-simple-select-helper-label"
+              labelId="category-label"
+              label="Select category..."
               id="demo-simple-select-helper"
-              value={category.name}
+              value={category.title}
               // onChange={handleCategory}
               fullWidth
-              style={{ padding: "inherit" }}
+              MenuProps={{style:{}}}
+              style={{ padding: "inherit"}}
             >
               {fetched &&
                 categories.map((category) => (
