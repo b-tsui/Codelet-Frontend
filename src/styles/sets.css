@@ -27,7 +27,7 @@
 .single-set-title {
   overflow: hidden;
   height: 32px;
-  color: rgba(0, 0, 0, 0.54);
+  color: #18212b;
 }
 
 .single-set-actions-container {
@@ -49,4 +49,12 @@
 }
 #create-set:hover {
   opacity: 1;
+}
+.set-info {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  color: lightgray;
 }

@@ -22,12 +22,12 @@
 }
 #single-card-container-term {
   background-color: #62727b;
-  color: #263238;
+  color: #18212b;
   border-radius: 12px 0px 0px 12px;
 }
 #single-card-container-def {
   background-color: #62727b;
-  color: #263238;
+  color: #18212b;
   border-radius: 0px 12px 12px 0px;
 }
 #card-stepper {

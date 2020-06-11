@@ -1,7 +1,13 @@
 .MuiTabs-flexContainer {
   display: flex;
   justify-content: center;
-  background-color: #263238;
+  background-color: #18212b;
   color: lightgray;
   box-shadow: none;
+}
+.PrivateTabIndicator-colorSecondary-8 {
+  background-color: #00897b;
+}
+.MuiTabs-indicator {
+  background-color: #00897b;
 }
