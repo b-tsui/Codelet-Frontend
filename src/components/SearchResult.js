@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react"
 import Set from "./Set"
 import { api } from "../config"
 import "../styles/sets.css";
+import "../styles/cards.css";
+import IndividualCard from "./IndividualCard";
 const SearchResult = (props) => {
     const [searchData, setSearchData] = useState([])
 
@@ -14,13 +16,28 @@ const SearchResult = (props) => {
         loadData()
     }, [])
 
-    if (searchData.length > 0) {
+    if (searchData) {
         return (
             //<div>search here</div>
             <>
-                <div className="sets-container">
-                    {searchData.map(set => < Set set={set} key={set.id} />)}
-                </div>
+
+                {searchData.sets &&
+                    <>
+                        <div>Set Search Results</div>
+                        <div className="sets-container">
+                            {searchData.sets.map(set => < Set set={set} key={set.id} />)}
+                        </div>
+                    </>
+                }
+
+                {searchData.cards &&
+                    <>
+                        <div>Card Search Results</div>
+                        <div className="cards-container">
+                            {searchData.cards.map(card => < IndividualCard setFetched={true} card={card} key={card.id} />)}
+                        </div>
+                    </>
+                }
             </>
         )
     }

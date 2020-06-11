@@ -10,7 +10,6 @@ export default function Cards({ location }) {
   const [cards, setCards] = useState([]);
   const [set, setSet] = useState({})
   const addCard = (card) => setCards([...cards, card]);
-
   const [fetched, setFetched] = useState(false);
   const [fetchedSet, setFetchedSet] = useState(false);
   useEffect(() => {
@@ -23,7 +22,7 @@ export default function Cards({ location }) {
     loadCards();
   }, [fetched]);
 
-  useEffect(()=>{
+  useEffect(() => {
     const loadSetInfo = async () => {
       const res = await fetch(`${api}${location.pathname}`)
       const set = await res.json();
@@ -38,14 +37,14 @@ export default function Cards({ location }) {
   return (
     <>
       <div className="set-info">
-        { fetchedSet &&
-        <>
-        <h1>{set.title}</h1>
-        <div>{set.description}</div>
-        <div>Creator: {set.author}</div>
-        <div>Favorites: {set.favorites.length}</div>
-        <div>Cards: {set.card_count}</div>
-        </>
+        {fetchedSet &&
+          <>
+            <h1>{set.title}</h1>
+            <div>{set.description}</div>
+            <div>Creator: {set.author}</div>
+            <div>Favorites: {set.favorites.length}</div>
+            <div>Cards: {set.card_count}</div>
+          </>
         }
       </div>
 
