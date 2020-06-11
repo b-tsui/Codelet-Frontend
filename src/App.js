@@ -2,10 +2,14 @@ import React from "react";
 import NavBar from "./components/NavBar";
 import Home from "./components/Home"
 import ExternalApi from "./views/ExternalApi";
-import Cards from "./components/Cards"
-// import CreateSetForm from './components/CreateSetForm'
+
+import Cards from "./components/Cards";
+import SearchResult from "./components/SearchResult"
+
+import { Router, Route, Switch } from "react-router-dom";
+
 import "./styles/index.css";
-import { Router, Route, Switch} from "react-router-dom";
+
 import Profile from "./components/Profile";
 import history from "./utils/history";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
@@ -15,6 +19,7 @@ import theme from './components/Theme'
 
 function App() {
   return (
+
      <ThemeProvider theme={theme}>
       <div className="App">
         {/* Don't forget to include the history module */}
@@ -24,6 +29,7 @@ function App() {
           </header>
           <Switch>
             <Route path="/" exact component={Home} />
+            <Route path="/sets/search/:search" exact component={SearchResult} />
             <PrivateRoute path="/profile" component={Profile} />
             <PrivateRoute path="/external-api" component={ExternalApi} />
             <Route path="/sets/:id" component={Cards} />

@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAuth0 } from "../react-auth0-spa";
-import { Link } from "react-router-dom";
-import NavBarSearch from "./NavBarSearch"
-
+import { Link, Redirect } from "react-router-dom";
+import { api } from "../config"
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -64,55 +63,42 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-const NavBar = () => {
-  const classes = useStyles();
-  const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+const NavBarSearch = () => {
+    const classes = useStyles();
+    const [searchTerm, setSearchTerm] = useState('')
+    const [searched, setSearched] = useState(false)
+    const [searchData, setSearchData] = useState({})
 
-  return (
-    <div className={classes.root}>
-      <AppBar style={{ backgroundColor: "#000a12" }} position="static">
-        <Toolbar>
-          <Typography variant="h6" className={classes.title}>
-            <div>
-              <a href="/" id="navbar-logo">
-                Codelet
-              </a>
+    const handleSearchTerm = (e) => setSearchTerm(e.target.value)
+
+    const handleSearch = async (e) => {
+        if (e.key === 'Enter') {
+            // let searchRes = await fetch(`${api}/sets/search/search?search_term=${searchTerm}`)
+            // let searchData = await searchRes.json()
+            // setSearchData(searchData)
+            // setSearched(true)
+            window.location.href = `/sets/search/search?search_term=${searchTerm}`
+        }
+    }
+
+    return (
+        <>
+            <div className={classes.search}>
+                <div className={classes.searchIcon}>
+                    <SearchIcon />
+                </div>
+                <InputBase
+                    placeholder="Search…"
+                    classes={{
+                        root: classes.inputRoot,
+                        input: classes.inputInput,
+                    }}
+                    inputProps={{ 'aria-label': 'search' }}
+                    onChange={handleSearchTerm}
+                    onKeyDown={handleSearch}
+                />
             </div>
-          </Typography>
-          <NavBarSearch />
-          {!isAuthenticated && (    
-            <button
-              style={{ color: "#e8eaf6" }}
-              onClick={() => loginWithRedirect({})}
-            >
-              Log in
-            </button>
-          )}
-
-          {isAuthenticated && (
-            <Button style={{ color: "#e8eaf6" }} onClick={() => logout()}>
-              Log out
-            </Button>
-          )
-          {isAuthenticated && (
-            <span>
-              <Link to="/">
-                <Button style={{ color: "#e8eaf6" }}>Home</Button>
-              </Link>
-              &nbsp;
-              <Link to="/profile">
-                <Button style={{ color: "#e8eaf6" }}>Profile</Button>
-              </Link>
-              <Link to="/external-api">
-                <Button style={{ color: "#e8eaf6" }}>External API</Button>
-              </Link>
-            </span>
-          )}
-        </Toolbar>
-      </AppBar>
-    </div>
-  );
-
-};
-
-export default NavBar;
+        </>
+    )
+}
+export default NavBarSearch
