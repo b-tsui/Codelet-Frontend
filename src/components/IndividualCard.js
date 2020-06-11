@@ -25,6 +25,11 @@ const useStyles = makeStyles({
   pos: {
     marginBottom: 12,
   },
+  definitionContainer: {
+    display: "flex",
+    flexDirection: "row-reverse",
+    justifyContent: "space-between",
+  },
 });
 
 export default function IndividualCard({ card, setFetched }) {
@@ -54,33 +59,42 @@ export default function IndividualCard({ card, setFetched }) {
 
   return (
     <div className="card-pair-container">
-      <Card className={classes.root} variant="outlined">
+      <Card
+        className={classes.root}
+        id="single-card-container-term"
+        variant="outlined"
+      >
         <CardContent className="card-pair-container-term">
           <Typography
             className={classes.title}
-            color="textSecondary"
+            style={{ color: "lightgray" }}
             gutterBottom
           >
             Term:
           </Typography>
-          <Typography variant="h5" component="h2">
+          <Typography variant="h6" component="h2">
             {card.term}
           </Typography>
         </CardContent>
       </Card>
-      <Card className={classes.root} variant="outlined">
+      <Card
+        className={classes.root}
+        id="single-card-container-def"
+        variant="outlined"
+      >
         <CardContent className="card-pair-container-def">
-          <IconButton id="delete-icon" onClick={handleDeleteCard}>
-            <DeleteIcon />
-          </IconButton>
-          <Typography
-            className={classes.title}
-            color="textSecondary"
-            gutterBottom
-            style={{ maxWidth: "500px" }}
-          >
-            Definition:
-          </Typography>
+          <div className={classes.definitionContainer}>
+            <IconButton id="delete-icon" onClick={handleDeleteCard}>
+              <DeleteIcon />
+            </IconButton>
+            <Typography
+              className={classes.title}
+              gutterBottom
+              style={{ maxWidth: "500px", color: "lightgray" }}
+            >
+              Definition:
+            </Typography>
+          </div>
           <Typography variant="h6" component="h2">
             {card.definition}
           </Typography>

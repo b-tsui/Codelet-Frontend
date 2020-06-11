@@ -136,13 +136,8 @@ export default function Set({ set }) {
   };
 
   return (
-    <Card className={(classes.root, "single-set")}>
-      <Link
-        to={{
-          pathname: `/sets/${set.id}`,
-          set,
-        }}
-      >
+    <Card className={classes.root} id={"single-set"}>
+      <Link to={{ pathname: `/sets/${set.id}`, state: { set: set } }}>
         <CardHeader
           action={
             <IconButton aria-label="settings" style={{ padding: "8px" }}>
@@ -162,7 +157,7 @@ export default function Set({ set }) {
           }
         />
         <CardContent id={"single-set-description"}>
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography variant="body2" color="#eeeeee" component="p">
             {set.description}
           </Typography>
         </CardContent>
@@ -174,7 +169,7 @@ export default function Set({ set }) {
             onClick={favoriteHandler}
             style={{
               padding: "2px",
-              color: isFavorited ? "rgb(220,0,0,.6)" : "grey",
+              color: isFavorited ? "#ffd54f" : "#eeeeee",
             }}
           >
             <StarIcon />
@@ -186,7 +181,7 @@ export default function Set({ set }) {
             onClick={(e) => voteHandler(e, true)}
             style={{
               padding: "2px",
-              color: isUpvoted ? "rgb(0,0,255,.6)" : "grey",
+              color: isUpvoted ? "#9fa8da" : "#eeeeee",
             }}
           >
             <ThumbUpAltIcon style={{ padding: "2px" }} />
@@ -197,7 +192,7 @@ export default function Set({ set }) {
             onClick={(e) => voteHandler(e, false)}
             style={{
               padding: "2px",
-              color: isUpvoted === false ? "rgb(0,0,255,.6)" : "grey",
+              color: isUpvoted === false ? "#e57373" : "#eeeeee",
             }}
           >
             <ThumbDownAltIcon style={{ padding: "2px" }} />

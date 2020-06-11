@@ -2,16 +2,18 @@ import React, { useState, useEffect } from "react";
 import { useAuth0 } from "../react-auth0-spa";
 import Set from "./Set";
 import { api } from "../config";
-import "../styles/profile.css"
+import "../styles/profile.css";
 
-import Paper from '@material-ui/core/Paper';
-import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
+import Paper from "@material-ui/core/Paper";
+import PropTypes from "prop-types";
+import { makeStyles } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import Typography from "@material-ui/core/Typography";
+import Box from "@material-ui/core/Box";
+import theme from './Theme'
+
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -42,7 +44,7 @@ TabPanel.propTypes = {
 function a11yProps(index) {
   return {
     id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
   };
 }
 
@@ -50,6 +52,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
+    color: theme.palette.primary
   },
 }));
 
@@ -89,7 +92,11 @@ const Profile = () => {
   return (
     <>
       <div className="user-info-container">
-        <img src={user.picture} alt="Profile" style={{ 'border-radius': '50%' }} />
+        <img
+          src={user.picture}
+          alt="Profile"
+          style={{ "border-radius": "50%" }}
+        />
         <h2>{user.name}</h2>
         <p>{user.email}</p>
       </div>
@@ -97,12 +104,17 @@ const Profile = () => {
       <Paper square className="profile-tabs-container">
         <Tabs
           value={value}
-          indicatorColor="primary"
+          // inkBarStyle={{ background: "cadetblue" }}
+          indicatorColor={theme.primary}
           textColor="primary"
           onChange={handleChange}
           aria-label="disabled tabs example"
         >
-          <Tab label="Favorited Sets" {...a11yProps(0)} />
+          <Tab
+            inkBarStyle={{ background: "cadetblue" }}
+            label="Favorited Sets"
+            {...a11yProps(0)}
+          />
           <Tab label="My Sets" {...a11yProps(1)} />
           <Tab label="My Info" {...a11yProps(2)} />
         </Tabs>
@@ -111,7 +123,8 @@ const Profile = () => {
         <div>
           <h1>Favorited sets:</h1>
           <div className="sets-container">
-            {fetched && favoriteSets.map((set) => <Set set={set} key={set.id} />)}
+            {fetched &&
+              favoriteSets.map((set) => <Set set={set} key={set.id} />)}
           </div>
         </div>
       </TabPanel>

@@ -1,0 +1,16 @@
+body {
+  /* background-color: #263238; */
+  background-color: #18212b;
+}
+#card-form {
+  border-radius: 8px;
+}
+.MuiDialog-paperScrollPaper {
+  border-radius: 8px;
+  background-color: #263238;
+}
+form {
+  background-color: #263238;
+  /* color: white; */
+  border-radius: 8px;
+}

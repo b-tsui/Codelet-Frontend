@@ -20,6 +20,20 @@
   max-width: 35vw;
   max-height: 20vh;
 }
+#single-card-container-term {
+  background-color: #62727b;
+  color: #18212b;
+  border-radius: 12px 0px 0px 12px;
+}
+#single-card-container-def {
+  background-color: #62727b;
+  color: #18212b;
+  border-radius: 0px 12px 12px 0px;
+}
+#card-stepper {
+  background-color: #8c7b75;
+  border-radius: 0px 0px 12px 12px;
+}
 
 .card-pair-container-def {
   width: 50vw;
@@ -32,4 +46,5 @@
 }
 #delete-icon {
   align-self: flex-end;
+  padding: 0;
 }

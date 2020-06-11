@@ -63,8 +63,9 @@ function a11yProps(index) {
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: "#18212b",
   },
+  indicator: { color: "#00897b" },
 }));
 
 export default function CustomDrawer({ location, addCard, cards }) {
@@ -129,7 +130,7 @@ export default function CustomDrawer({ location, addCard, cards }) {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" id="test">
+      <AppBar position="relative" id="test">
         <Tabs
           value={value}
           onClick={handleClickOpen}
@@ -147,16 +148,25 @@ export default function CustomDrawer({ location, addCard, cards }) {
           open={open}
           onClose={handleClose}
           aria-labelledby="form-dialog-title"
+          id="card-form"
+          PaperProps={{
+            style: { borderRadius: "8px", backgroundColor: "#263238" },
+          }}
         >
           <form onSubmit={handleAddCard}>
-            <DialogTitle id="form-dialog-title">Create New Card</DialogTitle>
+            <DialogTitle id="form-dialog-title" style={{ color: "beige" }}>
+              Create New Card
+            </DialogTitle>
             <DialogContent>
-              <DialogContentText>Enter you new card info:</DialogContentText>
+              <DialogContentText style={{ color: "lightgray" }}>
+                Enter you new card info:
+              </DialogContentText>
               <TextField
                 autoComplete="off"
                 autoFocus
+                InputLabelProps={{ style: { color: "lightgray" } }}
                 margin="dense"
-                d="set-title-input"
+                id="set-title-input"
                 label="Card Term..."
                 type="text"
                 fullWidth
@@ -164,7 +174,7 @@ export default function CustomDrawer({ location, addCard, cards }) {
               />
               <TextField
                 autoComplete="off"
-                autoFocus
+                InputLabelProps={{ style: { color: "lightgray" } }}
                 margin="dense"
                 id="set-desc-input"
                 label="Card Definition..."
@@ -195,7 +205,11 @@ export default function CustomDrawer({ location, addCard, cards }) {
         value={value}
         index={3}
       >
-        <StudyCard cards={cards} />
+        {cards.length > 0 ? (
+          <StudyCard cards={cards} />
+        ) : (
+          <h2>There are no cards to study.</h2>
+        )}
       </TabPanel>
     </div>
   );
