@@ -6,12 +6,12 @@ import CustomDrawer from "./CustomDrawer";
 import "../styles/cards.css";
 
 export default function Cards({ location }) {
-  console.log(location);
   const { user } = useAuth0();
   const [cards, setCards] = useState([]);
+  const [set, setSet] = useState({})
   const addCard = (card) => setCards([...cards, card]);
-
   const [fetched, setFetched] = useState(false);
+  const [fetchedSet, setFetchedSet] = useState(false);
   useEffect(() => {
     const loadCards = async () => {
       const res = await fetch(`${api}${location.pathname}/cards`);
@@ -21,23 +21,40 @@ export default function Cards({ location }) {
     };
     loadCards();
   }, [fetched]);
+
+  useEffect(() => {
+    const loadSetInfo = async () => {
+      const res = await fetch(`${api}${location.pathname}`)
+      const set = await res.json();
+      if (res.ok) {
+        setSet(set)
+        setFetchedSet(true)
+      };
+    }
+    loadSetInfo()
+  }, [fetchedSet]);
+
   return (
     <>
       <div className="set-info">
-        <h1>{location.state.set.title}</h1>
-        <div>{location.state.set.description}</div>
-        <div>Creator: {location.state.set.author}</div>
-        <div>Favorites: {location.state.set.favorites.length}</div>
-        <div>Cards: {location.state.set.card_count}</div>
+        {fetchedSet &&
+          <>
+            <h1>{set.title}</h1>
+            <div>{set.description}</div>
+            <div>Creator: {set.author}</div>
+            <div>Favorites: {set.favorites.length}</div>
+            <div>Cards: {set.card_count}</div>
+          </>
+        }
       </div>
 
       <div>
-        <CustomDrawer location={location} addCard={addCard} cards={cards} />
+        <CustomDrawer set={set} addCard={addCard} cards={cards} />
       </div>
       <div className="cards-container">
         {fetched &&
           cards.map((card) => (
-            <IndividualCard setFetched={setFetched} card={card} key={card.id} />
+            <IndividualCard setFetched={setFetched} card={card} key={card.id} setsUserId={set.user_id} />
           ))}
       </div>
     </>

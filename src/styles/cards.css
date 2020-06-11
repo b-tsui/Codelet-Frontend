@@ -48,3 +48,21 @@
   align-self: flex-end;
   padding: 0;
 }
+
+.random-cards{
+  width: 175px;
+  height: 175px;
+  margin: 15px;
+  padding: 10px;
+}
+
+.match-container{
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 900px;
+  justify-content: center;
+}
+
+.random-term {
+  background-color: lightgray;
+}

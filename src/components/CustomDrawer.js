@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import StudyCard from "./StudyCard";
+import MatchGame from './MatchGame';
 import { makeStyles } from "@material-ui/core/styles";
 import { useAuth0 } from "../react-auth0-spa";
 import { api } from "../config";
@@ -26,7 +27,7 @@ import ImportContactsIcon from "@material-ui/icons/ImportContacts"; //learn
 import CreateIcon from "@material-ui/icons/Create"; //create/write new card
 import SchoolIcon from "@material-ui/icons/School"; //quiz/test
 import { IconButton } from "@material-ui/core";
-
+import DescriptionIcon from '@material-ui/icons/Description';
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -68,7 +69,7 @@ const useStyles = makeStyles((theme) => ({
   indicator: { color: "#00897b" },
 }));
 
-export default function CustomDrawer({ location, addCard, cards }) {
+export default function CustomDrawer({ set, addCard, cards }) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
   const { user, getTokenSilently } = useAuth0();
@@ -76,7 +77,7 @@ export default function CustomDrawer({ location, addCard, cards }) {
   const [cardTerm, setCardTerm] = React.useState("");
   const [cardDef, setCardDef] = React.useState("");
   const [fetched, setFetched] = useState(false);
-  let setId = Number(location.pathname.slice(6));
+  // let setId = Number(location.pathname.slice(6));
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -112,7 +113,7 @@ export default function CustomDrawer({ location, addCard, cards }) {
         body: JSON.stringify({
           term: cardTerm,
           definition: cardDef,
-          set_id: setId,
+          set_id: set.id,
         }),
       });
       try {
@@ -137,13 +138,22 @@ export default function CustomDrawer({ location, addCard, cards }) {
           onChange={handleChange}
           aria-label="simple tabs example"
         >
-          <Tab label="Create Card" icon={<CreateIcon />} {...a11yProps(0)} />
-          <Tab label="Learn" icon={<ImportContactsIcon />} {...a11yProps(1)} />
+
+          <Tab label="Terms" icon={<DescriptionIcon />} {...a11yProps(0)} />
+          {/* Create card will only show if user is logged in and created that set */}
+          <Tab label="Match" icon={<ImportContactsIcon />} {...a11yProps(1)} />
           <Tab label="Quiz" icon={<SchoolIcon />} {...a11yProps(2)} />
           <Tab label="Flashcards" icon={<NoteIcon />} {...a11yProps(3)} />
+          {user && user.userId === set.user_id &&
+            <Tab label="Create Card" icon={<CreateIcon />} {...a11yProps(4)} />
+          }
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
+        Cards:
+      </TabPanel>
+      {user && user.userId === set.user_id &&
+      <TabPanel value={value} index={4}>
         <Dialog
           open={open}
           onClose={handleClose}
@@ -194,8 +204,10 @@ export default function CustomDrawer({ location, addCard, cards }) {
           </form>
         </Dialog>
       </TabPanel>
+      }
       <TabPanel value={value} index={1}>
-        Item Two
+        <MatchGame cards={cards}/>
+
       </TabPanel>
       <TabPanel value={value} index={2}>
         Item Three
@@ -208,8 +220,8 @@ export default function CustomDrawer({ location, addCard, cards }) {
         {cards.length > 0 ? (
           <StudyCard cards={cards} />
         ) : (
-          <h2>There are no cards to study.</h2>
-        )}
+            <h2>There are no cards to study.</h2>
+          )}
       </TabPanel>
     </div>
   );

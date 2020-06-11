@@ -51,8 +51,8 @@ function a11yProps(index) {
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
-    color: theme.palette.primary
+    // backgroundColor: theme.palette.primary.main,
+    // color: theme.palette.primary
   },
 }));
 
@@ -105,7 +105,7 @@ const Profile = () => {
         <Tabs
           value={value}
           // inkBarStyle={{ background: "cadetblue" }}
-          indicatorColor={theme.primary}
+          indicatorColor="primary "
           textColor="primary"
           onChange={handleChange}
           aria-label="disabled tabs example"
