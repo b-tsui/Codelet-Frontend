@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import StudyCard from "./StudyCard";
+import MatchGame from './MatchGame';
 import { makeStyles } from "@material-ui/core/styles";
 import { useAuth0 } from "../react-auth0-spa";
 import { api } from "../config";
@@ -138,7 +139,7 @@ export default function CustomDrawer({ set, addCard, cards }) {
           aria-label="simple tabs example"
         >
           <Tab label="Create Card" icon={<CreateIcon />} {...a11yProps(0)} />
-          <Tab label="Learn" icon={<ImportContactsIcon />} {...a11yProps(1)} />
+          <Tab label="Match" icon={<ImportContactsIcon />} {...a11yProps(1)} />
           <Tab label="Quiz" icon={<SchoolIcon />} {...a11yProps(2)} />
           <Tab label="Flashcards" icon={<NoteIcon />} {...a11yProps(3)} />
         </Tabs>
@@ -195,7 +196,7 @@ export default function CustomDrawer({ set, addCard, cards }) {
         </Dialog>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        <MatchGame cards={cards}/>
       </TabPanel>
       <TabPanel value={value} index={2}>
         Item Three
