@@ -31,8 +31,9 @@
   border-radius: 0px 12px 12px 0px;
 }
 #card-stepper {
-  background-color: #8c7b75;
+  background-color: #000a12;
   border-radius: 0px 0px 12px 12px;
+  color: #00897b;
 }
 
 .card-pair-container-def {
@@ -44,8 +45,10 @@
   /* justify-content: flex-end; */
   /* overflow-y: scroll; */
 }
-#delete-icon {
-  align-self: flex-end;
+#delete-icon, #edit-icon{
+  justify-content: flex-end;
+  align-items: flex-end;
+  flex-direction: row-reverse;
   padding: 0;
 }
 
@@ -68,4 +71,13 @@
 }
 .selected-card {
   border: red;
+}
+
+.win-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#card-stepper > .Mui-disabled {
+  color: #004d40;
 }

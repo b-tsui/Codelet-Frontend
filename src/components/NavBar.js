@@ -97,7 +97,10 @@ const NavBar = () => {
               {/* <Link to="/">
                 <Button style={{ color: "#e8eaf6" }}>Home</Button>
               </Link>
+<<<<<<< HEAD
               &nbsp; */}
+=======
+>>>>>>> 59638fc13d4a4127a50846822c917fa7e502a8b3
               <Link to="/profile">
                 <Button style={{ color: "#e8eaf6" }}><AccountCircleIcon /></Button>
               </Link>
