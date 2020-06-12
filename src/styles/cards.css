@@ -69,3 +69,9 @@
 .selected-card {
   border: red;
 }
+
+.win-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

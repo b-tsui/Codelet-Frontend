@@ -72,12 +72,12 @@ export default function ({ cards }) {
   return (
     <div className="match-container">
       {isGameFinished ? (
-        <>
+        <div className="win-container">
           <div>You won!</div>
           <Button color="secondary" onClick={() => setIsCompleted(true)}>
             Reset Game
           </Button>
-        </>
+        </div>
       ) : (
         randomCards.map((card) => {
           return <MatchCard card={card} props={props} />;
