@@ -63,17 +63,18 @@ const NavBarSearch = () => {
     const classes = useStyles();
     const [searchTerm, setSearchTerm] = useState('')
     const [searched, setSearched] = useState(false)
-    const [searchData, setSearchData] = useState({})
+    const handleSearchTerm = (e) => {
+        //setSearched(false)
+        setSearchTerm(e.target.value)
 
-    const handleSearchTerm = (e) => setSearchTerm(e.target.value)
+    }
 
     const handleSearch = async (e) => {
         if (e.key === 'Enter') {
             // let searchRes = await fetch(`${api}/sets/search/search?search_term=${searchTerm}`)
             // let searchData = await searchRes.json()
             // setSearchData(searchData)
-            setSearched(true)
-            //window.location.href = `/sets/search/search?search_term=${searchTerm}`
+            window.location.href = `/sets/search/search?search_term=${searchTerm}`
             //return <Redirect to={`/sets/search/search?search_term=${searchTerm}`} />
         }
     }
@@ -96,7 +97,6 @@ const NavBarSearch = () => {
                     onKeyDown={handleSearch}
                 />
             </div>
-            {searched && <Redirect to={`/sets/search/search?search_term=${searchTerm}`} />}
         </>
     )
 }

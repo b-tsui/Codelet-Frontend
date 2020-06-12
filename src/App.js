@@ -5,6 +5,7 @@ import ExternalApi from "./views/ExternalApi";
 
 import Cards from "./components/Cards";
 import SearchResult from "./components/SearchResult"
+import CategorySets from "./components/CategorySets"
 
 import { Router, Route, Switch } from "react-router-dom";
 
@@ -20,7 +21,7 @@ import theme from './components/Theme'
 function App() {
   return (
 
-     <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
       <div className="App">
         {/* Don't forget to include the history module */}
         <Router history={history}>
@@ -30,6 +31,7 @@ function App() {
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/sets/search/:search" exact component={SearchResult} />
+            <Route path="/categories/:id" component={CategorySets} />
             <PrivateRoute path="/profile" component={Profile} />
             <PrivateRoute path="/external-api" component={ExternalApi} />
             <Route path="/sets/:id" component={Cards} />
