@@ -4,14 +4,10 @@ import MatchCard from "./MatchCard";
 
 export default function ({ cards }) {
   const [randomCards, setRandomCards] = useState([]);
-  //   const [selectedTerm, setSelectedTerm] = React.useState(null);
-  //   const [selectedDef, setSelectedDef] = React.useState(null);
   const [termId, setTermId] = React.useState(null);
   const [isMatched, setIsMatched] = React.useState(false);
   const [isTwoSelected, setIsTwoSelected] = React.useState(false);
   const [isCompleted, setIsCompleted] = React.useState(false);
-  const [reset, setReset] = React.useState(false);
-  // const [cardId, setCardId] = React.useState(null);
 
   useEffect(() => {
     const randomCardGen = () => {
@@ -43,58 +39,8 @@ export default function ({ cards }) {
     randomCardGen();
   }, [isCompleted]);
 
-  //   useEffect(() => {
-  //     const matchChecker = async (e) => {
-  //       console.log(selectedDef, selectedTerm);
-  //       if (selectedTerm === null && selectedDef === null) {
-  //         // setIsMatched(false);
-  //         // debugger;
-  //         return;
-  //       }
-
-  //       if (selectedDef === selectedTerm && selectedTerm !== null) {
-  //         console.log("theres a match");
-  //         setIsMatched(true);
-  //         debugger;
-  //       } else {
-  //         console.log(false);
-  //         setIsMatched(false);
-  //         // setReset(true);
-  //         debugger;
-  //       }
-  //       setSelectedTerm(null);
-  //       setSelectedDef(null);
-  //       setIsMatched(false);
-  //       setIsTwoSelected(false);
-  //     };
-  //     matchChecker();
-  //   }, [isTwoSelected]);
-
-  // console.log(randomCards);
-
-  // const handleTermClick = async (e) =>{
-  //     const idCard = Number(e.target.id.slice(5));
-  //     setSelectedTerm(idCard);
-  //     if (selectedDef) {
-  //         setIsTwoSelected(true)
-  //     }
-
-  // }
-
-  // const handleDefClick = async (e) => {
-  //     const idCard = Number(e.target.id.slice(4));
-  //     setSelectedDef(idCard);
-  //     if (selectedTerm) {
-  //         setIsTwoSelected(true)
-  //     }
-
-  // }
   const props = {
-    // setSelectedDef,
-    // setSelectedTerm,
     setIsTwoSelected,
-    // selectedDef,
-    // selectedTerm,
     isMatched,
     isTwoSelected,
     setIsMatched,
