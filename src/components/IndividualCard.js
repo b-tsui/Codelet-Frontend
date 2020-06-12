@@ -151,12 +151,14 @@ export default function IndividualCard({
             </Typography>
             {user && user.userId === setsUserId && (
               <>
-                <IconButton id="edit-icon" onClick={handleOpen}>
-                  <EditOutlinedIcon />
-                </IconButton>
-                <IconButton id="delete-icon" onClick={handleDeleteCard}>
-                  <DeleteIcon />
-                </IconButton>
+                <div className='testing'>
+                  <IconButton id="edit-icon" onClick={handleOpen}>
+                    <EditOutlinedIcon />
+                  </IconButton>
+                  <IconButton id="delete-icon" onClick={handleDeleteCard}>
+                    <DeleteIcon />
+                  </IconButton>
+                </div>
               </>
             )}
           </div>
