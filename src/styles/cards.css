@@ -66,3 +66,6 @@
 .random-term {
   background-color: lightgray;
 }
+.selected-card {
+  border: red;
+}
