@@ -50,6 +50,10 @@
   padding: 0;
 }
 
+.testing {
+  justify-content: space-around;
+}
+
 .makeStyles-definitionContainer-36{
   display: flex;
   justify-content: space-between;
