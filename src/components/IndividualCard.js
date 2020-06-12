@@ -9,7 +9,17 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import DeleteIcon from "@material-ui/icons/Delete";
 import IconButton from "@material-ui/core/IconButton";
-import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
+import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
+
+//import for dialogue
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import TextField from "@material-ui/core/TextField";
+import Select from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
 
 const useStyles = makeStyles({
   root: {
@@ -21,7 +31,7 @@ const useStyles = makeStyles({
     transform: "scale(0.8)",
   },
   title: {
-    fontSize: 14
+    fontSize: 14,
   },
   pos: {
     marginBottom: 12,
@@ -29,18 +39,23 @@ const useStyles = makeStyles({
   definitionContainer: {
     display: "flex",
     // flexDirection: "row-reverse",
-    justifyContent: "space-between",
+    // justifyContent: "space-between",
   },
 });
 
-export default function IndividualCard({ card, setFetched, setsUserId }) {
+export default function IndividualCard({
+  updateCard,
+  addCard,
+  card,
+  setFetched,
+  setsUserId,
+}) {
   const classes = useStyles();
   const { user, getTokenSilently } = useAuth0();
   const bull = <span className={classes.bullet}>•</span>;
-  const [updateTerm, setUpdateTerm] = React.useState("")
-  const [updateDef, setUpdateDef] = React.useState("")
+  const [updateTerm, setUpdateTerm] = React.useState(card.term);
+  const [updateDef, setUpdateDef] = React.useState(card.definition);
   const [open, setOpen] = React.useState(false);
-
 
   const handleDeleteCard = async () => {
     const token = await getTokenSilently();
@@ -61,16 +76,26 @@ export default function IndividualCard({ card, setFetched, setsUserId }) {
       console.error(e);
     }
   };
+  const handleAddCard = async (e) => {
+    e.preventDefault();
+  };
   const handleOpen = () => {
     setOpen(true);
   };
   const handleClose = () => {
     setOpen(false);
   };
-  const handleEditCard = async () => {
-    if (user) {
+  const handleUpdateTerm = async (e) => {
+    setUpdateTerm(e.target.value);
+  };
+  const handleUpdateDef = async (e) => {
+    setUpdateDef(e.target.value);
+  };
+  const handleEditCard = async (e) => {
+    e.preventDefault();
+      if (user) {
       const token = await getTokenSilently();
-      const res = await fetch(`${api}/cards/$card.id`, {
+      const res = await fetch(`${api}/cards/${card.id}`, {
         method: "PATCH",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -78,11 +103,17 @@ export default function IndividualCard({ card, setFetched, setsUserId }) {
         },
         body: JSON.stringify({
           term: updateTerm,
-          definition: updateDef
+          definition: updateDef,
         }),
-      })
+      });
+    
+        if (!res.ok) throw res;
+        const edit = await res.json();
+        updateCard(edit);
+        setFetched(false)
+        
     }
-  }
+  };
 
   return (
     <div className="card-pair-container">
@@ -118,20 +149,71 @@ export default function IndividualCard({ card, setFetched, setsUserId }) {
             >
               Definition:
             </Typography>
-            {user && user.userId === setsUserId &&
+            {user && user.userId === setsUserId && (
               <>
-                <IconButton id='edit-icon' onClick={handleOpen}>
+                <IconButton id="edit-icon" onClick={handleOpen}>
                   <EditOutlinedIcon />
                 </IconButton>
                 <IconButton id="delete-icon" onClick={handleDeleteCard}>
                   <DeleteIcon />
                 </IconButton>
               </>
-            }
+            )}
           </div>
           <Typography variant="h6" component="h2">
             {card.definition}
           </Typography>
+          <Dialog
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="form-dialog-title"
+            id="card-form"
+            PaperProps={{
+              style: { borderRadius: "8px", backgroundColor: "#263238" },
+            }}
+          >
+            <form onSubmit={handleEditCard}>
+              <DialogTitle id="form-dialog-title" style={{ color: "beige" }}>
+                Edit Card
+              </DialogTitle>
+              <DialogContent>
+                <DialogContentText style={{ color: "lightgray" }}>
+                  Edit below:
+                </DialogContentText>
+                <TextField
+                  // autoComplete="none"
+                  autoFocus
+                  InputLabelProps={{ style: { color: "lightgray" } }}
+                  margin="dense"
+                  id="set-title-input"
+                  label="Card Term..."
+                  type="text"
+                  value={updateTerm}
+                  fullWidth
+                  onChange={handleUpdateTerm}
+                />
+                <TextField
+                  autofill={card.description}
+                  InputLabelProps={{ style: { color: "lightgray" } }}
+                  margin="dense"
+                  id="set-desc-input"
+                  label="Definition here..."
+                  type="text"
+                  value={updateDef}
+                  fullWidth
+                  onChange={handleUpdateDef}
+                />
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={handleClose} color="primary">
+                  Cancel
+                </Button>
+                <Button type="submit" onClick={handleClose} color="primary">
+                  Edit
+                </Button>
+              </DialogActions>
+            </form>
+          </Dialog>
         </CardContent>
       </Card>
     </div>

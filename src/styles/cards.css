@@ -45,8 +45,10 @@
   /* justify-content: flex-end; */
   /* overflow-y: scroll; */
 }
-#delete-icon {
-  align-self: flex-end;
+#delete-icon, #edit-icon{
+  justify-content: flex-end;
+  align-items: flex-end;
+  flex-direction: row-reverse;
   padding: 0;
 }
 

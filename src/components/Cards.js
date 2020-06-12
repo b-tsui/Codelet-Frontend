@@ -12,6 +12,10 @@ export default function Cards({ location }) {
   const addCard = (card) => setCards([...cards, card]);
   const [fetched, setFetched] = useState(false);
   const [fetchedSet, setFetchedSet] = useState(false);
+  const updateCard = (updatedCard) => {
+    const updatedArray = cards.map(card => card.id === updatedCard.id ? updatedCard : card)
+    setCards(updatedArray)
+  }
   useEffect(() => {
     const loadCards = async () => {
       const res = await fetch(`${api}${location.pathname}/cards`);
@@ -54,7 +58,7 @@ export default function Cards({ location }) {
       <div className="cards-container">
         {fetched &&
           cards.map((card) => (
-            <IndividualCard setFetched={setFetched} card={card} key={card.id} setsUserId={set.user_id} />
+            <IndividualCard setFetched={setFetched} card={card} key={card.id} setsUserId={set.user_id} updateCard={updateCard} />
           ))}
       </div>
     </>
