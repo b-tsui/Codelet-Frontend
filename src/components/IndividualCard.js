@@ -39,7 +39,7 @@ const useStyles = makeStyles({
   definitionContainer: {
     display: "flex",
     // flexDirection: "row-reverse",
-    // justifyContent: "space-between",
+    justifyContent: "space-between",
   },
 });
 
@@ -151,12 +151,14 @@ export default function IndividualCard({
             </Typography>
             {user && user.userId === setsUserId && (
               <>
-                <IconButton id="edit-icon" onClick={handleOpen}>
-                  <EditOutlinedIcon />
-                </IconButton>
-                <IconButton id="delete-icon" onClick={handleDeleteCard}>
-                  <DeleteIcon />
-                </IconButton>
+                <div className='testing'>
+                  <IconButton id="edit-icon" onClick={handleOpen}>
+                    <EditOutlinedIcon />
+                  </IconButton>
+                  <IconButton id="delete-icon" onClick={handleDeleteCard}>
+                    <DeleteIcon />
+                  </IconButton>
+                </div>
               </>
             )}
           </div>
@@ -181,7 +183,6 @@ export default function IndividualCard({
                   Edit below:
                 </DialogContentText>
                 <TextField
-                  // autoComplete="none"
                   autoFocus
                   InputLabelProps={{ style: { color: "lightgray" } }}
                   margin="dense"

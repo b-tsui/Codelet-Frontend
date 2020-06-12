@@ -31,6 +31,7 @@ const SearchResult = ({ location: { search } }) => {
             {loaded &&
                 <>
                     {searchData.sets &&
+
                         <>
                             <Typography className="search-results" variant="h5" component="h4">
                                 <div>Set Search Results:</div>

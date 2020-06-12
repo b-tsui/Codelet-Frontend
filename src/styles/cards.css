@@ -43,13 +43,20 @@
   display: flex;
   flex-direction: column;
   /* justify-content: flex-end; */
-  /* overflow-y: scroll; */
+
 }
 #delete-icon, #edit-icon{
-  justify-content: flex-end;
   align-items: flex-end;
-  flex-direction: row-reverse;
   padding: 0;
+}
+
+.testing {
+  justify-content: space-around;
+}
+
+.makeStyles-definitionContainer-36{
+  display: flex;
+  justify-content: space-between;
 }
 
 .random-cards {
