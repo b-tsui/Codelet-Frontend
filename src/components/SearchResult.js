@@ -29,7 +29,8 @@ const SearchResult = ({ location: { search } }) => {
             {loaded &&
                 <>
                     {searchData.sets &&
-                        <>
+                    <>
+                    
                             <div>Set Search Results:</div>
                             <div className="sets-container">
                                 {searchData.sets.map(set => < Set set={set} key={set.id} />)}
