@@ -3,7 +3,9 @@ import Set from "./Set"
 import { api } from "../config"
 import "../styles/sets.css";
 import "../styles/cards.css";
+//import "../styles/search-result-cards.css"
 import IndividualCard from "./IndividualCard";
+import { Link } from "react-router-dom";
 const SearchResult = (props) => {
     const [searchData, setSearchData] = useState([])
 
@@ -34,7 +36,7 @@ const SearchResult = (props) => {
                     <>
                         <div>Card Search Results</div>
                         <div className="cards-container">
-                            {searchData.cards.map(card => < IndividualCard setFetched={true} card={card} key={card.id} />)}
+                            {searchData.cards.map(card => <Link to={`/sets/${card.set_id}`} className="search-card-link">< IndividualCard setFetched={true} card={card} key={card.id} /></Link>)}
                         </div>
                     </>
                 }
