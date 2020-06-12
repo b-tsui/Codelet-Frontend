@@ -11,9 +11,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import {
   makeStyles,
-  Theme,
   useTheme,
-  createStyles,
 } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
