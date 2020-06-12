@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import clsx from "clsx";
+import "../styles/browse-nav.css";
 import { makeStyles } from "@material-ui/core/styles";
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 import Button from "@material-ui/core/Button";
@@ -93,7 +94,7 @@ export default function SideBarBrowse() {
                 </ListItem>
             </List>
             <Divider />
-            <h2>Categories</h2>
+            <h2 id="browse-nav-title">Categories</h2>
             <Divider />
             <List component="nav" aria-label="secondary mailbox folder">
                 {
