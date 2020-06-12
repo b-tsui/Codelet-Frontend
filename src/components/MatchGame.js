@@ -1,10 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+import MatchCard from './MatchCard'
 
 export default function({cards}){
     const [randomCards, setRandomCards] = useState([]);
@@ -38,7 +34,10 @@ export default function({cards}){
     useEffect(()=>{
         const matchChecker = async (e)=>{
             console.log(selectedDef, selectedTerm);
-            if (selectedTerm === null && selectedDef === null) return;
+            if (selectedTerm === null && selectedDef === null) {
+                setIsMatched(false)
+                return
+            };
 
                 if (selectedDef === selectedTerm && selectedTerm !== null) {
                     console.log('theres a match')
@@ -57,38 +56,38 @@ export default function({cards}){
 
     // console.log(randomCards);
 
-    const handleTermClick = async (e) =>{
-        const idCard = Number(e.target.id.slice(5));
-        setSelectedTerm(idCard);
-        if (selectedDef) {
-            setIsTwoSelected(true)
-        }
-    }
+    // const handleTermClick = async (e) =>{
+    //     const idCard = Number(e.target.id.slice(5));
+    //     setSelectedTerm(idCard);
+    //     if (selectedDef) {
+    //         setIsTwoSelected(true)
+    //     }
 
-    const handleDefClick = async (e) => {
-        const idCard = Number(e.target.id.slice(4));
-        setSelectedDef(idCard);
-        if (selectedTerm) {
-            setIsTwoSelected(true)
-        }
+    // }
 
-    }
+    // const handleDefClick = async (e) => {
+    //     const idCard = Number(e.target.id.slice(4));
+    //     setSelectedDef(idCard);
+    //     if (selectedTerm) {
+    //         setIsTwoSelected(true)
+    //     }
 
+    // }
+    const props = {
+        setSelectedDef,
+        setSelectedTerm,
+        setIsTwoSelected,
+        selectedDef,
+        selectedTerm,
+        isMatched,
+        isTwoSelected,
+        setIsMatched
+    };
 
     return (
         <div className="match-container">
             { randomCards.map((card)=>{
-                if (card.term){
-                    return <Card className="random-cards random-term"
-                    style={{'overflow-y': 'auto', backgroundColor: 'lightgray'}}
-                    id={`term-${card.cardId}`}
-                    onClick={handleTermClick}>{card.term}</Card>
-                } else {
-                    return <Card className="random-cards random-def"
-                        style={{ 'overflow-y': 'auto', backgroundColor: 'gray' }}
-                        id={`def-${card.cardId}`}
-                        onClick={handleDefClick}>{card.definition}</Card>
-                }
+               return <MatchCard card={card} props={props}/>
             }) }
         </div>
     )
