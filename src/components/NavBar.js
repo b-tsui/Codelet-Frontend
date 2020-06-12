@@ -76,9 +76,9 @@ const NavBar = () => {
           <SideBarBrowse />
           <Typography variant="h6" className={classes.title}>
             <div>
-              <a href="/" id="navbar-logo">
-                Codelet
-              </a>
+              <Link to="/" id='navbar-logo'>
+                <Button style={{ color: "#e8eaf6" }}>Codelet</Button>
+              </Link>
             </div>
           </Typography>
           <NavBarSearch />

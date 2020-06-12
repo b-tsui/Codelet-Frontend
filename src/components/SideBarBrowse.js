@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
@@ -12,18 +14,32 @@ import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
 import MenuIcon from '@material-ui/icons/Menu';
 import DraftsIcon from '@material-ui/icons/Drafts';
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import Typography from '@material-ui/core/Typography';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import HomeIcon from '@material-ui/icons/Home';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
     root: {
-        color: 'white'
+        width: '100%',
     },
     list: {
         width: 250
     },
     fullList: {
         width: "auto"
+    },
+    heading: {
+        fontSize: theme.typography.pxToRem(15),
+        fontWeight: theme.typography.fontWeightRegular,
+    },
+    paper: {
+        background: '#62727b',
+        //color: 'white'
     }
-});
+}));
 
 export default function SideBarBrowse() {
     const classes = useStyles();
@@ -33,8 +49,8 @@ export default function SideBarBrowse() {
         bottom: false,
         right: false
     });
-    const [selectedIndex, setSelectedIndex] = React.useState(1);
-
+    const [selectedIndex, setSelectedIndex] = React.useState(0);
+    const categories = ['Data Structures', 'Algorithms', 'Javascript', 'Python', 'Databases', 'Frontend', 'Backend']
     const handleListItemClick = (event, index) => {
         setSelectedIndex(index);
     };
@@ -67,9 +83,9 @@ export default function SideBarBrowse() {
                     onClick={(event) => handleListItemClick(event, 0)}
                 >
                     <ListItemIcon>
-                        <InboxIcon />
+                        <HomeIcon />
                     </ListItemIcon>
-                    <ListItemText primary="Inbox" />
+                    <ListItemText primary="Home" />
                 </ListItem>
                 <ListItem
                     button
@@ -83,21 +99,23 @@ export default function SideBarBrowse() {
                 </ListItem>
             </List>
             <Divider />
+            <h2>Categories</h2>
+            <Divider />
             <List component="nav" aria-label="secondary mailbox folder">
-                <ListItem
-                    button
-                    selected={selectedIndex === 2}
-                    onClick={(event) => handleListItemClick(event, 2)}
-                >
-                    <ListItemText primary="Trash" />
-                </ListItem>
-                <ListItem
-                    button
-                    selected={selectedIndex === 3}
-                    onClick={(event) => handleListItemClick(event, 3)}
-                >
-                    <ListItemText primary="Spam" />
-                </ListItem>
+                {
+                    categories.map((text, i) => (
+                        <Link to={`/categories/${i + 1}`}>
+                            <ListItem
+                                key={text}
+                                button
+                                selected={selectedIndex === i + 2}
+                                onClick={(event) => handleListItemClick(event, i + 2)}
+                            >
+                                <ListItemText primary={text} />
+                            </ListItem>
+                        </Link>
+                    ))
+                }
             </List>
         </div>
     );
@@ -111,6 +129,7 @@ export default function SideBarBrowse() {
                     open={state['left']}
                     onClose={toggleDrawer('left', false)}
                     onOpen={toggleDrawer('left', true)}
+                    classes={{ paper: classes.paper }}
                 >
                     {list('left')}
                 </SwipeableDrawer>
