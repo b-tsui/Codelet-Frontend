@@ -3,7 +3,6 @@ import { useAuth0 } from "../react-auth0-spa";
 import { Link } from "react-router-dom";
 import NavBarSearch from "./NavBarSearch"
 
-
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -11,8 +10,10 @@ import Button from '@material-ui/core/Button';
 import { makeStyles, fade } from '@material-ui/core/styles'
 import '../styles/navbar-styles.css'
 import InputBase from '@material-ui/core/InputBase';
+import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
+import SideBarBrowse from "./SideBarBrowse";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -72,28 +73,24 @@ const NavBar = () => {
     <div className={classes.root}>
       <AppBar style={{ backgroundColor: "#000a12" }} position="static">
         <Toolbar>
+          <SideBarBrowse />
           <Typography variant="h6" className={classes.title}>
             <div>
-              <a href="/" id="navbar-logo">
-                Codelet
-              </a>
+              <Link to="/" id='navbar-logo'>
+                <Button style={{ color: "#e8eaf6" }}>Codelet</Button>
+              </Link>
             </div>
           </Typography>
           <NavBarSearch />
           {!isAuthenticated && (
-            <button
+            <Button
               style={{ color: "#e8eaf6" }}
               onClick={() => loginWithRedirect({})}
             >
               Log in
-            </button>
-          )}
-
-          {isAuthenticated && (
-            <Button style={{ color: "#e8eaf6" }} onClick={() => logout()}>
-              Log out
             </Button>
           )}
+
           {isAuthenticated && (
             <span>
               <Link to="/">
@@ -102,10 +99,12 @@ const NavBar = () => {
               <Link to="/profile">
                 <Button style={{ color: "#e8eaf6" }}>Profile</Button>
               </Link>
-              <Link to="/external-api">
-                <Button style={{ color: "#e8eaf6" }}>External API</Button>
-              </Link>
             </span>
+          )}
+          {isAuthenticated && (
+            <Button style={{ color: "#e8eaf6" }} onClick={() => logout()}>
+              Log out
+            </Button>
           )}
         </Toolbar>
       </AppBar>

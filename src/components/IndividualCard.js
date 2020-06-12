@@ -44,6 +44,7 @@ const useStyles = makeStyles({
 });
 
 export default function IndividualCard({
+  updateCard,
   addCard,
   card,
   setFetched,
@@ -90,8 +91,9 @@ export default function IndividualCard({
   const handleUpdateDef = async (e) => {
     setUpdateDef(e.target.value);
   };
-  const handleEditCard = async () => {
-    if (user) {
+  const handleEditCard = async (e) => {
+    e.preventDefault();
+      if (user) {
       const token = await getTokenSilently();
       const res = await fetch(`${api}/cards/${card.id}`, {
         method: "PATCH",
@@ -104,10 +106,12 @@ export default function IndividualCard({
           definition: updateDef,
         }),
       });
-
-      if (!res.ok) throw res;
-      const edit = await res.json();
-      addCard(edit);
+    
+        if (!res.ok) throw res;
+        const edit = await res.json();
+        updateCard(edit);
+        setFetched(false)
+        
     }
   };
 
