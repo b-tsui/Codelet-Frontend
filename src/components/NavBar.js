@@ -14,6 +14,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import SideBarBrowse from "./SideBarBrowse";
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -93,20 +94,20 @@ const NavBar = () => {
 
           {isAuthenticated && (
             <span>
-              <Link to="/">
+              {/* <Link to="/">
                 <Button style={{ color: "#e8eaf6" }}>Home</Button>
               </Link>
-              &nbsp;
+              &nbsp; */}
               <Link to="/profile">
-                <Button style={{ color: "#e8eaf6" }}>Profile</Button>
+                <Button style={{ color: "#e8eaf6" }}><AccountCircleIcon /></Button>
               </Link>
             </span>
           )}
-          {isAuthenticated && (
+          {/* {isAuthenticated && (
             <Button style={{ color: "#e8eaf6" }} onClick={() => logout()}>
               Log out
             </Button>
-          )}
+          )} */}
         </Toolbar>
       </AppBar>
     </div>

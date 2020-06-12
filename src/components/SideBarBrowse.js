@@ -37,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SideBarBrowse() {
     const classes = useStyles();
+
     const [state, setState] = React.useState({
         top: false,
         left: false,
@@ -45,6 +46,7 @@ export default function SideBarBrowse() {
     });
     const [selectedIndex, setSelectedIndex] = React.useState(0);
     const categories = ['Data Structures', 'Algorithms', 'Javascript', 'Python', 'Databases', 'Frontend', 'Backend']
+
     const handleListItemClick = (event, index) => {
         setSelectedIndex(index);
     };
@@ -71,16 +73,20 @@ export default function SideBarBrowse() {
             onKeyDown={toggleDrawer(anchor, false)}
         >
             <List component="nav" aria-label="main mailbox folders">
-                <ListItem
-                    button
-                    selected={selectedIndex === 0}
-                    onClick={(event) => handleListItemClick(event, 0)}
-                >
-                    <ListItemIcon>
-                        <HomeIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Home" />
-                </ListItem>
+                <Link to='/'>
+                    <ListItem
+                        button
+                        selected={selectedIndex === 0}
+                        onClick={(event) => handleListItemClick(event, 0)}
+                    >
+                        <ListItemIcon>
+
+                            <HomeIcon />
+
+                        </ListItemIcon>
+                        <ListItemText primary="Home" />
+                    </ListItem>
+                </Link>
                 <ListItem
                     button
                     selected={selectedIndex === 1}
