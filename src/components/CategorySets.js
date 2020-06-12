@@ -3,6 +3,7 @@ import Set from "./Set"
 import { api } from "../config"
 import "../styles/sets.css";
 import "../styles/cards.css";
+import Typography from "@material-ui/core/Typography";
 import IndividualCard from "./IndividualCard";
 import { Link } from "react-router-dom";
 
@@ -18,7 +19,7 @@ const SearchResult = ({ location: { pathname } }) => {
             setLoaded(true)
         }
         loadData()
-    }, [])
+    }, [pathname])
 
 
     return (
@@ -28,8 +29,11 @@ const SearchResult = ({ location: { pathname } }) => {
             {!loaded && <div>loading</div>}
             {loaded &&
                 <>
-                    <div>{`Category: ${categoryData.name}`}</div>
+                    <Typography variant='h3' style={{ textAlign: 'center', margin: '15px' }}>
+                        <div>{`Category: ${categoryData.name}`}</div>
+                    </Typography>
                     <div className="sets-container">
+
                         {categoryData.sets.map(set => < Set set={set} key={set.id} />)}
                     </div>
                 </>
