@@ -137,7 +137,7 @@ export default function Set({ set }) {
 
   return (
     <Card className={classes.root} id={"single-set"}>
-      <Link to={{ pathname: `/sets/${set.id}`}}>
+      <Link to={{ pathname: `/sets/${set.id}` }}>
         <CardHeader
           action={
             <IconButton aria-label="settings" style={{ padding: "8px" }}>
