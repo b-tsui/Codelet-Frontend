@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   setHeader: {
     backgroundColor: "#2b3238",
     display: "flex",
-    minWidth: 350,
+    minWidth: 400,
     minHeight: 200,
     alignItems: "center",
     justifyContent: "center",
@@ -81,7 +81,7 @@ export default function Cards({ location }) {
       <div className="set-info">
         {fetchedSet &&
           <>
-          <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal" flipSpeedBackToFront={1.0} flipSpeedFrontToBack={1.0}>
+          <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal" flipSpeedBackToFront={2.0} flipSpeedFrontToBack={2.0}>
             <Card className={classes.setHeader} onClick={handleClick}>
               <CardContent className={classes.cardText}>
                 <Typography component="h2" variant="h2" style={{fontFamily:"inherit"}}>
