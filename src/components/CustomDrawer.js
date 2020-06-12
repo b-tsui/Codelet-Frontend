@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import StudyCard from "./StudyCard";
-import MatchGame from './MatchGame';
+import MatchGame from "./MatchGame";
 import { makeStyles } from "@material-ui/core/styles";
 import { useAuth0 } from "../react-auth0-spa";
 import { api } from "../config";
@@ -27,7 +27,7 @@ import ImportContactsIcon from "@material-ui/icons/ImportContacts"; //learn
 import CreateIcon from "@material-ui/icons/Create"; //create/write new card
 import SchoolIcon from "@material-ui/icons/School"; //quiz/test
 import { IconButton } from "@material-ui/core";
-import DescriptionIcon from '@material-ui/icons/Description';
+import DescriptionIcon from "@material-ui/icons/Description";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -138,76 +138,78 @@ export default function CustomDrawer({ set, addCard, cards }) {
           onChange={handleChange}
           aria-label="simple tabs example"
         >
-
           <Tab label="Terms" icon={<DescriptionIcon />} {...a11yProps(0)} />
           {/* Create card will only show if user is logged in and created that set */}
           <Tab label="Match" icon={<ImportContactsIcon />} {...a11yProps(1)} />
           <Tab label="Quiz" icon={<SchoolIcon />} {...a11yProps(2)} />
           <Tab label="Flashcards" icon={<NoteIcon />} {...a11yProps(3)} />
-          {user && user.userId === set.user_id &&
+          {user && user.userId === set.user_id && (
             <Tab label="Create Card" icon={<CreateIcon />} {...a11yProps(4)} />
-          }
+          )}
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
         Cards:
       </TabPanel>
-      {user && user.userId === set.user_id &&
-      <TabPanel value={value} index={4}>
-        <Dialog
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="form-dialog-title"
-          id="card-form"
-          PaperProps={{
-            style: { borderRadius: "8px", backgroundColor: "#263238" },
-          }}
-        >
-          <form onSubmit={handleAddCard}>
-            <DialogTitle id="form-dialog-title" style={{ color: "beige" }}>
-              Create New Card
-            </DialogTitle>
-            <DialogContent>
-              <DialogContentText style={{ color: "lightgray" }}>
-                Enter you new card info:
-              </DialogContentText>
-              <TextField
-                autoComplete="off"
-                autoFocus
-                InputLabelProps={{ style: { color: "lightgray" } }}
-                margin="dense"
-                id="set-title-input"
-                label="Card Term..."
-                type="text"
-                fullWidth
-                onChange={handleCardTerm}
-              />
-              <TextField
-                autoComplete="off"
-                InputLabelProps={{ style: { color: "lightgray" } }}
-                margin="dense"
-                id="set-desc-input"
-                label="Card Definition..."
-                type="text"
-                fullWidth
-                onChange={handleCardDef}
-              />
-            </DialogContent>
-            <DialogActions>
-              <Button onClick={handleClose} color="primary">
-                Cancel
-              </Button>
-              <Button type="submit" onClick={handleClose} color="primary">
-                Create
-              </Button>
-            </DialogActions>
-          </form>
-        </Dialog>
-      </TabPanel>
-      }
-      <TabPanel value={value} index={1}>
-        <MatchGame cards={cards}/>
-
+      {user && user.userId === set.user_id && (
+        <TabPanel value={value} index={4}>
+          <Dialog
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="form-dialog-title"
+            id="card-form"
+            PaperProps={{
+              style: { borderRadius: "8px", backgroundColor: "#263238" },
+            }}
+          >
+            <form onSubmit={handleAddCard}>
+              <DialogTitle id="form-dialog-title" style={{ color: "beige" }}>
+                Create New Card
+              </DialogTitle>
+              <DialogContent>
+                <DialogContentText style={{ color: "lightgray" }}>
+                  Enter you new card info:
+                </DialogContentText>
+                <TextField
+                  autoComplete="off"
+                  autoFocus
+                  InputLabelProps={{ style: { color: "lightgray" } }}
+                  margin="dense"
+                  id="set-title-input"
+                  label="Card Term..."
+                  type="text"
+                  fullWidth
+                  onChange={handleCardTerm}
+                />
+                <TextField
+                  autoComplete="off"
+                  InputLabelProps={{ style: { color: "lightgray" } }}
+                  margin="dense"
+                  id="set-desc-input"
+                  label="Card Definition..."
+                  type="text"
+                  fullWidth
+                  onChange={handleCardDef}
+                />
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={handleClose} color="primary">
+                  Cancel
+                </Button>
+                <Button type="submit" onClick={handleClose} color="primary">
+                  Create
+                </Button>
+              </DialogActions>
+            </form>
+          </Dialog>
+        </TabPanel>
+      )}
+      <TabPanel
+        value={value}
+        index={1}
+        style={{ display: "flex", justifyContent: "center" }}
+      >
+        <MatchGame cards={cards} />
       </TabPanel>
       <TabPanel value={value} index={2}>
         Item Three
@@ -220,8 +222,8 @@ export default function CustomDrawer({ set, addCard, cards }) {
         {cards.length > 0 ? (
           <StudyCard cards={cards} />
         ) : (
-            <h2>There are no cards to study.</h2>
-          )}
+          <h2>There are no cards to study.</h2>
+        )}
       </TabPanel>
     </div>
   );

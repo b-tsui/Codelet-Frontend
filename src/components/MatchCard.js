@@ -9,10 +9,12 @@ export default function MatchCard({ card, props }) {
     setIsMatched,
     termId,
     setTermId,
+    singleCard,
+    setSingleCard,
   } = props;
 
-  const [isSelected, setIsSelected] = React.useState(false);
-  const [opaqueValue, setOpaqueValue] = React.useState(1);
+  const [isSelected, setIsSelected] = useState(false);
+  const [opaqueValue, setOpaqueValue] = useState(1);
 
   useEffect(() => {
     const opaqueCard = async () => {
@@ -31,17 +33,21 @@ export default function MatchCard({ card, props }) {
   }, [isMatched, isTwoSelected]);
 
   const handleClick = async (e) => {
+    if (e.target.id == singleCard) {
+      setIsSelected(false);
+      setSingleCard(null);
+      setTermId(null);
+      return;
+    }
     const idCard = Number(e.target.id.slice(5));
     setIsSelected(true);
+    setSingleCard(e.target.id);
     if (termId) {
-      console.log(termId, idCard);
       if (termId === idCard) {
         setIsMatched(true);
-        console.log("match");
       } else {
         setIsMatched(false);
         setIsTwoSelected(true);
-        console.log("not match");
       }
     }
     setTermId(idCard);
@@ -53,7 +59,7 @@ export default function MatchCard({ card, props }) {
         className="random-cards random-term"
         style={{
           "overflow-y": "auto",
-          backgroundColor: isSelected ? "yellow" : "lightgray",
+          backgroundColor: isSelected ? "#00897b" : "lightgray",
           opacity: opaqueValue,
         }}
         id={`term-${card.cardId}`}
@@ -68,7 +74,7 @@ export default function MatchCard({ card, props }) {
         className="random-cards random-def"
         style={{
           "overflow-y": "auto",
-          backgroundColor: isSelected ? "yellow" : "gray",
+          backgroundColor: isSelected ? "#00897b" : "gray",
           opacity: opaqueValue,
         }}
         id={`defi-${card.cardId}`}

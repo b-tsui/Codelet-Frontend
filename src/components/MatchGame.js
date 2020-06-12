@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import MatchCard from "./MatchCard";
 
 export default function ({ cards }) {
   const [randomCards, setRandomCards] = useState([]);
-  const [termId, setTermId] = React.useState(null);
-  const [isMatched, setIsMatched] = React.useState(false);
-  const [isTwoSelected, setIsTwoSelected] = React.useState(false);
-  const [isCompleted, setIsCompleted] = React.useState(false);
+  const [termId, setTermId] = useState(null);
+  const [isMatched, setIsMatched] = useState(false);
+  const [isTwoSelected, setIsTwoSelected] = useState(false);
+  const [isCompleted, setIsCompleted] = useState(false);
+  const [singleCard, setSingleCard] = useState(null);
 
   useEffect(() => {
     const randomCardGen = () => {
@@ -29,13 +29,11 @@ export default function ({ cards }) {
           });
         }
       }
-      // setRandomCards(random);
       let randomized = random.sort(function () {
         return 0.5 - Math.random();
       });
       setRandomCards(randomized);
     };
-    // const randomCards = randomCardGen();
     randomCardGen();
   }, [isCompleted]);
 
@@ -46,6 +44,8 @@ export default function ({ cards }) {
     setIsMatched,
     termId,
     setTermId,
+    singleCard,
+    setSingleCard,
   };
 
   return (
