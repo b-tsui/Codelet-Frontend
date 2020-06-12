@@ -88,16 +88,6 @@ export default function SideBarBrowse() {
                         <ListItemText primary="Home" />
                     </ListItem>
                 </Link>
-                <ListItem
-                    button
-                    selected={selectedIndex === 1}
-                    onClick={(event) => handleListItemClick(event, 1)}
-                >
-                    <ListItemIcon>
-                        <DraftsIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Drafts" />
-                </ListItem>
             </List>
             <Divider />
             <h2 id="browse-nav-title">Categories</h2>
@@ -109,7 +99,7 @@ export default function SideBarBrowse() {
                             <ListItem
                                 key={text}
                                 button
-                                selected={selectedIndex === i + 2}
+                                selected={selectedIndex === i + 1}
                                 onClick={(event) => handleListItemClick(event, i + 2)}
                             >
                                 <ListItemText primary={text} />

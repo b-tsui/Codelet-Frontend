@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react"
 import Set from "./Set"
 import { api } from "../config"
+import Typography from "@material-ui/core/Typography";
+
 import "../styles/sets.css";
 import "../styles/cards.css";
 
@@ -29,9 +31,11 @@ const SearchResult = ({ location: { search } }) => {
             {loaded &&
                 <>
                     {searchData.sets &&
-                    <>
-                    
-                            <div>Set Search Results:</div>
+
+                        <>
+                            <Typography className="search-results" variant="h5" component="h4">
+                                <div>Set Search Results:</div>
+                            </Typography>
                             <div className="sets-container">
                                 {searchData.sets.map(set => < Set set={set} key={set.id} />)}
                             </div>

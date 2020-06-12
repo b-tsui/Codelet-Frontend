@@ -13,7 +13,7 @@ import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import theme from './Theme'
-
+import Button from '@material-ui/core/Button';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -64,6 +64,7 @@ const Profile = () => {
   const [favoriteSets, setFavoriteSets] = useState([]);
   const [fetched, setFetched] = useState(false);
   const [value, setValue] = React.useState(0);
+  const { logout } = useAuth0();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -116,7 +117,7 @@ const Profile = () => {
             {...a11yProps(0)}
           />
           <Tab label="My Sets" {...a11yProps(1)} />
-          <Tab label="My Info" {...a11yProps(2)} />
+          <Tab label="Logout" {...a11yProps(2)} />
         </Tabs>
       </Paper>
       <TabPanel value={value} index={0}>
@@ -137,7 +138,11 @@ const Profile = () => {
         </div>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <code>{JSON.stringify(user, null, 2)}</code>
+        <div>
+          <Button style={{ color: "#e8eaf6" }} onClick={() => logout()}>
+            Log out
+            </Button>
+        </div>
       </TabPanel>
     </>
   );

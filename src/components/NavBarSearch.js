@@ -66,7 +66,6 @@ const NavBarSearch = () => {
     const handleSearchTerm = (e) => {
         //setSearched(false)
         setSearchTerm(e.target.value)
-
     }
 
     const handleSearch = async (e) => {
