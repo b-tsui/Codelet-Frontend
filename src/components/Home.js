@@ -27,7 +27,7 @@ const Home = () => {
     if (!user) {
         return (
             <>
-                {loading && <div>loading</div>}
+                {loading && <Loading />}
                 {!loading &&
                     <>
                         <h1 className="home-welcome">Welcome to Codelet!</h1>
@@ -42,7 +42,7 @@ const Home = () => {
     } else {
         return (
             <>
-                {loading && <div>loading</div>}
+                {loading && <Loading />}
                 {!loading && <h1 className="home-welcome">Welcome, {user.name}</h1>}
                 <div className="sets-container">
                     <CreateSet />
