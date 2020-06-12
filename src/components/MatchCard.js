@@ -59,7 +59,7 @@ export default function MatchCard({ card, props }) {
         className="random-cards random-term"
         style={{
           "overflow-y": "auto",
-          backgroundColor: isSelected ? "yellow" : "lightgray",
+          backgroundColor: isSelected ? "#00897b" : "lightgray",
           opacity: opaqueValue,
         }}
         id={`term-${card.cardId}`}
@@ -74,7 +74,7 @@ export default function MatchCard({ card, props }) {
         className="random-cards random-def"
         style={{
           "overflow-y": "auto",
-          backgroundColor: isSelected ? "yellow" : "gray",
+          backgroundColor: isSelected ? "#00897b" : "gray",
           opacity: opaqueValue,
         }}
         id={`defi-${card.cardId}`}
