@@ -68,7 +68,7 @@ const useStyles = makeStyles((theme) => ({
 
 const NavBar = () => {
   const classes = useStyles();
-  const { isAuthenticated, loginWithRedirect } = useAuth0();
+  const { isAuthenticated, loginWithRedirect, loginWithPopup } = useAuth0();
 
   return (
     <div className={classes.root}>
@@ -86,7 +86,7 @@ const NavBar = () => {
           {!isAuthenticated && (
             <Button
               style={{ color: "#e8eaf6" }}
-              onClick={() => loginWithRedirect({})}
+              onClick={() => loginWithPopup({})}
             >
               Log in
             </Button>
