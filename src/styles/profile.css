@@ -27,13 +27,20 @@ body {
     color: rgba(255,255,255, .8)
 }
 
-/* span.MuiTab-wrapper{
-    color: rgba(255,255,255, .8)
-} */
-/*
-span.MuiTab-wrapper:focus{
-    color: rgba(255,0,0, .8)
-} */
+.logout :hover {
+    color: #00897B;
+}
+
+.logout {
+    display: flex;
+    justify-content: center;
+    
+}
+
+button.logout-button{
+    
+    background-color: rgba(0, 0, 0, 0.87)
+}
 
 button.MuiTab-textColorPrimary{
     color: rgba(255,255,255, .8)

@@ -3,6 +3,7 @@ import { useAuth0 } from "../react-auth0-spa"
 import { api } from "../config"
 import Set from "./Set"
 import CreateSet from './CreateSet'
+import Loading from './Loading'
 import "../styles/home-page.css"
 
 const Home = () => {

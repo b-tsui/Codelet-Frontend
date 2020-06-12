@@ -6,6 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import "../styles/sets.css";
 import "../styles/cards.css";
 
+
 import IndividualCard from "./IndividualCard";
 import { Link } from "react-router-dom";
 const SearchResult = ({ location: { search } }) => {
@@ -33,25 +34,33 @@ const SearchResult = ({ location: { search } }) => {
                     {searchData.sets &&
 
                         <>
-                            <Typography className="search-results" variant="h5" component="h4">
-                                <div>Set Search Results:</div>
+                            <Typography style={{ marginTop: "15px" }} variant="h5" component="h4">
+                                <div className="search-results" >Set Search Results:</div>
                             </Typography>
                             <div className="sets-container">
                                 {searchData.sets.map(set => < Set set={set} key={set.id} />)}
                             </div>
                         </>
                     }
-                    {searchData.sets.length === 0 && <div>No Sets Results</div>}
-
+                    {searchData.sets.length === 0 &&
+                        <Typography variant="h6" component="h5">
+                            <div className="search-results">No Sets Results</div>
+                        </Typography>}
                     {searchData.cards &&
                         <>
-                            <div>Card Search Results:</div>
+                            <Typography variant="h5" component="h4">
+                                <div className="search-results" >Card Search Results:</div>
+                            </Typography>
                             <div className="cards-container">
                                 {searchData.cards.map(card => <Link to={`/sets/${card.set_id}`} className="search-card-link">< IndividualCard setFetched={true} card={card} key={card.id} /></Link>)}
                             </div>
                         </>
                     }
-                    {searchData.cards.length === 0 && <div>No Cards Results</div>}
+                    {searchData.cards.length === 0 &&
+                        <Typography variant="h6" component="h5">
+                            <div className="search-results">No Cards Results</div>
+                        </Typography>
+                    }
                 </>
             }
         </>

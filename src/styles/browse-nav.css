@@ -1,3 +1,18 @@
 #browse-nav-title{
-    padding-left: 15px;
+    padding-left: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #00897b;
+    border-top: 1px solid #00897b;
+    border-bottom: 1px solid #00897b;
 }
+
+.browse-item {
+    color: lightgray;
+    padding-left: 10px;
+}
+
+.browse-item :hover {
+    color: #00897b
+}
+

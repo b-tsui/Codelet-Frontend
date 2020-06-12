@@ -99,7 +99,6 @@ const Profile = () => {
           style={{ "border-radius": "50%" }}
         />
         <h2>{user.name}</h2>
-        <p>{user.email}</p>
       </div>
 
       <Paper square className="profile-tabs-container">
@@ -138,10 +137,10 @@ const Profile = () => {
         </div>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <div>
-          <Button style={{ color: "#e8eaf6" }} onClick={() => logout()}>
-            Log out
-            </Button>
+        <div className='logout'>
+          <Button className='logout-button' style={{ color: "#e8eaf6" }} onClick={() => logout()}>
+            Confirm Log out
+          </Button>
         </div>
       </TabPanel>
     </>

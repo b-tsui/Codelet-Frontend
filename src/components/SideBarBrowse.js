@@ -13,6 +13,7 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import MenuIcon from '@material-ui/icons/Menu';
 import DraftsIcon from '@material-ui/icons/Drafts';
+import Typography from "@material-ui/core/Typography";
 
 import HomeIcon from '@material-ui/icons/Home';
 
@@ -31,8 +32,11 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: theme.typography.fontWeightRegular,
     },
     paper: {
-        background: '#62727b',
+        background: '#000a12',
         //color: 'white'
+    },
+    divider: {
+        color: 'secondary',
     }
 }));
 
@@ -80,18 +84,18 @@ export default function SideBarBrowse() {
                         selected={selectedIndex === 0}
                         onClick={(event) => handleListItemClick(event, 0)}
                     >
-                        <ListItemIcon>
+                        <ListItemIcon >
 
-                            <HomeIcon />
+                            <HomeIcon color="primary" />
 
                         </ListItemIcon>
-                        <ListItemText primary="Home" />
+                        <ListItemText className="browse-item" style={{ paddingLeft: '0' }} primary="Home" />
                     </ListItem>
                 </Link>
             </List>
-            <Divider />
-            <h2 id="browse-nav-title">Categories</h2>
-            <Divider />
+            <Divider id='browse-divider-top' />
+            <Typography variant='h5' id="browse-nav-title">Categories</Typography>
+            <Divider id="browse-diverder-bottom" />
             <List component="nav" aria-label="secondary mailbox folder">
                 {
                     categories.map((text, i) => (
@@ -102,7 +106,7 @@ export default function SideBarBrowse() {
                                 selected={selectedIndex === i + 1}
                                 onClick={(event) => handleListItemClick(event, i + 2)}
                             >
-                                <ListItemText primary={text} />
+                                <ListItemText className="browse-item" primary={text} />
                             </ListItem>
                         </Link>
                     ))

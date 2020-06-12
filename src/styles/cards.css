@@ -88,3 +88,10 @@
 #card-stepper > .Mui-disabled {
   color: #004d40;
 }
+
+.search-results {
+    display: flex;
+    justify-content: center;
+    color: rgba(255,255,255, .8)
+    
+  }

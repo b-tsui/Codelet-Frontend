@@ -73,7 +73,7 @@ const NavBar = () => {
   return (
     <div className={classes.root}>
       <AppBar style={{ backgroundColor: "#000a12" }} position="static">
-        <Toolbar>
+        <Toolbar disableGutters={true}>
           <SideBarBrowse />
           <Typography variant="h6" className={classes.title}>
             <div>
