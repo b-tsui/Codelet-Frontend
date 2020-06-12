@@ -3,72 +3,50 @@ import Card from "@material-ui/core/Card";
 
 export default function MatchCard({ card, props }) {
   const {
-    setSelectedDef,
-    setSelectedTerm,
     setIsTwoSelected,
     isTwoSelected,
-    selectedDef,
-    selectedTerm,
     isMatched,
     setIsMatched,
+    termId,
+    setTermId,
   } = props;
 
   const [isSelected, setIsSelected] = React.useState(false);
   const [opaqueValue, setOpaqueValue] = React.useState(1);
-  // const [termColor, setTermColor] = React.useState('lightgray');
-  // const [defColor, setDefColor] = React.useState('gray');
 
   useEffect(() => {
     const opaqueCard = async () => {
       if (isMatched && isSelected) {
         setOpaqueValue(0);
-        // debugger;
+        setIsMatched(false);
       }
-      if (!isMatched && isSelected) {
-        setIsSelected(false);
-        // debugger;
+
+      if (isTwoSelected && isSelected) {
+        setIsTwoSelected(false);
       }
+      setIsSelected(false);
+      setTermId(null);
     };
     opaqueCard();
-  }, [isMatched]);
+  }, [isMatched, isTwoSelected]);
 
-  // useEffect(() => {
-  //     const resetSelection = async ()=>{
-  //         if (isTwoSelected && !isMatched) {
-  //             setIsSelected(false)
-  //             setTermColor('lightgray')
-  //             setDefColor('gray')
-  //         }
-  //     }
-  //     resetSelection()
-  // }, [isTwoSelected])
-
-  const handleTermClick = async (e) => {
+  const handleClick = async (e) => {
     const idCard = Number(e.target.id.slice(5));
     setIsSelected(true);
-    // setTermColor("yellow");
-    setSelectedTerm(idCard);
-    if (selectedDef) {
-      setIsTwoSelected(true);
+    if (termId) {
+      console.log(termId, idCard);
+      if (termId === idCard) {
+        setIsMatched(true);
+        console.log("match");
+      } else {
+        setIsMatched(false);
+        setIsTwoSelected(true);
+        console.log("not match");
+      }
     }
-    // if (isTwoSelected && !isMatched) {
-    //     setIsSelected(false)
-    // }
+    setTermId(idCard);
   };
 
-  const handleDefClick = async (e) => {
-    const idCard = Number(e.target.id.slice(4));
-    setIsSelected(true);
-    // setDefColor("yellow");
-    setSelectedDef(idCard);
-    if (selectedTerm) {
-      setIsTwoSelected(true);
-    }
-    // if (isTwoSelected && !isMatched) {
-    //     setIsSelected(false)
-    // }
-  };
-  // color: isUpvoted === false ? "#e57373" : "#eeeeee"
   if (card.term) {
     return (
       <Card
@@ -76,11 +54,10 @@ export default function MatchCard({ card, props }) {
         style={{
           "overflow-y": "auto",
           backgroundColor: isSelected ? "yellow" : "lightgray",
-          // backgroundColor: termColor,
           opacity: opaqueValue,
         }}
         id={`term-${card.cardId}`}
-        onClick={handleTermClick}
+        onClick={handleClick}
       >
         {card.term}
       </Card>
@@ -92,11 +69,10 @@ export default function MatchCard({ card, props }) {
         style={{
           "overflow-y": "auto",
           backgroundColor: isSelected ? "yellow" : "gray",
-          // backgroundColor: defColor,
           opacity: opaqueValue,
         }}
-        id={`def-${card.cardId}`}
-        onClick={handleDefClick}
+        id={`defi-${card.cardId}`}
+        onClick={handleClick}
       >
         {card.definition}
       </Card>

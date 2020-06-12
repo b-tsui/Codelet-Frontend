@@ -4,11 +4,13 @@ import MatchCard from "./MatchCard";
 
 export default function ({ cards }) {
   const [randomCards, setRandomCards] = useState([]);
-  const [selectedTerm, setSelectedTerm] = React.useState(null);
-  const [selectedDef, setSelectedDef] = React.useState(null);
+  //   const [selectedTerm, setSelectedTerm] = React.useState(null);
+  //   const [selectedDef, setSelectedDef] = React.useState(null);
+  const [termId, setTermId] = React.useState(null);
   const [isMatched, setIsMatched] = React.useState(false);
   const [isTwoSelected, setIsTwoSelected] = React.useState(false);
   const [isCompleted, setIsCompleted] = React.useState(false);
+  const [reset, setReset] = React.useState(false);
   // const [cardId, setCardId] = React.useState(null);
 
   useEffect(() => {
@@ -41,29 +43,32 @@ export default function ({ cards }) {
     randomCardGen();
   }, [isCompleted]);
 
-  useEffect(() => {
-    const matchChecker = async (e) => {
-      console.log(selectedDef, selectedTerm);
-      if (selectedTerm === null && selectedDef === null) {
-        // setIsMatched(false);
-        // debugger;
-        return;
-      }
+  //   useEffect(() => {
+  //     const matchChecker = async (e) => {
+  //       console.log(selectedDef, selectedTerm);
+  //       if (selectedTerm === null && selectedDef === null) {
+  //         // setIsMatched(false);
+  //         // debugger;
+  //         return;
+  //       }
 
-      if (selectedDef === selectedTerm && selectedTerm !== null) {
-        console.log("theres a match");
-        setIsMatched(true);
-        // debugger;
-      } else {
-        setIsMatched(false);
-        // debugger;
-      }
-      setSelectedTerm(null);
-      setSelectedDef(null);
-      setIsTwoSelected(false);
-    };
-    matchChecker();
-  }, [isTwoSelected]);
+  //       if (selectedDef === selectedTerm && selectedTerm !== null) {
+  //         console.log("theres a match");
+  //         setIsMatched(true);
+  //         debugger;
+  //       } else {
+  //         console.log(false);
+  //         setIsMatched(false);
+  //         // setReset(true);
+  //         debugger;
+  //       }
+  //       setSelectedTerm(null);
+  //       setSelectedDef(null);
+  //       setIsMatched(false);
+  //       setIsTwoSelected(false);
+  //     };
+  //     matchChecker();
+  //   }, [isTwoSelected]);
 
   // console.log(randomCards);
 
@@ -85,14 +90,16 @@ export default function ({ cards }) {
 
   // }
   const props = {
-    setSelectedDef,
-    setSelectedTerm,
+    // setSelectedDef,
+    // setSelectedTerm,
     setIsTwoSelected,
-    selectedDef,
-    selectedTerm,
+    // selectedDef,
+    // selectedTerm,
     isMatched,
     isTwoSelected,
     setIsMatched,
+    termId,
+    setTermId,
   };
 
   return (
