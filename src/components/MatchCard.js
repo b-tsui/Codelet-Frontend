@@ -11,6 +11,8 @@ export default function MatchCard({ card, props }) {
     setTermId,
     singleCard,
     setSingleCard,
+    matchesLeft,
+    setMatchesLeft,
   } = props;
 
   const [isSelected, setIsSelected] = useState(false);
@@ -20,6 +22,7 @@ export default function MatchCard({ card, props }) {
     const opaqueCard = async () => {
       if (isMatched && isSelected) {
         setOpaqueValue(0);
+        setMatchesLeft(matchesLeft - 1);
         setIsMatched(false);
       }
 

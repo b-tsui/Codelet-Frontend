@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import MatchCard from "./MatchCard";
+import Button from "@material-ui/core/Button";
 
 export default function ({ cards }) {
   const [randomCards, setRandomCards] = useState([]);
@@ -8,9 +9,13 @@ export default function ({ cards }) {
   const [isTwoSelected, setIsTwoSelected] = useState(false);
   const [isCompleted, setIsCompleted] = useState(false);
   const [singleCard, setSingleCard] = useState(null);
+  const [matchesLeft, setMatchesLeft] = useState(null);
+  const [isGameFinished, setIsGameFinished] = useState(false);
 
   useEffect(() => {
     const randomCardGen = () => {
+      setIsCompleted(false);
+      setIsGameFinished(false);
       const random = [];
       let indices = new Set();
       while (random.length < 16 && random.length < cards.length * 2) {
@@ -33,9 +38,21 @@ export default function ({ cards }) {
         return 0.5 - Math.random();
       });
       setRandomCards(randomized);
+      setMatchesLeft(Number(randomized.length) / 2);
     };
     randomCardGen();
   }, [isCompleted]);
+
+  useEffect(() => {
+    const checkMatchStatus = async () => {
+      if (matchesLeft === 0) {
+        console.log("here");
+        setIsGameFinished(true);
+      }
+    };
+
+    checkMatchStatus();
+  }, [matchesLeft]);
 
   const props = {
     setIsTwoSelected,
@@ -46,13 +63,26 @@ export default function ({ cards }) {
     setTermId,
     singleCard,
     setSingleCard,
+    matchesLeft,
+    setMatchesLeft,
   };
+
+  console.log(matchesLeft);
 
   return (
     <div className="match-container">
-      {randomCards.map((card) => {
-        return <MatchCard card={card} props={props} />;
-      })}
+      {isGameFinished ? (
+        <>
+          <div>You won!</div>
+          <Button color="secondary" onClick={() => setIsCompleted(true)}>
+            Reset Game
+          </Button>
+        </>
+      ) : (
+        randomCards.map((card) => {
+          return <MatchCard card={card} props={props} />;
+        })
+      )}
     </div>
   );
 }
