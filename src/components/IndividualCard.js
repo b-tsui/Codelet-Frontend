@@ -9,6 +9,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import DeleteIcon from "@material-ui/icons/Delete";
 import IconButton from "@material-ui/core/IconButton";
+import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 
 const useStyles = makeStyles({
   root: {
@@ -36,6 +37,10 @@ export default function IndividualCard({ card, setFetched, setsUserId }) {
   const classes = useStyles();
   const { user, getTokenSilently } = useAuth0();
   const bull = <span className={classes.bullet}>•</span>;
+  const [updateTerm, setUpdateTerm] = React.useState("")
+  const [updateDef, setUpdateDef] = React.useState("")
+  const [open, setOpen] = React.useState(false);
+
 
   const handleDeleteCard = async () => {
     const token = await getTokenSilently();
@@ -56,6 +61,28 @@ export default function IndividualCard({ card, setFetched, setsUserId }) {
       console.error(e);
     }
   };
+  const handleOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const handleEditCard = async () => {
+    if (user) {
+      const token = await getTokenSilently();
+      const res = await fetch(`${api}/cards/$card.id`, {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          term: updateTerm,
+          definition: updateDef
+        }),
+      })
+    }
+  }
 
   return (
     <div className="card-pair-container">
@@ -92,9 +119,14 @@ export default function IndividualCard({ card, setFetched, setsUserId }) {
               Definition:
             </Typography>
             {user && user.userId === setsUserId &&
-              <IconButton id="delete-icon" onClick={handleDeleteCard}>
-                <DeleteIcon />
-              </IconButton>
+              <>
+                <IconButton id='edit-icon' onClick={handleOpen}>
+                  <EditOutlinedIcon />
+                </IconButton>
+                <IconButton id="delete-icon" onClick={handleDeleteCard}>
+                  <DeleteIcon />
+                </IconButton>
+              </>
             }
           </div>
           <Typography variant="h6" component="h2">
