@@ -31,8 +31,9 @@
   border-radius: 0px 12px 12px 0px;
 }
 #card-stepper {
-  background-color: #8c7b75;
+  background-color: #000a12;
   border-radius: 0px 0px 12px 12px;
+  color: #00897b;
 }
 
 .card-pair-container-def {
@@ -74,4 +75,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+#card-stepper > .Mui-disabled {
+  color: #004d40;
 }

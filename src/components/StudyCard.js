@@ -22,13 +22,16 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   card: {
-    backgroundColor: "#a69b97",
+    backgroundColor: "#2b3238",
     display: "flex",
     minWidth: 500,
     minHeight: 350,
     alignItems: "center",
     justifyContent: "center",
     borderRadius: "12px 12px 0px 0px",
+    border: "1px solid #00897b",
+    color: "darkgrey",
+    boxSizing: "border-box",
   },
   title: {
     fontSize: 14,
@@ -86,17 +89,19 @@ export default function StudyCard({ cards }) {
                 size="small"
                 onClick={handleNext}
                 disabled={activeStep === maxSteps - 1}
+                color="secondary"
               >
                 Next
                 {theme.direction === "rtl" ? (
                   <KeyboardArrowLeft />
                 ) : (
-                    <KeyboardArrowRight />
-                  )}
+                  <KeyboardArrowRight />
+                )}
               </Button>
             }
             backButton={
               <Button
+                color="secondary"
                 size="small"
                 onClick={handleBack}
                 disabled={activeStep === 0}
@@ -104,8 +109,8 @@ export default function StudyCard({ cards }) {
                 {theme.direction === "rtl" ? (
                   <KeyboardArrowRight />
                 ) : (
-                    <KeyboardArrowLeft />
-                  )}
+                  <KeyboardArrowLeft />
+                )}
                 Back
               </Button>
             }
