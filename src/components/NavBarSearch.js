@@ -3,10 +3,6 @@ import { useAuth0 } from "../react-auth0-spa";
 import { Link, Redirect } from "react-router-dom";
 import { api } from "../config"
 
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import { makeStyles, fade } from '@material-ui/core/styles'
 import '../styles/navbar-styles.css'
 import InputBase from '@material-ui/core/InputBase';
@@ -76,10 +72,12 @@ const NavBarSearch = () => {
             // let searchRes = await fetch(`${api}/sets/search/search?search_term=${searchTerm}`)
             // let searchData = await searchRes.json()
             // setSearchData(searchData)
-            // setSearched(true)
-            window.location.href = `/sets/search/search?search_term=${searchTerm}`
+            setSearched(true)
+            //window.location.href = `/sets/search/search?search_term=${searchTerm}`
+            //return <Redirect to={`/sets/search/search?search_term=${searchTerm}`} />
         }
     }
+
 
     return (
         <>
@@ -98,7 +96,9 @@ const NavBarSearch = () => {
                     onKeyDown={handleSearch}
                 />
             </div>
+            {searched && <Redirect to={`/sets/search/search?search_term=${searchTerm}`} />}
         </>
     )
 }
+
 export default NavBarSearch
