@@ -85,7 +85,7 @@ const Profile = () => {
         <img
           src={user.picture}
           alt="Profile"
-          style={{ "border-radius": "50%" }}
+          style={{ borderRadius: "50%", width: "120px", height: "120px" }}
         />
         <h2>{user.name}</h2>
       </div>
