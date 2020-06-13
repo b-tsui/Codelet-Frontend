@@ -32,6 +32,7 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     background: "#000a12",
+    borderRight: "1px solid #00897b",
     //color: 'white'
   },
   divider: {
