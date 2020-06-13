@@ -89,8 +89,8 @@ export default function StudyCard({ cards }) {
                 {theme.direction === "rtl" ? (
                   <KeyboardArrowLeft />
                 ) : (
-                  <KeyboardArrowRight />
-                )}
+                    <KeyboardArrowRight />
+                  )}
               </Button>
             }
             backButton={
@@ -103,8 +103,8 @@ export default function StudyCard({ cards }) {
                 {theme.direction === "rtl" ? (
                   <KeyboardArrowRight />
                 ) : (
-                  <KeyboardArrowLeft />
-                )}
+                    <KeyboardArrowLeft />
+                  )}
                 Back
               </Button>
             }

@@ -21,7 +21,7 @@ import TextField from "@material-ui/core/TextField";
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 275,
+
   },
   bullet: {
     display: "inline-block",
@@ -71,7 +71,7 @@ export default function IndividualCard({
       console.error(e);
     }
   };
-  
+
   const handleOpen = () => {
     setOpen(true);
   };
