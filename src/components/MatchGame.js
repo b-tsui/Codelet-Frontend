@@ -41,12 +41,11 @@ export default function ({ cards }) {
       setMatchesLeft(Number(randomized.length) / 2);
     };
     randomCardGen();
-  }, [isCompleted]);
+  }, [isCompleted, cards]);
 
   useEffect(() => {
-    const checkMatchStatus = async () => {
+    const checkMatchStatus = () => {
       if (matchesLeft === 0) {
-        console.log("here");
         setIsGameFinished(true);
       }
     };
@@ -66,8 +65,6 @@ export default function ({ cards }) {
     matchesLeft,
     setMatchesLeft,
   };
-
-  console.log(matchesLeft);
 
   return (
     <div className="match-container">

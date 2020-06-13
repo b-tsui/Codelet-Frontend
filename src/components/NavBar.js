@@ -1,24 +1,28 @@
 import React from "react";
 import { useAuth0 } from "../react-auth0-spa";
 import { Link } from "react-router-dom";
-import NavBarSearch from "./NavBarSearch"
+import NavBarSearch from "./NavBarSearch";
 
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import { makeStyles, fade } from '@material-ui/core/styles'
-import '../styles/navbar-styles.css'
-import InputBase from '@material-ui/core/InputBase';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import SearchIcon from '@material-ui/icons/Search';
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+import { makeStyles, fade } from "@material-ui/core/styles";
+import "../styles/navbar-styles.css";
+import InputBase from "@material-ui/core/InputBase";
+import IconButton from "@material-ui/core/IconButton";
+import MenuIcon from "@material-ui/icons/Menu";
+import SearchIcon from "@material-ui/icons/Search";
 import SideBarBrowse from "./SideBarBrowse";
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import zIndex from "@material-ui/core/styles/zIndex";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+  },
+  appBar: {
+    zIndex: theme.zIndex.drawer + 1,
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -27,43 +31,42 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   search: {
-    position: 'relative',
+    position: "relative",
     borderRadius: theme.shape.borderRadius,
     backgroundColor: fade(theme.palette.common.white, 0.15),
-    '&:hover': {
+    "&:hover": {
       backgroundColor: fade(theme.palette.common.white, 0.25),
     },
     marginRight: theme.spacing(2),
     marginLeft: 0,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
+    width: "100%",
+    [theme.breakpoints.up("sm")]: {
       marginLeft: theme.spacing(3),
-      width: 'auto',
+      width: "auto",
     },
   },
   searchIcon: {
     padding: theme.spacing(0, 2),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+    height: "100%",
+    position: "absolute",
+    pointerEvents: "none",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
   inputRoot: {
-    color: 'inherit',
+    color: "inherit",
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('md')]: {
-      width: '20ch',
+    transition: theme.transitions.create("width"),
+    width: "100%",
+    [theme.breakpoints.up("md")]: {
+      width: "20ch",
     },
   },
-
 }));
 
 const NavBar = () => {
@@ -72,13 +75,19 @@ const NavBar = () => {
 
   return (
     <div className={classes.root}>
-      <AppBar style={{ backgroundColor: "#000a12" }} position="static">
+      <AppBar
+        className={classes.appBar}
+        style={{ backgroundColor: "#000a12" }}
+        position="fixed"
+      >
         <Toolbar disableGutters={true}>
           <SideBarBrowse />
           <Typography variant="h6" className={classes.title}>
             <div>
-              <Link to="/" id='navbar-logo'>
-                <Button style={{ color: "#e8eaf6" }}>Codelet</Button>
+              <Link to="/" id="navbar-logo">
+                <Button style={{ color: "#00897b", fontSize: 20 }}>
+                  Codelet
+                </Button>
               </Link>
             </div>
           </Typography>
@@ -99,7 +108,9 @@ const NavBar = () => {
               </Link>
               &nbsp; */}
               <Link to="/profile">
-                <Button style={{ color: "#e8eaf6" }}><AccountCircleIcon /></Button>
+                <Button style={{ color: "#e8eaf6" }}>
+                  <AccountCircleIcon />
+                </Button>
               </Link>
             </span>
           )}
@@ -110,9 +121,9 @@ const NavBar = () => {
           )} */}
         </Toolbar>
       </AppBar>
+      <Toolbar />
     </div>
   );
-
 };
 
 export default NavBar;

@@ -20,7 +20,7 @@ export default function MatchCard({ card, props }) {
   const [cardColor, setCardColor] = useState("");
 
   useEffect(() => {
-    const opaqueCard = async () => {
+    const opaqueCard = () => {
       if (isMatched && isSelected) {
         setOpaqueValue(0);
         setMatchesLeft(matchesLeft - 1);
@@ -34,13 +34,17 @@ export default function MatchCard({ card, props }) {
       setTimeout(() => {
         setIsSelected(false);
         setTermId(null);
-      }, 800);
+      }, 500);
+
+      // return function cleanup() {
+      //   clearTimeout(wait);
+      // };
     };
     opaqueCard();
   }, [isMatched, isTwoSelected]);
 
   const handleClick = async (e) => {
-    if (e.target.id == singleCard) {
+    if (e.target.id === singleCard) {
       setIsSelected(false);
       setSingleCard(null);
       setTermId(null);
@@ -81,7 +85,7 @@ export default function MatchCard({ card, props }) {
       <Card
         className="random-cards random-def"
         style={{
-          "overflow-y": "auto",
+          overflowY: "auto",
           backgroundColor: isSelected ? cardColor : "gray",
           opacity: opaqueValue,
         }}
