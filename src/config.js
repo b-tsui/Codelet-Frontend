@@ -1,2 +1,2 @@
 
-export const api = process.env.NODE_ENV === 'development' ? 'http://localhost:5000' : 'https://codelet-backend.herokuapp.com'
+export const api = process.env.NODE_ENV === 'development' ? 'https://codelet-backend.herokuapp.com' : 'https://codelet-backend.herokuapp.com'
