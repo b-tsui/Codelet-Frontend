@@ -71,7 +71,7 @@ export default function IndividualCard({
       console.error(e);
     }
   };
-
+  
   const handleOpen = () => {
     setOpen(true);
   };
