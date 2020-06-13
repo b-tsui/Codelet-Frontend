@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import "../styles/sets.css";
 import { useAuth0 } from "../react-auth0-spa";
 import { api } from "../config";
-
+import Cards from './Cards'
+import Profile from './Profile'
 import Home from './Home'
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -49,7 +50,12 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Set({ set,
   sets,
-  setSets
+  setSets,
+  setFetched,
+  loadSets,
+  userSets,
+  setProfileFetched,
+  profileFetched
 })
 { const [upvotes, setUpvotes] = useState(
     set.votes.filter((vote) => vote.is_upvote).length
@@ -57,7 +63,7 @@ export default function Set({ set,
   const [downvotes, setDownvotes] = useState(
     set.votes.filter((vote) => vote.is_upvote === false).length
   );
-  const [fetched, setFetched] = useState(false);
+  // const [fetchedSet, setfetchedSet] = useState(false);
   const [isUpvoted, setIsUpvoted] = useState(null);
   const [isFavorited, setIsFavorited] = useState(false);
   const { user, getTokenSilently } = useAuth0();
@@ -112,6 +118,7 @@ export default function Set({ set,
     getFavorites();
   }, [user]);
 
+
   const voteHandler = async (e, upvoteButton) => {
     if (user) {
       if (isUpvoted) {
@@ -157,6 +164,8 @@ export default function Set({ set,
       });
     }
   };
+   
+
   //  const handleOpen = () => {
   //    setOpen(true);
   //  };
@@ -176,9 +185,11 @@ export default function Set({ set,
       alert("authorization denied");
     } else {
       alert("Set was successfully deleted");
-      setFetched(false);
-      // updateSets(sets)
+      setFetched(false)
+    
+      
     }
+    
   };
 
   return (
