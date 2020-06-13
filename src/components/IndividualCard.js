@@ -48,7 +48,6 @@ export default function IndividualCard({
 }) {
   const classes = useStyles();
   const { user, getTokenSilently } = useAuth0();
-  const bull = <span className={classes.bullet}>•</span>;
   const [updateTerm, setUpdateTerm] = React.useState(card.term);
   const [updateDef, setUpdateDef] = React.useState(card.definition);
   const [open, setOpen] = React.useState(false);

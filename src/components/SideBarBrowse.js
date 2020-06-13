@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "../styles/browse-nav.css";
 
 import clsx from "clsx";
-import "../styles/browse-nav.css";
 import { makeStyles } from "@material-ui/core/styles";
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 import Button from "@material-ui/core/Button";
@@ -12,7 +12,6 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import MenuIcon from "@material-ui/icons/Menu";
-import DraftsIcon from "@material-ui/icons/Drafts";
 import Typography from "@material-ui/core/Typography";
 
 import HomeIcon from "@material-ui/icons/Home";
@@ -49,6 +48,7 @@ export default function SideBarBrowse() {
     bottom: false,
     right: false,
   });
+
   const [selectedIndex, setSelectedIndex] = React.useState(0);
   const categories = [
     "Data Structures",
