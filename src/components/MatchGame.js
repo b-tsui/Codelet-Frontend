@@ -83,10 +83,10 @@ export default function ({ cards }) {
           </Button>
         </div>
       ) : (
-        randomCards.map((card) => {
-          return <MatchCard card={card} props={props} />;
-        })
-      )}
+          randomCards.map((card) => {
+            return <MatchCard key={card.cardId} card={card} props={props} />;
+          })
+        )}
     </div>
   );
 }

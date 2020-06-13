@@ -9,6 +9,7 @@ import "../styles/cards.css";
 
 import IndividualCard from "./IndividualCard";
 import { Link } from "react-router-dom";
+import Loading from "./Loading";
 const SearchResult = ({ location: { search } }) => {
     const [searchData, setSearchData] = useState()
     const [loaded, setLoaded] = useState(false)
@@ -28,7 +29,7 @@ const SearchResult = ({ location: { search } }) => {
         //<div>search here</div>
 
         <>
-            {!loaded && <div>loading</div>}
+            {!loaded && <Loading />}
             {loaded &&
                 <>
                     {searchData.sets &&
