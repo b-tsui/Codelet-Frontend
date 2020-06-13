@@ -67,7 +67,7 @@ const useStyles = makeStyles((theme) => ({
 
 const NavBar = () => {
   const classes = useStyles();
-  const { isAuthenticated, loginWithRedirect, loginWithPopup } = useAuth0();
+  const { isAuthenticated, loginWithPopup } = useAuth0();
 
   return (
     <div className={classes.root}>
