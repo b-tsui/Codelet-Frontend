@@ -20,4 +20,10 @@
     align-items: center;
 
 }
+.home-content{
+  display: flex;
+  justify-content: space-between;
+  margin-left: 7%;
+  margin-right: 7%;
+}
 
