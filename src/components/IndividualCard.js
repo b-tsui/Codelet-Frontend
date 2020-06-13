@@ -45,7 +45,6 @@ const useStyles = makeStyles({
 
 export default function IndividualCard({
   updateCard,
-  addCard,
   card,
   setFetched,
   setsUserId,
@@ -76,9 +75,7 @@ export default function IndividualCard({
       console.error(e);
     }
   };
-  const handleAddCard = async (e) => {
-    e.preventDefault();
-  };
+  
   const handleOpen = () => {
     setOpen(true);
   };

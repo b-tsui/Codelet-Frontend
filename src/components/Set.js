@@ -51,10 +51,11 @@ export default function Set({ set }) {
   const [downvotes, setDownvotes] = useState(
     set.votes.filter((vote) => vote.is_upvote === false).length
   );
-  //const [fetched, setFetched] = useState(false)
+  const [fetched, setFetched] = useState(false)
   const [isUpvoted, setIsUpvoted] = useState(null);
   const [isFavorited, setIsFavorited] = useState(false);
   const { user, getTokenSilently } = useAuth0();
+  const [open, setOpen] = React.useState(false);
   const classes = useStyles();
   let date = Date.parse(set.created_at);
 
@@ -135,15 +136,20 @@ export default function Set({ set }) {
     }
   };
 
+   const handleOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <Card className={classes.root} id={"single-set"}>
+        <IconButton onClick={handleOpen} style={{ padding: "8px", justifyContent:"flex-end", hover: "none" }}>
+          <MoreVertIcon />
+        </IconButton>
       <Link to={{ pathname: `/sets/${set.id}` }}>
         <CardHeader
-          action={
-            <IconButton aria-label="settings" style={{ padding: "8px" }}>
-              <MoreVertIcon />
-            </IconButton>
-          }
           title={<div className="single-set-title">{set.title}</div>}
           subheader={
             <div className="single-set-subheader">
