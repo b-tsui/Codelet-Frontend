@@ -1,0 +1,34 @@
+.card-quiz-container{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    width: calc(85vw - 40px);
+    background-color: #62727b;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+nav.card-quiz-terms-container{
+    padding:0px;
+}
+
+div.card-quiz-definition{
+    background-color: #18212b;
+    color: lightgray;
+    border-radius: 5px;
+}
+
+
+
+div.card-quiz-term{
+    background-color: lightgray;
+    color: rgba(0, 0, 0, 0.87);
+}
+
+div.card-quiz-term-right{
+    background-color: green;
+}
+
+div.card-quiz-term-wrong{
+    background-color: red;
+}
