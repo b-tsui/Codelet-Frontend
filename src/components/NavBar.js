@@ -1,21 +1,16 @@
 import React from "react";
-import { useAuth0 } from "../react-auth0-spa";
 import { Link } from "react-router-dom";
+import { useAuth0 } from "../react-auth0-spa";
 import NavBarSearch from "./NavBarSearch";
+import SideBarBrowse from "./SideBarBrowse";
+import "../styles/navbar-styles.css";
 
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import { makeStyles, fade } from "@material-ui/core/styles";
-import "../styles/navbar-styles.css";
-import InputBase from "@material-ui/core/InputBase";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
-import SearchIcon from "@material-ui/icons/Search";
-import SideBarBrowse from "./SideBarBrowse";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
-import zIndex from "@material-ui/core/styles/zIndex";
+import { makeStyles, fade } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   root: {

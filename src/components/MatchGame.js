@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import MatchCard from "./MatchCard";
+
 import Button from "@material-ui/core/Button";
 
 export default function ({ cards }) {
@@ -12,6 +13,7 @@ export default function ({ cards }) {
   const [matchesLeft, setMatchesLeft] = useState(null);
   const [isGameFinished, setIsGameFinished] = useState(false);
 
+  // Generates an array of 8 random cards (terms and definitions) for the matching game
   useEffect(() => {
     const randomCardGen = () => {
       setIsCompleted(false);
@@ -34,15 +36,19 @@ export default function ({ cards }) {
           });
         }
       }
+
+      // Randomize the order of terms and definitions for added difficulty
       let randomized = random.sort(function () {
         return 0.5 - Math.random();
       });
+
       setRandomCards(randomized);
       setMatchesLeft(Number(randomized.length) / 2);
     };
     randomCardGen();
   }, [isCompleted, cards]);
 
+  // Checks to see how many correct pairs are still needed to complete the game
   useEffect(() => {
     const checkMatchStatus = () => {
       if (matchesLeft === 0) {
@@ -53,6 +59,7 @@ export default function ({ cards }) {
     checkMatchStatus();
   }, [matchesLeft]);
 
+  // Defines props that need to be passed into individual match card component
   const props = {
     setIsTwoSelected,
     isMatched,
