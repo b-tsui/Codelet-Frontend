@@ -38,6 +38,10 @@ const useStyles = makeStyles({
     display: "flex",
     justifyContent: "space-between",
   },
+  termdef: {
+    fontSize: '1.1rem',
+    lineHeight: '1.2'
+  }
 });
 
 export default function IndividualCard({
@@ -126,7 +130,7 @@ export default function IndividualCard({
           >
             Term:
           </Typography>
-          <Typography variant="h6" component="h2">
+          <Typography className={classes.termdef}>
             {card.term}
           </Typography>
         </CardContent>
@@ -158,7 +162,7 @@ export default function IndividualCard({
               </>
             )}
           </div>
-          <Typography variant="h6" component="h2">
+          <Typography className={classes.termdef}>
             {card.definition}
           </Typography>
           <Dialog
