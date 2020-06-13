@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import StudyCard from "./StudyCard";
 import MatchGame from "./MatchGame";
-import { makeStyles } from "@material-ui/core/styles";
 import { useAuth0 } from "../react-auth0-spa";
 import { api } from "../config";
+import "../styles/customDrawer.css";
+
 import PropTypes from "prop-types";
+import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import "../styles/customDrawer.css";
 
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -19,15 +20,13 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
 
 import NoteIcon from "@material-ui/icons/Note"; //flashcards
 import ImportContactsIcon from "@material-ui/icons/ImportContacts"; //learn
 import CreateIcon from "@material-ui/icons/Create"; //create/write new card
 import SchoolIcon from "@material-ui/icons/School"; //quiz/test
-import { IconButton } from "@material-ui/core";
 import DescriptionIcon from "@material-ui/icons/Description";
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -71,17 +70,16 @@ const useStyles = makeStyles((theme) => ({
 
 export default function CustomDrawer({ set, addCard, cards }) {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
   const { user, getTokenSilently } = useAuth0();
-  const [open, setOpen] = React.useState(false);
-  const [cardTerm, setCardTerm] = React.useState("");
-  const [cardDef, setCardDef] = React.useState("");
-  const [fetched, setFetched] = useState(false);
-  // let setId = Number(location.pathname.slice(6));
+  const [open, setOpen] = useState(false);
+  const [cardTerm, setCardTerm] = useState("");
+  const [cardDef, setCardDef] = useState("");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -89,19 +87,18 @@ export default function CustomDrawer({ set, addCard, cards }) {
   const handleClose = () => {
     setOpen(false);
   };
+
   const handleCardTerm = async (e) => {
-    console.log(e.target.value);
     setCardTerm(e.target.value);
   };
+
   const handleCardDef = async (e) => {
-    console.log(e.target.value);
     setCardDef(e.target.value);
   };
 
   const handleAddCard = async (e) => {
     e.preventDefault();
 
-    // console.log(setId)
     if (user) {
       const token = await getTokenSilently();
       const res = await fetch(`${api}/cards`, {
@@ -119,7 +116,6 @@ export default function CustomDrawer({ set, addCard, cards }) {
       try {
         if (!res.ok) throw res;
         const card = await res.json();
-        console.log(card);
         addCard(card);
         // console.log(`New Set: ${set}`);
         // window.location.href = `sets/${set.id}`;

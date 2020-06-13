@@ -19,37 +19,51 @@ export default function MatchCard({ card, props }) {
   const [opaqueValue, setOpaqueValue] = useState(1);
   const [cardColor, setCardColor] = useState("");
 
+  // Determines how to re-render card based off of current state
   useEffect(() => {
-    const opaqueCard = async () => {
+    const renderCard = () => {
+      // If there is a correct match
       if (isMatched && isSelected) {
         setOpaqueValue(0);
         setMatchesLeft(matchesLeft - 1);
         setIsMatched(false);
       }
 
+      // If two cards are selected and don't match
       if (isTwoSelected && isSelected) {
         setIsTwoSelected(false);
         setCardColor("red");
       }
+
+      // Waits 0.5 seconds before reseting card to initial color
       setTimeout(() => {
         setIsSelected(false);
         setTermId(null);
-      }, 800);
+      }, 500);
+
+      // return function cleanup() {
+      //   clearTimeout(wait);
+      // };
     };
-    opaqueCard();
+    renderCard();
   }, [isMatched, isTwoSelected]);
 
+  // Function to set card as selected
   const handleClick = async (e) => {
-    if (e.target.id == singleCard) {
+    // Makes sure the selected card doesn't match itself
+    if (e.target.id === singleCard) {
       setIsSelected(false);
       setSingleCard(null);
       setTermId(null);
       return;
     }
+
     const idCard = Number(e.target.id.slice(5));
     setIsSelected(true);
     setCardColor("#00897b");
     setSingleCard(e.target.id);
+
+    // Checks to see if there are two cards selected in state
     if (termId) {
       if (termId === idCard) {
         setIsMatched(true);
@@ -81,7 +95,7 @@ export default function MatchCard({ card, props }) {
       <Card
         className="random-cards random-def"
         style={{
-          "overflow-y": "auto",
+          overflowY: "auto",
           backgroundColor: isSelected ? cardColor : "gray",
           opacity: opaqueValue,
         }}

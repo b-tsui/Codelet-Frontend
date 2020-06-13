@@ -1,18 +1,38 @@
-#browse-nav-title{
-    padding-left: 25px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    color: #00897b;
-    border-top: 1px solid #00897b;
-    border-bottom: 1px solid #00897b;
+#browse-nav-title {
+  padding-left: 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: #00897b;
+  border-top: 0.5px solid #00897b;
+  border-bottom: 0.5px solid #00897b;
 }
 
 .browse-item {
-    color: lightgray;
-    padding-left: 10px;
+  color: lightgray;
+  padding-left: 10px;
 }
 
 .browse-item :hover {
-    color: #00897b
+  color: #00897b;
 }
 
+#browse-home :hover {
+  color: #00897b;
+}
+
+#browse-home {
+  padding-top: 2px;
+  color: lightgray;
+}
+
+#browse-home-icon {
+  margin-right: 0;
+}
+
+#browse-home-icon :hover {
+  color: #00897b;
+}
+
+div.MuiListItem-root.Mui-selected {
+  background-color: #00897b;
+}

@@ -1,9 +1,9 @@
 import React from "react";
 import { api } from "../config";
-import { makeStyles } from "@material-ui/core/styles";
 import { useAuth0 } from "../react-auth0-spa";
+
+import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
@@ -18,12 +18,10 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import TextField from "@material-ui/core/TextField";
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 275,
+
   },
   bullet: {
     display: "inline-block",
@@ -38,21 +36,22 @@ const useStyles = makeStyles({
   },
   definitionContainer: {
     display: "flex",
-    // flexDirection: "row-reverse",
     justifyContent: "space-between",
   },
+  termdef: {
+    fontSize: '1.1rem',
+    lineHeight: '1.2'
+  }
 });
 
 export default function IndividualCard({
   updateCard,
-  addCard,
   card,
   setFetched,
   setsUserId,
 }) {
   const classes = useStyles();
   const { user, getTokenSilently } = useAuth0();
-  const bull = <span className={classes.bullet}>•</span>;
   const [updateTerm, setUpdateTerm] = React.useState(card.term);
   const [updateDef, setUpdateDef] = React.useState(card.definition);
   const [open, setOpen] = React.useState(false);
@@ -76,24 +75,26 @@ export default function IndividualCard({
       console.error(e);
     }
   };
-  const handleAddCard = async (e) => {
-    e.preventDefault();
-  };
+
   const handleOpen = () => {
     setOpen(true);
   };
+
   const handleClose = () => {
     setOpen(false);
   };
+
   const handleUpdateTerm = async (e) => {
     setUpdateTerm(e.target.value);
   };
+
   const handleUpdateDef = async (e) => {
     setUpdateDef(e.target.value);
   };
+
   const handleEditCard = async (e) => {
     e.preventDefault();
-      if (user) {
+    if (user) {
       const token = await getTokenSilently();
       const res = await fetch(`${api}/cards/${card.id}`, {
         method: "PATCH",
@@ -106,12 +107,11 @@ export default function IndividualCard({
           definition: updateDef,
         }),
       });
-    
-        if (!res.ok) throw res;
-        const edit = await res.json();
-        updateCard(edit);
-        setFetched(false)
-        
+
+      if (!res.ok) throw res;
+      const edit = await res.json();
+      updateCard(edit);
+      setFetched(false);
     }
   };
 
@@ -130,7 +130,7 @@ export default function IndividualCard({
           >
             Term:
           </Typography>
-          <Typography variant="h6" component="h2">
+          <Typography className={classes.termdef}>
             {card.term}
           </Typography>
         </CardContent>
@@ -151,7 +151,7 @@ export default function IndividualCard({
             </Typography>
             {user && user.userId === setsUserId && (
               <>
-                <div className='testing'>
+                <div className="testing">
                   <IconButton id="edit-icon" onClick={handleOpen}>
                     <EditOutlinedIcon />
                   </IconButton>
@@ -162,7 +162,7 @@ export default function IndividualCard({
               </>
             )}
           </div>
-          <Typography variant="h6" component="h2">
+          <Typography className={classes.termdef}>
             {card.definition}
           </Typography>
           <Dialog

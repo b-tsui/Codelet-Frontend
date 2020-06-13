@@ -1,26 +1,22 @@
 import React from "react";
-import NavBar from "./components/NavBar";
-import Home from "./components/Home"
-import ExternalApi from "./views/ExternalApi";
-
-import Cards from "./components/Cards";
-import SearchResult from "./components/SearchResult"
-import CategorySets from "./components/CategorySets"
-
 import { Router, Route, Switch } from "react-router-dom";
 
-import "./styles/index.css";
-
+import PrivateRoute from "./components/PrivateRoute";
+import NavBar from "./components/NavBar";
+import Home from "./components/Home";
+import Cards from "./components/Cards";
 import Profile from "./components/Profile";
-import history from "./utils/history";
-import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
-import PrivateRoute from "./components/PrivateRoute"
-import theme from './components/Theme'
+import SearchResult from "./components/SearchResult";
+import CategorySets from "./components/CategorySets";
+import ExternalApi from "./views/ExternalApi";
+import theme from "./components/Theme";
 
+import "./styles/index.css";
+import history from "./utils/history";
+import { ThemeProvider } from "@material-ui/core/styles";
 
 function App() {
   return (
-
     <ThemeProvider theme={theme}>
       <div className="App">
         {/* Don't forget to include the history module */}

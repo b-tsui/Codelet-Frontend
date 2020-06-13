@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-// import { Redirect } from "react-router-dom";
-import "../styles/sets.css";
 import { useAuth0 } from "../react-auth0-spa";
 import { api } from "../config";
+import "../styles/sets.css";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -17,9 +16,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
-import InputLabel from '@material-ui/core/InputLabel';
-import FormControl from '@material-ui/core/FormControl';
-
+import InputLabel from "@material-ui/core/InputLabel";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,12 +31,12 @@ const useStyles = makeStyles((theme) => ({
 export default function CreateSet() {
   const classes = useStyles();
   const { user, getTokenSilently } = useAuth0();
-  const [open, setOpen] = React.useState(false);
-  const [setName, setSetName] = React.useState("");
-  const [setDesc, setSetDesc] = React.useState("");
-  const [categories, setCategories] = React.useState([]);
-  const [category, setCategory] = React.useState({});
-  const [catId, setCatId] = React.useState(null);
+  const [open, setOpen] = useState(false);
+  const [setName, setSetName] = useState("");
+  const [setDesc, setSetDesc] = useState("");
+  const [categories, setCategories] = useState([]);
+  const [category, setCategory] = useState({});
+  const [catId, setCatId] = useState(null);
   const [fetched, setFetched] = useState(false);
 
   useEffect(() => {
@@ -51,6 +48,7 @@ export default function CreateSet() {
     };
     loadCategories();
   }, []);
+
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -58,12 +56,15 @@ export default function CreateSet() {
   const handleClose = () => {
     setOpen(false);
   };
+
   const handleSetName = async (e) => {
     setSetName(e.target.value);
   };
+
   const handleSetDesc = async (e) => {
     setSetDesc(e.target.value);
   };
+
   const handleCategory = async (e) => {
     e.preventDefault();
     setCatId(parseInt(e.target.id));
@@ -120,7 +121,9 @@ export default function CreateSet() {
         }}
       >
         <form onSubmit={handleAddSet}>
-          <DialogTitle id="form-dialog-title" style={{ color: "beige" }}>Create Set</DialogTitle>
+          <DialogTitle id="form-dialog-title" style={{ color: "beige" }}>
+            Create Set
+          </DialogTitle>
           <DialogContent>
             <DialogContentText style={{ color: "lightgray" }}>
               Enter the details of your new set:
@@ -147,7 +150,9 @@ export default function CreateSet() {
               fullWidth
               onChange={handleSetDesc}
             />
-            <InputLabel fullWidth htmlFor="category-label">Select a category...</InputLabel>
+            <InputLabel fullWidth htmlFor="category-label">
+              Select a category...
+            </InputLabel>
             <Select
               labelId="category-label"
               label="Select category..."
@@ -155,8 +160,8 @@ export default function CreateSet() {
               value={category.title}
               // onChange={handleCategory}
               fullWidth
-              MenuProps={{style:{}}}
-              style={{ padding: "inherit"}}
+              MenuProps={{ style: {} }}
+              style={{ padding: "inherit" }}
             >
               {fetched &&
                 categories.map((category) => (

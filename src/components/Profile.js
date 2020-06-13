@@ -4,16 +4,13 @@ import Set from "./Set";
 import { api } from "../config";
 import "../styles/profile.css";
 
-import Paper from "@material-ui/core/Paper";
 import PropTypes from "prop-types";
-import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
+import Paper from "@material-ui/core/Paper";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import theme from './Theme'
-import Button from '@material-ui/core/Button';
+import Button from "@material-ui/core/Button";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -48,16 +45,8 @@ function a11yProps(index) {
   };
 }
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    // backgroundColor: theme.palette.primary.main,
-    // color: theme.palette.primary
-  },
-}));
 
 const Profile = () => {
-  const classes = useStyles();
 
   const { user, loading, getTokenSilently } = useAuth0();
   const [userSets, setUserSets] = useState([]);
@@ -84,7 +73,7 @@ const Profile = () => {
       setFavoriteSets(data.favoriteSets);
     };
     loadSets();
-  }, []);
+  }, [getTokenSilently]);
 
   if (loading || !user) {
     return <div>Loading...</div>;
@@ -96,7 +85,7 @@ const Profile = () => {
         <img
           src={user.picture}
           alt="Profile"
-          style={{ "border-radius": "50%" }}
+          style={{ borderRadius: "50%", width: "120px", height: "120px" }}
         />
         <h2>{user.name}</h2>
       </div>
@@ -137,8 +126,12 @@ const Profile = () => {
         </div>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <div className='logout'>
-          <Button className='logout-button' style={{ color: "#e8eaf6" }} onClick={() => logout()}>
+        <div className="logout">
+          <Button
+            className="logout-button"
+            style={{ color: "#e8eaf6" }}
+            onClick={() => logout()}
+          >
             Confirm Log out
           </Button>
         </div>
