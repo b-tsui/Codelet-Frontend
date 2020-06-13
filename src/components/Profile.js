@@ -3,6 +3,7 @@ import { useAuth0 } from "../react-auth0-spa";
 import Set from "./Set";
 import { api } from "../config";
 import "../styles/profile.css";
+import Home from './Home'
 
 import PropTypes from "prop-types";
 import Paper from "@material-ui/core/Paper";
@@ -71,6 +72,7 @@ const Profile = () => {
       setFetched(true);
       setUserSets(data.userSets);
       setFavoriteSets(data.favoriteSets);
+  
     };
     loadSets();
   }, [getTokenSilently]);
@@ -113,7 +115,7 @@ const Profile = () => {
           <h1>Favorited sets:</h1>
           <div className="sets-container">
             {fetched &&
-              favoriteSets.map((set) => <Set set={set} key={set.id} />)}
+              favoriteSets.map((set) => <Set set={set} key={set.id} setFetched={setFetched}/>)}
           </div>
         </div>
       </TabPanel>
@@ -121,7 +123,7 @@ const Profile = () => {
         <div>
           <h1>My sets:</h1>
           <div className="sets-container">
-            {fetched && userSets.map((set) => <Set set={set} key={set.id} />)}
+            {fetched && userSets.map((set) => <Set set={set} key={set.id} setFetched={setFetched} />)}
           </div>
         </div>
       </TabPanel>

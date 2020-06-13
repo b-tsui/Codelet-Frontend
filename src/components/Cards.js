@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import IndividualCard from "./IndividualCard";
+import Home from "./Home"
 import CustomDrawer from "./CustomDrawer";
 import { api } from "../config";
 import "../styles/cards.css";
@@ -41,7 +42,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Cards({ location }) {
+export default function Cards({ location,
+sets, setSets}) {
   const [cards, setCards] = useState([]);
   const [set, setSet] = useState({});
   const addCard = (card) => setCards([...cards, card]);
@@ -57,6 +59,7 @@ export default function Cards({ location }) {
     setCards(updatedArray);
   };
   
+   
 
   // Grabs information about a single set to display at the top
   useEffect(() => {

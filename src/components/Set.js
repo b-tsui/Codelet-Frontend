@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import "../styles/sets.css";
 import { useAuth0 } from "../react-auth0-spa";
 import { api } from "../config";
-
+import Cards from './Cards'
+import Profile from './Profile'
 import Home from './Home'
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -23,6 +24,13 @@ import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import DeleteIcon from "@material-ui/icons/Delete";
+
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import TextField from "@material-ui/core/TextField";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -49,7 +57,9 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Set({ set,
   sets,
-  setSets
+ setSets,
+  setFetched,
+  
 })
 { const [upvotes, setUpvotes] = useState(
     set.votes.filter((vote) => vote.is_upvote).length
@@ -57,7 +67,7 @@ export default function Set({ set,
   const [downvotes, setDownvotes] = useState(
     set.votes.filter((vote) => vote.is_upvote === false).length
   );
-  const [fetched, setFetched] = useState(false);
+  // const [fetchedSet, setfetchedSet] = useState(false);
   const [isUpvoted, setIsUpvoted] = useState(null);
   const [isFavorited, setIsFavorited] = useState(false);
   const { user, getTokenSilently } = useAuth0();
@@ -65,13 +75,16 @@ export default function Set({ set,
   const classes = useStyles();
   let date = Date.parse(set.created_at);
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [updateTitle, setUpdateTitle] = useState(set.title)
+  const [updateDescription, setUpdateDescription] = useState(set.description)
+  const [open, setOpen] = useState(false);
 
-   const updateSets = (updatedSet) => {
-     const updatedSetsArray = sets.map((set) =>
-       set.id === updatedSet.id ? updatedSet : set
-     );
-     setSets(updatedSetsArray);
-   };
+  // const updateSet = (updatedSet) => {
+  //   const updatedSetsArray = sets.map((set) =>
+  //     set.id === updatedSet.id ? updatedSet : set
+  //   );
+  //   setSets(updatedSetsArray);
+  // };
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -111,6 +124,7 @@ export default function Set({ set,
     };
     getFavorites();
   }, [user]);
+
 
   const voteHandler = async (e, upvoteButton) => {
     if (user) {
@@ -157,12 +171,47 @@ export default function Set({ set,
       });
     }
   };
-  //  const handleOpen = () => {
-  //    setOpen(true);
-  //  };
-  //  const handleClose = () => {
-  //    setOpen(false);
-  //  };
+
+   const handleUpdateTitle = async (e) => {
+     setUpdateTitle(e.target.value);
+   };
+
+   const handleUpdateDescription = async (e) => {
+     setUpdateDescription(e.target.value);
+   };
+   const handleOpen = () => {
+    setOpen(true);
+  };
+
+   const handleCancelClose = () => {
+     setOpen(false);
+   };
+
+  const handleEditSet = async (e) => {
+    e.preventDefault();
+      const token = await getTokenSilently();
+      const res = await fetch(`${api}/sets/${set.id}`, {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          title: updateTitle,
+          description: updateDescription
+        })
+      });
+    
+   if (!res.ok) {
+     alert("authorization denied");
+   } else {
+     alert("Set was successfully edited");
+     setFetched(false);
+   }
+
+  }
+
+ 
   const handleDeleteSet = async () => {
     const token = await getTokenSilently();
 
@@ -176,9 +225,10 @@ export default function Set({ set,
       alert("authorization denied");
     } else {
       alert("Set was successfully deleted");
-      setFetched(false);
-      // updateSets(sets)
+      setFetched(false)
+   
     }
+    
   };
 
   return (
@@ -256,27 +306,87 @@ export default function Set({ set,
             </div>
           </CardActions>
           <div>
-            <Menu
-              id="simple-menu"
-              anchorEl={anchorEl}
-              keepMounted
-              open={Boolean(anchorEl)}
-              onClose={handleClose}
-              className="menu"
-              width="40vw"
-            >
-              <MenuItem onClick={handleClose}>
-                <IconButton>
-                  <EditOutlinedIcon id="edit-icon-sets" />
-                </IconButton>
-              </MenuItem>
-              <MenuItem onClick={handleClose}>
-                <IconButton id="delete-icon-sets" onClick={handleDeleteSet}>
-                  <DeleteIcon />
-                </IconButton>
-              </MenuItem>
-            </Menu>
+            {user && user.userId === set.user_id && (
+              <Menu
+                id="simple-menu"
+                anchorEl={anchorEl}
+                keepMounted
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+                className="menu"
+                width="40vw"
+              >
+              
+              
+                <>
+                  <MenuItem>
+                    <IconButton onClick={handleOpen}>
+                      <EditOutlinedIcon
+                        id="edit-icon-sets"
+                      // onClick={handleEditSet}
+                      />
+                    </IconButton>
+                  </MenuItem>
+                  <MenuItem onClick={handleClose}>
+                    <IconButton id="delete-icon-sets" onClick={handleDeleteSet}>
+                      <DeleteIcon />
+                    </IconButton>
+                  </MenuItem>
+                </>
+           
+              </Menu>
+            )}
           </div>
+          <Dialog
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="form-dialog-title"
+            PaperProps={{
+              style: { borderRadius: "8px" },
+            }}
+          >
+            <form onSubmit={handleEditSet}>
+              <DialogTitle id="form-dialog-title" style={{ color: "beige" }}>
+                Edit Set
+              </DialogTitle>
+              <DialogContent>
+                <DialogContentText style={{ color: "lightgray" }}>
+                  Enter the details you want to edit:
+                </DialogContentText>
+                <TextField
+                  autoComplete="off"
+                  autoFocus
+                  InputLabelProps={{ style: { color: "lightgray" } }}
+                  margin="dense"
+                  id="set-title-input"
+                  label="Set Title..."
+                  type="text"
+                  fullWidth
+                  value={updateTitle}
+                  onChange={handleUpdateTitle}
+                />
+                <TextField
+                  autoComplete="off"
+                  InputLabelProps={{ style: { color: "lightgray" } }}
+                  margin="dense"
+                  id="set-desc-input"
+                  label="Set Description..."
+                  type="text"
+                  fullWidth
+                  value={updateDescription}
+                  onChange={handleUpdateDescription}
+                />
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={handleCancelClose} color="primary">
+                  Cancel
+                </Button>
+                <Button type="submit" onClick={handleClose} color="primary">
+                  Edit
+                </Button>
+              </DialogActions>
+            </form>
+          </Dialog>
         </Card>
       </div>
     </>
