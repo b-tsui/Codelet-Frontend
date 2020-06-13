@@ -21,6 +21,12 @@ import ThumbDownAltIcon from "@material-ui/icons/ThumbDownAlt";
 import StarIcon from "@material-ui/icons/Star";
 import StarsIcon from "@material-ui/icons/Stars";
 
+import Button from "@material-ui/core/Button";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
+import DeleteIcon from "@material-ui/icons/Delete";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
@@ -44,20 +50,29 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Set({ set }) {
+export default function Set({ set, setsUserId }) {
   const [upvotes, setUpvotes] = useState(
     set.votes.filter((vote) => vote.is_upvote).length
   );
   const [downvotes, setDownvotes] = useState(
     set.votes.filter((vote) => vote.is_upvote === false).length
   );
-  const [fetched, setFetched] = useState(false)
+  const [fetched, setFetched] = useState(false);
   const [isUpvoted, setIsUpvoted] = useState(null);
   const [isFavorited, setIsFavorited] = useState(false);
   const { user, getTokenSilently } = useAuth0();
-  const [open, setOpen] = React.useState(false);
+  // const [open, setOpen] = React.useState(false);
   const classes = useStyles();
   let date = Date.parse(set.created_at);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   //sets clients vote state
   useEffect(() => {
@@ -135,77 +150,127 @@ export default function Set({ set }) {
       });
     }
   };
+  //  const handleOpen = () => {
+  //    setOpen(true);
+  //  };
+  //  const handleClose = () => {
+  //    setOpen(false);
+  //  };
+  const handleDeleteSet = async () => {
+    const token = await getTokenSilently();
 
-   const handleOpen = () => {
-    setOpen(true);
-  };
-  const handleClose = () => {
-    setOpen(false);
+    const res = await fetch(`${api}/sets/${set.id}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    if (!res.ok) {
+      alert("authorization denied");
+    } else {
+      alert("Set was successfully deleted");
+      setFetched(false);
+    }
   };
 
   return (
-    <Card className={classes.root} id={"single-set"}>
-        <IconButton onClick={handleOpen} style={{ padding: "8px", justifyContent:"flex-end", hover: "none" }}>
-          <MoreVertIcon />
-        </IconButton>
-      <Link to={{ pathname: `/sets/${set.id}` }}>
-        <CardHeader
-          title={<div className="single-set-title">{set.title}</div>}
-          subheader={
-            <div className="single-set-subheader">
-              <div>
-                {`Created by ${set.author} on ${new Date(
-                  date
-                ).toLocaleDateString("en-US")}`}
-              </div>
-              <div>{`${set.card_count} cards`}</div>
+    <>
+      <div className="everything">
+        <Card className={classes.root} id="single-set">
+          <div id="single-set-options">
+            <IconButton
+              onClick={handleClick}
+              style={{
+                padding: "8px",
+                justifyContent: "flex-end",
+                hover: "none",
+              }}
+            >
+              <MoreVertIcon />
+            </IconButton>
+          </div>
+          <Link to={{ pathname: `/sets/${set.id}` }}>
+            <CardHeader
+              title={<div className="single-set-title">{set.title}</div>}
+              subheader={
+                <div className="single-set-subheader">
+                  <div>
+                    {`Created by ${set.author} on ${new Date(
+                      date
+                    ).toLocaleDateString("en-US")}`}
+                  </div>
+                  <div>{`${set.card_count} cards`}</div>
+                </div>
+              }
+            />
+            <CardContent id={"single-set-description"}>
+              <Typography variant="body2" color="#eeeeee" component="p">
+                {set.description}
+              </Typography>
+            </CardContent>
+          </Link>
+          <CardActions className="single-set-actions-container">
+            <div>
+              <IconButton
+                aria-label="add to favorites"
+                onClick={favoriteHandler}
+                style={{
+                  padding: "2px",
+                  color: isFavorited ? "#ffd54f" : "#eeeeee",
+                }}
+              >
+                <StarIcon />
+              </IconButton>
             </div>
-          }
-        />
-        <CardContent id={"single-set-description"}>
-          <Typography variant="body2" color="#eeeeee" component="p">
-            {set.description}
-          </Typography>
-        </CardContent>
-      </Link>
-      <CardActions className="single-set-actions-container">
-        <div>
-          <IconButton
-            aria-label="add to favorites"
-            onClick={favoriteHandler}
-            style={{
-              padding: "2px",
-              color: isFavorited ? "#ffd54f" : "#eeeeee",
-            }}
-          >
-            <StarIcon />
-          </IconButton>
-        </div>
-        <div className="set-votes-container">
-          <IconButton
-            id="upvote-button"
-            onClick={(e) => voteHandler(e, true)}
-            style={{
-              padding: "2px",
-              color: isUpvoted ? "#9fa8da" : "#eeeeee",
-            }}
-          >
-            <ThumbUpAltIcon style={{ padding: "2px" }} />
-            <Typography variant="subtitle1">{upvotes}</Typography>
-          </IconButton>
-          <IconButton
-            id="downvote-button"
-            onClick={(e) => voteHandler(e, false)}
-            style={{
-              padding: "2px",
-              color: isUpvoted === false ? "#e57373" : "#eeeeee",
-            }}
-          >
-            <ThumbDownAltIcon style={{ padding: "2px" }} />
-            <Typography variant="subtitle1">{-1 * downvotes}</Typography>
-          </IconButton>
-        </div>
-      </CardActions>
-    </Card>
+            <div className="set-votes-container">
+              <IconButton
+                id="upvote-button"
+                onClick={(e) => voteHandler(e, true)}
+                style={{
+                  padding: "2px",
+                  color: isUpvoted ? "#9fa8da" : "#eeeeee",
+                }}
+              >
+                <ThumbUpAltIcon style={{ padding: "2px" }} />
+                <Typography variant="subtitle1">{upvotes}</Typography>
+              </IconButton>
+              <IconButton
+                id="downvote-button"
+                onClick={(e) => voteHandler(e, false)}
+                style={{
+                  padding: "2px",
+                  color: isUpvoted === false ? "#e57373" : "#eeeeee",
+                }}
+              >
+                <ThumbDownAltIcon style={{ padding: "2px" }} />
+                <Typography variant="subtitle1">{-1 * downvotes}</Typography>
+              </IconButton>
+            </div>
+          </CardActions>
+          <div>
+            <Menu
+              id="simple-menu"
+              anchorEl={anchorEl}
+              keepMounted
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+              className="menu"
+              width="40vw"
+            >
+              <MenuItem onClick={handleClose}>
+                <IconButton>
+                  <EditOutlinedIcon id="edit-icon-sets" />
+                </IconButton>
+              </MenuItem>
+              <MenuItem onClick={handleClose}>
+                <IconButton id="delete-icon-sets" onClick={handleDeleteSet}>
+                  <DeleteIcon />
+                </IconButton>
+              </MenuItem>
+            </Menu>
+          </div>
+        </Card>
+      </div>
+    </>
   );
 }

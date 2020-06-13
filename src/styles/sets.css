@@ -61,9 +61,33 @@
 }
 
 .sets-error {
-    font-size: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.everything {
+  display: flex;
+}
+
+.MuiMenu-list {
+  width: 80px;
+  justify-content: center;
+}
+
+#single-set {
+  display: flex;
+}
+
+.MuiButtonBase-root {
+  border-radius: none;
+  position: fixed;
+  display: flex;
+  justify-content: flex-end;
+}
+#single-set-options {
+  position: absolute;
+  align-self: flex-end;
+  padding: px;
 }
