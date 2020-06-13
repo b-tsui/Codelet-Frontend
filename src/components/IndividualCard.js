@@ -19,6 +19,11 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import TextField from "@material-ui/core/TextField";
 
+//import for TTS
+import Speech from 'react-speech';
+import VolumeUpIcon from '@material-ui/icons/VolumeUp';
+
+
 const useStyles = makeStyles({
   root: {
 
@@ -114,6 +119,11 @@ export default function IndividualCard({
       setFetched(false);
     }
   };
+  // const handleTextToSpeech = ()=> {
+  //   const speechText = card.definition;
+  //   console.log(speechText)
+  //   return <Speech pitch={2} text={speechText}/>
+  // }
 
   return (
     <div className="card-pair-container">
@@ -158,6 +168,8 @@ export default function IndividualCard({
                   <IconButton id="delete-icon" onClick={handleDeleteCard}>
                     <DeleteIcon />
                   </IconButton>
+                  <Speech text={card.definition}/>
+
                 </div>
               </>
             )}
