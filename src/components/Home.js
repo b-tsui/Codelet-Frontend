@@ -7,6 +7,7 @@ import Loading from './Loading'
 import "../styles/home-page.css"
 import OrderByMenu from "./OrderByMenu"
 import { Typography } from "@material-ui/core"
+import FilterListIcon from '@material-ui/icons/FilterList';
 
 const Home = () => {
     const { user, loading, getTokenSilently } = useAuth0();

@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { Link } from "react-router-dom";
-
+import FilterListIcon from '@material-ui/icons/FilterList';
 export default function OrderByMenu({ sets, setSets }) {
     const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -47,9 +47,9 @@ export default function OrderByMenu({ sets, setSets }) {
 
     return (
         <div>
-            <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-                Open Menu
-      </Button>
+            <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} style={{ color: '#d3d3d3' }}>
+                Filter <FilterListIcon />
+            </Button>
             <Menu
                 id="simple-menu"
                 anchorEl={anchorEl}
@@ -61,6 +61,6 @@ export default function OrderByMenu({ sets, setSets }) {
                 <MenuItem onClick={handleDate}><Link to='/'>Newest</Link></MenuItem>
                 <MenuItem onClick={handleCount}><Link to='/'># Cards</Link></MenuItem>
             </Menu>
-        </div>
+        </div >
     );
 }
