@@ -15,6 +15,7 @@ import { makeStyles, fade } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    borderBottom: "1px solid #00897b",
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
@@ -66,7 +67,7 @@ const useStyles = makeStyles((theme) => ({
 
 const NavBar = () => {
   const classes = useStyles();
-  const { isAuthenticated, loginWithRedirect, loginWithPopup } = useAuth0();
+  const { isAuthenticated, loginWithPopup } = useAuth0();
 
   return (
     <div className={classes.root}>

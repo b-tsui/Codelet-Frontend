@@ -32,6 +32,7 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     background: "#000a12",
+    borderRight: "1px solid #00897b",
     //color: 'white'
   },
   divider: {
@@ -93,7 +94,7 @@ export default function SideBarBrowse() {
             onClick={(event) => handleListItemClick(event, 0)}
           >
             <ListItemIcon id="browse-home-icon">
-              <HomeIcon color="primary" />
+              <HomeIcon color={selectedIndex === 0 ? "lightgray" : "primary"} />
             </ListItemIcon>
             <ListItemText id="browse-home" primary="Home" />
           </ListItem>
@@ -111,7 +112,7 @@ export default function SideBarBrowse() {
               key={text}
               button
               selected={selectedIndex === i + 1}
-              onClick={(event) => handleListItemClick(event, i + 2)}
+              onClick={(event) => handleListItemClick(event, i + 1)}
             >
               <ListItemText className="browse-item" primary={text} />
             </ListItem>
