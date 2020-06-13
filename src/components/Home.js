@@ -47,7 +47,7 @@ const Home = () => {
           </div>
           <div className="sets-container">
             <CreateSet />
-            {fetched && sets.map((set) => <Set set={set} key={set.id} setFetched={setFetched}/>)}
+            {fetched && sets.map((set) => <Set set={set} key={set.id} setSets={setSets} setFetched={setFetched}/>)}
           </div>
         </>
       )}

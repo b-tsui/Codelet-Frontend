@@ -91,3 +91,18 @@
   align-self: flex-end;
   padding: px;
 }
+
+#set-desc-input, #set-title-input {
+  color:  lightgray;
+}
+
+
+
+label.MuiInputLabel-root{
+  color: lightgray
+}
+
+div.MuiPopover-paper{
+  color: #00897b;
+  background-color: rgb(38, 50, 56);
+}
