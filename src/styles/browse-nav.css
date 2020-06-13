@@ -28,3 +28,11 @@
 #browse-home-icon {
   margin-right: 0;
 }
+
+#browse-home-icon :hover {
+  color: #00897b;
+}
+
+div.MuiListItem-root.Mui-selected {
+  background-color: #00897b;
+}
