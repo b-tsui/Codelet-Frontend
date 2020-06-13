@@ -4,6 +4,7 @@ import "../styles/sets.css";
 import { useAuth0 } from "../react-auth0-spa";
 import { api } from "../config";
 
+import Home from './Home'
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -46,15 +47,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Set({ set, setsUserId }) {
-  const [upvotes, setUpvotes] = useState(
+export default function Set({ set,
+  sets,
+  setSets
+})
+{ const [upvotes, setUpvotes] = useState(
     set.votes.filter((vote) => vote.is_upvote).length
   );
   const [downvotes, setDownvotes] = useState(
     set.votes.filter((vote) => vote.is_upvote === false).length
   );
   const [fetched, setFetched] = useState(false);
-
   const [isUpvoted, setIsUpvoted] = useState(null);
   const [isFavorited, setIsFavorited] = useState(false);
   const { user, getTokenSilently } = useAuth0();
@@ -62,6 +65,13 @@ export default function Set({ set, setsUserId }) {
   const classes = useStyles();
   let date = Date.parse(set.created_at);
   const [anchorEl, setAnchorEl] = React.useState(null);
+
+   const updateSets = (updatedSet) => {
+     const updatedSetsArray = sets.map((set) =>
+       set.id === updatedSet.id ? updatedSet : set
+     );
+     setSets(updatedSetsArray);
+   };
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -167,6 +177,7 @@ export default function Set({ set, setsUserId }) {
     } else {
       alert("Set was successfully deleted");
       setFetched(false);
+      // updateSets(sets)
     }
   };
 

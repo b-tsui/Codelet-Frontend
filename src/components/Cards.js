@@ -56,6 +56,7 @@ export default function Cards({ location }) {
     );
     setCards(updatedArray);
   };
+  
 
   // Grabs information about a single set to display at the top
   useEffect(() => {
