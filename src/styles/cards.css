@@ -129,3 +129,12 @@ span.rs-container {
   justify-content: space-between;
   max-width: 50px;
 }
+
+.game-description {
+  display: flex;
+  justify-content: center;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 14px;
+  text-align: center;
+  padding: 15px;
+}
