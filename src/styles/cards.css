@@ -20,16 +20,19 @@
   max-width: 40vw;
   max-height: 20vh;
 }
+
 #single-card-container-term {
   background-color: #62727b;
   color: #18212b;
   border-radius: 12px 0px 0px 12px;
 }
+
 #single-card-container-def {
   background-color: #62727b;
   color: #18212b;
   border-radius: 0px 12px 12px 0px;
 }
+
 #card-stepper {
   background-color: #000a12;
   border-radius: 0px 0px 12px 12px;
@@ -43,9 +46,10 @@
   display: flex;
   flex-direction: column;
   /* justify-content: flex-end; */
-
 }
-#delete-icon, #edit-icon{
+
+#delete-icon,
+#edit-icon {
   align-items: flex-end;
   padding: 0;
 }
@@ -54,7 +58,7 @@
   justify-content: space-around;
 }
 
-.makeStyles-definitionContainer-36{
+.makeStyles-definitionContainer-36 {
   display: flex;
   justify-content: space-between;
 }
@@ -76,6 +80,7 @@
 .random-term {
   background-color: lightgray;
 }
+
 .selected-card {
   border: red;
 }
@@ -85,73 +90,91 @@
   justify-content: center;
   align-items: center;
 }
+
 #card-stepper > .Mui-disabled {
   color: #004d40;
 }
 
 .search-results {
-    display: flex;
-    justify-content: center;
-    color: rgba(255,255,255, .8)
+  display: flex;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.8);
+}
 
-  }
-
-  button.rs-play{
-    background-color: cyan;
-  }
-  #speech-button-def{
-    width: 15px;
-    background-color: #004d40;
-  }
-  .definition-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    min-width: 80px;
-  }
-  span.rs-container {
-    max-width: 10px;
-  }
+button.rs-play {
+  background-color: cyan;
+}
+#speech-button-def {
+  width: 15px;
+  background-color: #004d40;
+}
+.definition-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  min-width: 80px;
+}
+span.rs-container {
+  max-width: 10px;
+}
 .rs-play {
-  background-color:#62727b !important;
+  background-color: #62727b !important;
   color: none !important;
-  background-image: url('../images/sound-icon.png') !important;
+  background-image: url("../images/sound-icon.png") !important;
   border: none !important;
 }
+
  .term-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     max-width: 50px;
   }
-
-
-  @media only screen and (max-width: 600px) {
-    .card-pair-container {
-      display: flex;
-      flex-wrap: wrap;
-      flex-direction: column;
-      justify-content: center;
-      align-items: space-around;
-      padding: 15px;
-    }
-    
-    .card-pair-container-term {
-      width: 82vw;
-      max-width: none;
-    }
-    #single-card-container-term {
-      background-color: #62727b;
-      color: #18212b;
-      border-radius: 12px;
-    }
-    .card-pair-container-def {
-      width: 82vw;
-      max-width: none;
-    }
-    #single-card-container-def {
-      background-color: #62727b;
-      color: #18212b;
-      border-radius: 12px;
-    }
+  #front-study-card:hover {
+    cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>✏️</text></svg>") 16 0,auto; /*!emojicursor.app*/
   }
+  #back-study-card:hover {
+    cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>✏️</text></svg>") 16 0,auto; /*!emojicursor.app*/
+  }
+.game-description {
+  display: flex;
+  justify-content: center;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 14px;
+  text-align: center;
+  padding: 15px;
+}
+
+@media only screen and (max-width: 600px) {
+  .card-pair-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: space-around;
+    padding: 15px;
+  }
+
+  .card-pair-container-term {
+    width: 82vw;
+    max-width: none;
+  }
+  #single-card-container-term {
+    background-color: #62727b;
+    color: #18212b;
+    border-radius: 12px;
+  }
+  .card-pair-container-def {
+    width: 82vw;
+    max-width: none;
+  }
+  #single-card-container-def {
+    background-color: #62727b;
+    color: #18212b;
+    border-radius: 12px;
+  }
+}
+
+
+
+

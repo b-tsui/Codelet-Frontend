@@ -1,34 +1,33 @@
-.card-quiz-container{
-    display: flex;
-    flex-direction: column;
-    align-self: center;
-    width: calc(85vw - 40px);
-    background-color: #62727b;
-    padding: 20px;
-    border-radius: 12px;
+.card-quiz-container {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  width: calc(85vw - 40px);
+  background-color: #62727b;
+  padding: 20px;
+  border-radius: 12px;
 }
 
-nav.card-quiz-terms-container{
-    padding:0px;
+nav.card-quiz-terms-container {
+  padding: 0px;
 }
 
-div.card-quiz-definition{
-    background-color: #18212b;
-    color: lightgray;
-    border-radius: 5px;
+div.card-quiz-definition {
+  background-color: #18212b;
+  color: lightgray;
+  border-radius: 5px;
 }
 
-
-
-div.card-quiz-term{
-    background-color: lightgray;
-    color: rgba(0, 0, 0, 0.87);
+div.card-quiz-term {
+  background-color: lightgray;
+  color: rgba(0, 0, 0, 0.87);
 }
 
-/* div.card-quiz-term-right{
-    background-color: green;
+.game-description-quiz {
+  display: flex;
+  justify-content: center;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 14px;
+  text-align: center;
+  padding-bottom: 15px;
 }
-
-div.card-quiz-term-wrong{
-    background-color: red;
-} */

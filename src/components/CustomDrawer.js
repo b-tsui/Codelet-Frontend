@@ -146,7 +146,9 @@ export default function CustomDrawer({ set, addCard, cards }) {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        Cards:
+        <Typography component="h5" variant="h5" style={{ fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif' }}>
+          Cards:
+        </Typography>
       </TabPanel>
       {user && user.userId === set.user_id && (
         <TabPanel value={value} index={4}>
