@@ -8,6 +8,7 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
+import '../styles/study-card.css'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,8 +18,8 @@ const useStyles = makeStyles((theme) => ({
   card: {
     backgroundColor: "#2b3238",
     display: "flex",
-    minWidth: 400,
-    minHeight: 280,
+    minWidth: 500,
+    minHeight: 350,
     alignItems: "center",
     justifyContent: "center",
     borderRadius: "12px 12px 0px 0px",
@@ -57,15 +58,15 @@ export default function StudyCard({ cards }) {
       {cards && (
         <div className={classes.root}>
           <ReactCardFlip isFlipped={isFlipped} flipDirection="vertical">
-            <Card className={classes.card} onClick={handleClick}>
-              <CardContent className={classes.cardText}>
+            <Card className={classes.card} id='study-card' onClick={handleClick}>
+              <CardContent className={classes.cardText, 'study-card-text'}>
                 <Typography component="h3" variant={classes.title}>
                   {cards[activeStep].term}
                 </Typography>
               </CardContent>
             </Card>
-            <Card className={classes.card} onClick={handleClick}>
-              <CardContent className={classes.cardText}>
+            <Card className={classes.card} id='study-card' onClick={handleClick}>
+              <CardContent className={classes.cardText, 'study-card-text'}>
                 <Typography component="h3" variant={classes.title}>
                   {cards[activeStep].definition}
                 </Typography>
@@ -110,7 +111,8 @@ export default function StudyCard({ cards }) {
             }
           />
         </div>
-      )}
+      )
+      }
     </>
   );
 }

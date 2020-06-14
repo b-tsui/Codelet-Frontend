@@ -104,7 +104,7 @@ const NavBar = () => {
               </Link>
               &nbsp; */}
               <Link to="/profile">
-                <Button style={{ color: "#e8eaf6" }}>
+                <Button style={{ color: "#e8eaf6", padding: '5px', minWidth: 0 }}>
                   <AccountCircleIcon />
                 </Button>
               </Link>
