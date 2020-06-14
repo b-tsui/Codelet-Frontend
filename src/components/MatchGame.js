@@ -77,16 +77,23 @@ export default function ({ cards }) {
     <div className="match-container">
       {isGameFinished ? (
         <div className="win-container">
-          <div>You won!</div>
+          <div>Nice try! You have successfully matched all pairs!</div>
           <Button color="secondary" onClick={() => setIsCompleted(true)}>
-            Reset Game
+            Replay Game
           </Button>
         </div>
       ) : (
-          randomCards.map((card) => {
+        <div className="match-container">
+          <div className="game-description">
+            Make all the cards disappear! Click on a term (light gray) and
+            definition (dark gray) to match them. Correct pairs will disappear,
+            while incorrect pairs will flash red.
+          </div>
+          {randomCards.map((card) => {
             return <MatchCard key={card.cardId} card={card} props={props} />;
-          })
-        )}
+          })}
+        </div>
+      )}
     </div>
   );
 }
