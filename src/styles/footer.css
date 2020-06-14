@@ -1,0 +1,36 @@
+#github-link {
+    color: beige !important;
+}
+div#footer-link-container-1 > .MuiSvgIcon-root {
+    opacity: 0.7;
+    color: #00897B;
+}
+div#footer-link-container-2 > .MuiSvgIcon-root {
+    opacity: 0.7;
+    color: #00897B;
+}
+div#footer-link-container-3 > .MuiSvgIcon-root {
+    opacity: 0.7;
+    color: #00897B;
+}
+div#footer-link-container-4 > .MuiSvgIcon-root {
+    opacity: 0.7;
+    color: #00897B;
+}
+div#footer-link-container-1 > .MuiSvgIcon-root:hover {
+    cursor: pointer;
+    opacity: 1.0;
+}
+div#footer-link-container-2 > .MuiSvgIcon-root:hover {
+    cursor: pointer;
+    opacity: 1.0;
+}
+div#footer-link-container-3 > .MuiSvgIcon-root:hover {
+    cursor: pointer;
+    opacity: 1.0;
+}
+div#footer-link-container-4 > .MuiSvgIcon-root:hover {
+    cursor: pointer;
+    opacity: 1.0;
+}
+
