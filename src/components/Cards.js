@@ -23,8 +23,8 @@ const useStyles = makeStyles((theme) => ({
   setHeader: {
     backgroundColor: "#2b3238",
     display: "flex",
-    minWidth: 400,
-    minHeight: 200,
+    width: 400,
+    height: 200,
     alignItems: "center",
     justifyContent: "center",
     borderRadius: "12px",
@@ -58,8 +58,8 @@ sets, setSets}) {
     );
     setCards(updatedArray);
   };
-  
-   
+
+
 
   // Grabs information about a single set to display at the top
   useEffect(() => {
@@ -108,7 +108,7 @@ sets, setSets}) {
         {fetchedSet && (
           <>
           <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal" flipSpeedBackToFront={2.0} flipSpeedFrontToBack={2.0}>
-            <Card className={classes.setHeader} onClick={handleClick}>
+              <Card id="set-front-title-card" className={classes.setHeader} onClick={handleClick}>
               <CardContent className={classes.cardText} className={classes.setStyling}>
                   <Typography component="h2" variant="h2" style={{ fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif'}}>
                   {set.title}
@@ -118,11 +118,13 @@ sets, setSets}) {
                 </Typography>
               </CardContent>
             </Card>
-            <Card className={classes.setHeader} onClick={handleClick}>
+              <Card id="set-back-title-card" className={classes.setHeader} onClick={handleClick}>
               <CardContent className={classes.cardText} className={classes.setStyling} >
-                <Typography component="h5" variant="h5" style={{ fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif' }}>
-                  {set.description}
-                </Typography>
+                <div style={{textAlign:"center"}}>
+                  <Typography component="h5" variant="h5" style={{ fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif' }}>
+                    {set.description}
+                  </Typography>
+                </div>
                 <Typography component="h5" variant="h5" style={{ fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif' }}>
                   Favorites: {set.favorites.length}
                 </Typography>
