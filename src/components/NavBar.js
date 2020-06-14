@@ -76,7 +76,7 @@ const NavBar = () => {
         style={{ backgroundColor: "#000a12" }}
         position="fixed"
       >
-        <Toolbar disableGutters={true}>
+        <Toolbar disableGutters={true} style={{ paddingRight: '10px' }}>
           <SideBarBrowse />
           <Typography variant="h6" className={classes.title}>
             <div>
