@@ -139,9 +139,9 @@ export default function CustomDrawer({ set, addCard, cards }) {
           {/* Create card will only show if user is logged in and created that set */}
           <Tab label="Match" icon={<ImportContactsIcon />} {...a11yProps(1)} />
           <Tab label="Quiz" icon={<SchoolIcon />} {...a11yProps(2)} />
-          <Tab label="Flashcards" icon={<NoteIcon />} {...a11yProps(3)} />
+          <Tab label="Cards" icon={<NoteIcon />} {...a11yProps(3)} />
           {user && user.userId === set.user_id && (
-            <Tab label="Create Card" icon={<CreateIcon />} {...a11yProps(4)} />
+            <Tab label="Create" icon={<CreateIcon />} {...a11yProps(4)} />
           )}
         </Tabs>
       </AppBar>

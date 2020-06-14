@@ -123,12 +123,13 @@ span.rs-container {
   background-image: url("../images/sound-icon.png") !important;
   border: none !important;
 }
-.term-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  max-width: 50px;
-}
+
+ .term-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 50px;
+  }
 
 .game-description {
   display: flex;
@@ -138,3 +139,36 @@ span.rs-container {
   text-align: center;
   padding: 15px;
 }
+
+@media only screen and (max-width: 600px) {
+  .card-pair-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: space-around;
+    padding: 15px;
+  }
+
+  .card-pair-container-term {
+    width: 82vw;
+    max-width: none;
+  }
+  #single-card-container-term {
+    background-color: #62727b;
+    color: #18212b;
+    border-radius: 12px;
+  }
+  .card-pair-container-def {
+    width: 82vw;
+    max-width: none;
+  }
+  #single-card-container-def {
+    background-color: #62727b;
+    color: #18212b;
+    border-radius: 12px;
+  }
+}
+
+
+
