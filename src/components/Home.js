@@ -6,7 +6,6 @@ import CreateSet from "./CreateSet";
 import Loading from "./Loading";
 import "../styles/home-page.css";
 import OrderByMenu from "./OrderByMenu";
-import Footer from "./Footer"
 
 import { Typography } from "@material-ui/core";
 
@@ -71,9 +70,6 @@ const Home = () => {
             <CreateSet />
             {fetched && sets.map((set) => <Set set={set} key={set.id} setSets={setSets} setFetched={setFetched} />)}
           </div>
-          {/* <footer>
-            <Footer />
-          </footer> */}
         </>
       )}
     </>

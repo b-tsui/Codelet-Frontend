@@ -23,7 +23,7 @@ const SearchResult = ({ location: { search } }) => {
       setLoaded(true);
     };
     loadData();
-  }, []);
+  }, [search]);
 
   return (
     //<div>search here</div>

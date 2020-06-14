@@ -3,7 +3,6 @@ import { useAuth0 } from "../react-auth0-spa";
 import Set from "./Set";
 import { api } from "../config";
 import "../styles/profile.css";
-import Home from './Home'
 
 import PropTypes from "prop-types";
 import Paper from "@material-ui/core/Paper";

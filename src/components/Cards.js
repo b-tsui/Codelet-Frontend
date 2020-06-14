@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import IndividualCard from "./IndividualCard";
-import Home from "./Home"
 import CustomDrawer from "./CustomDrawer";
 import { api } from "../config";
 import "../styles/cards.css";
@@ -10,9 +9,6 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import {
   makeStyles,
-  Theme,
-  useTheme,
-  createStyles,
 } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -43,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Cards({ location,
-sets, setSets}) {
+  sets, setSets }) {
   const [cards, setCards] = useState([]);
   const [set, setSet] = useState({});
   const addCard = (card) => setCards([...cards, card]);
@@ -107,33 +103,33 @@ sets, setSets}) {
       <div className="set-info">
         {fetchedSet && (
           <>
-          <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal" flipSpeedBackToFront={2.0} flipSpeedFrontToBack={2.0}>
+            <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal" flipSpeedBackToFront={2.0} flipSpeedFrontToBack={2.0}>
               <Card id="set-front-title-card" className={classes.setHeader} onClick={handleClick}>
-              <CardContent className={classes.cardText} className={classes.setStyling}>
-                  <Typography component="h2" variant="h2" style={{ fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif'}}>
-                  {set.title}
-                </Typography>
-                <Typography component="h6" variant="h6" style={{ fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif' }}>
-                  Creator: {set.author}
-                </Typography>
-              </CardContent>
-            </Card>
-              <Card id="set-back-title-card" className={classes.setHeader} onClick={handleClick}>
-              <CardContent className={classes.cardText} className={classes.setStyling} >
-                <div style={{textAlign:"center"}}>
-                  <Typography component="h5" variant="h5" style={{ fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif' }}>
-                    {set.description}
+                <CardContent className={classes.cardText} className={classes.setStyling}>
+                  <Typography component="h2" variant="h2" style={{ fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif' }}>
+                    {set.title}
                   </Typography>
-                </div>
-                <Typography component="h5" variant="h5" style={{ fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif' }}>
-                  Favorites: {set.favorites.length}
-                </Typography>
-                <Typography component="h5" vvariant="h5" style={{ fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif' }}>
-                  Cards: {set.card_count}
-                </Typography>
-              </CardContent>
-            </Card>
-          </ReactCardFlip>
+                  <Typography component="h6" variant="h6" style={{ fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif' }}>
+                    Creator: {set.author}
+                  </Typography>
+                </CardContent>
+              </Card>
+              <Card id="set-back-title-card" className={classes.setHeader} onClick={handleClick}>
+                <CardContent className={classes.cardText} className={classes.setStyling} >
+                  <div style={{ textAlign: "center" }}>
+                    <Typography component="h5" variant="h5" style={{ fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif' }}>
+                      {set.description}
+                    </Typography>
+                  </div>
+                  <Typography component="h5" variant="h5" style={{ fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif' }}>
+                    Favorites: {set.favorites.length}
+                  </Typography>
+                  <Typography component="h5" vvariant="h5" style={{ fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif' }}>
+                    Cards: {set.card_count}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </ReactCardFlip>
           </>
         )}
       </div>
