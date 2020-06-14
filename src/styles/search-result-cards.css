@@ -3,4 +3,6 @@
       margin-bottom: 15px;
   }
 
-  
+  #search-result-sets{
+    min-height: 0;
+  }
