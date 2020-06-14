@@ -1,64 +1,15 @@
 # Codelet
-### Feature List
+Clack is a messaging app based on Slack
 
-- Users
-  - Implemented using Auth0
-  - User Logout/Login
-  - User SignUp
-  - Demo User
+Check us out here: [Clack App](https://www.codelet.info/)
 
-- Home Page
-  - Display popular sets
-  - NavBar
-    - Profile Page
-      - Display all sets for a user
-      - Display starred sets
-    - Search
+Backend for app here: [Clack-App-Backend](https://github.com/christophertalley/codelet-backend)
 
-- Flashcards
-  - CRUD Flash Card Sets
-    - Title
-    - Description
-    - Contains Flash cards
-    - Can be saved
-    - Can be voted on (up/downvote)
-    - Has a category
-  - CRUD Flash Cards
-    - Term (front)
-    - Definition (back)
-    - Needs to be part of a set
-
-- Categories
-  - Name
-  - Filters sets
-
-- Stretch Goals
-  - Quizzes (Stretch)
-  - Image upload for flashcards
-
-### Models:
-- Users
-  - id (PKey)
-  - email:(string(100), unique, allowNull:false)
-  - username:(text(40), unique, allowNull:false)
-  - Associations: User has many sets (many to many)
-
-- Category
-  - id (Pkey)
-  - Name (String(50), unique, allowNull:false)
-  - Associations: Category has many sets
-
-- Flash Cards Sets
-  - id (Pkey)
-  - CategoryId (Fkey)
-  - Title
-  - Description
-  - Associations: set has many flashcards, set has one category
-
-- Flash Card
-  - id (PKey)
-  - Term (string(50), allowNull:false)
-  - Definition (string(500))
-  - Associations:
-
-### Routes
+## Documentation links
+- [Feature List](https://github.com/christophertalley/codelet-backend/blob/master/documentation/featureList.md)
+- [MVP](https://github.com/b-tsui/Clack-App/blob/master/Documentation/MVP.md)
+- [Front End Routes](https://github.com/christophertalley/codelet-backend/blob/master/documentation/frontendRoutes.md)
+- [Back End Routes](https://github.com/christophertalley/codelet-backend/blob/master/documentation/frontendRoutes.md)
+- [Schema](https://github.com/christophertalley/codelet-backend/blob/master/documentation/schema.md)
+- [Schema Image](https://github.com/christophertalley/codelet-backend/blob/master/documentation/Untitled%20(3).png)
+- [Templates List](TBD)
