@@ -3,10 +3,10 @@ import { useAuth0 } from "../react-auth0-spa";
 import Set from "./Set";
 import { api } from "../config";
 import "../styles/profile.css";
+import Home from './Home'
 
 import PropTypes from "prop-types";
 import Paper from "@material-ui/core/Paper";
-import { makeStyles } from "@material-ui/core/styles";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
@@ -46,16 +46,8 @@ function a11yProps(index) {
   };
 }
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    // backgroundColor: theme.palette.primary.main,
-    // color: theme.palette.primary
-  },
-}));
 
 const Profile = () => {
-  const classes = useStyles();
 
   const { user, loading, getTokenSilently } = useAuth0();
   const [userSets, setUserSets] = useState([]);
@@ -80,9 +72,10 @@ const Profile = () => {
       setFetched(true);
       setUserSets(data.userSets);
       setFavoriteSets(data.favoriteSets);
+  
     };
     loadSets();
-  }, []);
+  }, [getTokenSilently]);
 
   if (loading || !user) {
     return <div>Loading...</div>;
@@ -94,7 +87,7 @@ const Profile = () => {
         <img
           src={user.picture}
           alt="Profile"
-          style={{ "border-radius": "50%" }}
+          style={{ borderRadius: "50%", width: "120px", height: "120px" }}
         />
         <h2>{user.name}</h2>
       </div>
@@ -122,7 +115,7 @@ const Profile = () => {
           <h1>Favorited sets:</h1>
           <div className="sets-container">
             {fetched &&
-              favoriteSets.map((set) => <Set set={set} key={set.id} />)}
+              favoriteSets.map((set) => <Set set={set} key={set.id} setFetched={setFetched}/>)}
           </div>
         </div>
       </TabPanel>
@@ -130,7 +123,7 @@ const Profile = () => {
         <div>
           <h1>My sets:</h1>
           <div className="sets-container">
-            {fetched && userSets.map((set) => <Set set={set} key={set.id} />)}
+            {fetched && userSets.map((set) => <Set set={set} key={set.id} setFetched={setFetched} />)}
           </div>
         </div>
       </TabPanel>

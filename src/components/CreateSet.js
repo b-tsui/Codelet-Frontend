@@ -129,7 +129,6 @@ export default function CreateSet() {
               Enter the details of your new set:
             </DialogContentText>
             <TextField
-              autoComplete="off"
               autoFocus
               InputLabelProps={{ style: { color: "lightgray" } }}
               margin="dense"
@@ -140,8 +139,6 @@ export default function CreateSet() {
               onChange={handleSetName}
             />
             <TextField
-              autoComplete="off"
-              autoFocus
               InputLabelProps={{ style: { color: "lightgray" } }}
               margin="dense"
               id="set-desc-input"
@@ -161,7 +158,7 @@ export default function CreateSet() {
               // onChange={handleCategory}
               fullWidth
               MenuProps={{ style: {} }}
-              style={{ padding: "inherit" }}
+              style={{ padding: "inherit", color: "lightgray" }}
             >
               {fetched &&
                 categories.map((category) => (
@@ -170,6 +167,7 @@ export default function CreateSet() {
                     id={category.id}
                     value={category.name}
                     key={category.id}
+                    
                   >
                     {category.name}
                   </MenuItem>

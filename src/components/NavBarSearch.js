@@ -58,19 +58,13 @@ const useStyles = makeStyles((theme) => ({
 const NavBarSearch = () => {
   const classes = useStyles();
   const [searchTerm, setSearchTerm] = useState("");
-  const [searched, setSearched] = useState(false);
   const handleSearchTerm = (e) => {
-    //setSearched(false)
     setSearchTerm(e.target.value);
   };
 
   const handleSearch = async (e) => {
     if (e.key === "Enter") {
-      // let searchRes = await fetch(`${api}/sets/search/search?search_term=${searchTerm}`)
-      // let searchData = await searchRes.json()
-      // setSearchData(searchData)
       window.location.href = `/sets/search/search?search_term=${searchTerm}`;
-      //return <Redirect to={`/sets/search/search?search_term=${searchTerm}`} />
     }
   };
 
@@ -78,7 +72,7 @@ const NavBarSearch = () => {
     <>
       <div className={classes.search}>
         <div className={classes.searchIcon}>
-          <SearchIcon />
+          <SearchIcon style={{ color: '#00897b' }} />
         </div>
         <InputBase
           placeholder="Search…"

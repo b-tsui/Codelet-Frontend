@@ -67,7 +67,7 @@ const useStyles = makeStyles((theme) => ({
 
 const NavBar = () => {
   const classes = useStyles();
-  const { isAuthenticated, loginWithRedirect, loginWithPopup } = useAuth0();
+  const { isAuthenticated, loginWithPopup } = useAuth0();
 
   return (
     <div className={classes.root}>
@@ -76,7 +76,7 @@ const NavBar = () => {
         style={{ backgroundColor: "#000a12" }}
         position="fixed"
       >
-        <Toolbar disableGutters={true}>
+        <Toolbar disableGutters={true} style={{ paddingRight: '10px' }}>
           <SideBarBrowse />
           <Typography variant="h6" className={classes.title}>
             <div>

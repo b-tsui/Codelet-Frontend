@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import StudyCard from "./StudyCard";
 import MatchGame from "./MatchGame";
+import CardQuiz from "./CardQuiz";
 import { useAuth0 } from "../react-auth0-spa";
 import { api } from "../config";
 import "../styles/customDrawer.css";
@@ -207,8 +208,8 @@ export default function CustomDrawer({ set, addCard, cards }) {
       >
         <MatchGame cards={cards} />
       </TabPanel>
-      <TabPanel value={value} index={2}>
-        Item Three
+      <TabPanel value={value} index={2} style={{ display: "flex", justifyContent: "center" }}>
+        <CardQuiz cards={cards} value={value} />
       </TabPanel>
       <TabPanel
         style={{ display: "flex", justifyContent: "center" }}
@@ -218,8 +219,8 @@ export default function CustomDrawer({ set, addCard, cards }) {
         {cards.length > 0 ? (
           <StudyCard cards={cards} />
         ) : (
-          <h2>There are no cards to study.</h2>
-        )}
+            <h2>There are no cards to study.</h2>
+          )}
       </TabPanel>
     </div>
   );

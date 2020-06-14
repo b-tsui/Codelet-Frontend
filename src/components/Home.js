@@ -26,7 +26,7 @@ const Home = () => {
       setFetched(true);
     };
     loadSets();
-  }, []);
+  }, [fetched]);
 
   return (
     <>
@@ -62,7 +62,7 @@ const Home = () => {
           </div>
           <div className="sets-container">
             <CreateSet />
-            {fetched && sets.map((set) => <Set set={set} key={set.id} />)}
+            {fetched && sets.map((set) => <Set set={set} key={set.id} setSets={setSets} setFetched={setFetched}/>)}
           </div>
         </>
       )}

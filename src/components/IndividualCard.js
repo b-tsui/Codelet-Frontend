@@ -2,6 +2,7 @@ import React from "react";
 import { api } from "../config";
 import { useAuth0 } from "../react-auth0-spa";
 
+import "../styles/cards.css";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -19,9 +20,14 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import TextField from "@material-ui/core/TextField";
 
+//import for TTS
+import Speech from 'react-speech';
+import VolumeUpIcon from '@material-ui/icons/VolumeUp';
+
+
 const useStyles = makeStyles({
   root: {
-    minWidth: 275,
+
   },
   bullet: {
     display: "inline-block",
@@ -38,6 +44,10 @@ const useStyles = makeStyles({
     display: "flex",
     justifyContent: "space-between",
   },
+  termdef: {
+    fontSize: '1.1rem',
+    lineHeight: '1.2'
+  }
 });
 
 export default function IndividualCard({
@@ -71,7 +81,7 @@ export default function IndividualCard({
       console.error(e);
     }
   };
-  
+
   const handleOpen = () => {
     setOpen(true);
   };
@@ -110,6 +120,20 @@ export default function IndividualCard({
       setFetched(false);
     }
   };
+  const speechStyle = {
+    play: {
+      button: {
+        width: '28',
+        height: '28',
+        cursor: 'pointer',
+        pointerEvents: 'none',
+        outline: 'none',
+        backgroundColor: 'yellow',
+        border: 'solid 1px rgba(255,255,255,1)',
+        borderRadius: 6
+      },
+    }
+  };
 
   return (
     <div className="card-pair-container">
@@ -119,14 +143,20 @@ export default function IndividualCard({
         variant="outlined"
       >
         <CardContent className="card-pair-container-term">
-          <Typography
-            className={classes.title}
-            style={{ color: "lightgray" }}
-            gutterBottom
-          >
-            Term:
-          </Typography>
-          <Typography variant="h6" component="h2">
+          <div className="term-container">
+            <Typography
+              className={classes.title}
+              style={{ color: "lightgray" }}
+              gutterBottom
+            >
+              Term:
+            </Typography>
+            <Speech text={card.term}
+              id="speech-button-def"
+              voice="Google UK English Male"
+            />
+          </div>
+          <Typography className={classes.termdef}>
             {card.term}
           </Typography>
         </CardContent>
@@ -138,13 +168,20 @@ export default function IndividualCard({
       >
         <CardContent className="card-pair-container-def">
           <div className={classes.definitionContainer}>
-            <Typography
-              className={classes.title}
-              gutterBottom
-              style={{ maxWidth: "500px", color: "lightgray" }}
-            >
-              Definition:
-            </Typography>
+            <div className="definition-container">
+              <Typography
+                className={classes.title}
+                gutterBottom
+                style={{ maxWidth: "500px", color: "lightgray" }}
+              >
+                Definition:
+              </Typography>
+              <Speech text={card.definition}
+                voice="Google UK English Male"
+              />
+
+            </div>
+
             {user && user.userId === setsUserId && (
               <>
                 <div className="testing">
@@ -154,11 +191,13 @@ export default function IndividualCard({
                   <IconButton id="delete-icon" onClick={handleDeleteCard}>
                     <DeleteIcon />
                   </IconButton>
+
+
                 </div>
               </>
             )}
           </div>
-          <Typography variant="h6" component="h2">
+          <Typography className={classes.termdef}>
             {card.definition}
           </Typography>
           <Dialog
