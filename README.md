@@ -1,9 +1,9 @@
 # Codelet
 Clack is a messaging app based on Slack
 
-Check us out here: [Clack App](https://www.codelet.info/)
+Check us out here: [Codelet](https://www.codelet.info/)
 
-Backend for app here: [Clack-App-Backend](https://github.com/christophertalley/codelet-backend)
+Backend for app here: [Codelet Backend](https://github.com/christophertalley/codelet-backend)
 
 ## Documentation links
 - [Feature List](https://github.com/christophertalley/codelet-backend/blob/master/documentation/featureList.md)
