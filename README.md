@@ -5,6 +5,7 @@ Check us out here: [Codelet](https://www.codelet.info/)
 
 To log-in as a user, you can either use your existing github or gmail information via Auth0, or using the email email of demo@demo.com with the password demo123!
 
+Frontend for app here: [Codelet Backend](https://github.com/b-tsui/Codelet-Frontend)
 Backend for app here: [Codelet Backend](https://github.com/christophertalley/codelet-backend)
 
 ## Documentation links
