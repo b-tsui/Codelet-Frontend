@@ -17,8 +17,8 @@ const useStyles = makeStyles((theme) => ({
   card: {
     backgroundColor: "#2b3238",
     display: "flex",
-    minWidth: 500,
-    minHeight: 350,
+    minWidth: 400,
+    minHeight: 280,
     alignItems: "center",
     justifyContent: "center",
     borderRadius: "12px 12px 0px 0px",
