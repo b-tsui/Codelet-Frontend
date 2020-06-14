@@ -26,6 +26,8 @@ const useStyles = makeStyles((theme) => ({
     border: "1px solid #00897b",
     color: "darkgrey",
     boxSizing: "border-box",
+    overflow: "auto",
+    alignSelf: "start"
   },
   title: {
     fontSize: 14,
@@ -66,7 +68,7 @@ export default function StudyCard({ cards }) {
               </CardContent>
             </Card>
             <Card className={classes.card} id='study-card' onClick={handleClick}>
-              <CardContent className={classes.cardText, 'study-card-text'}>
+              <CardContent className={classes.cardText, 'study-card-def'}>
                 <Typography component="h3" variant={classes.title}>
                   {cards[activeStep].definition}
                 </Typography>

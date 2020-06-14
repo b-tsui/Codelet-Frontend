@@ -3,20 +3,33 @@
         min-width: 0;
         min-height: 0;
         width: 90vw;
-        min-height: 20vh;
-        max-height: 30vh;
-
+        min-height: 25vh;
+        max-height: 50vh;
         display: flex;
         align-items: center;
         justify-content: center;
+        overflow: auto
     }
     .study-card-text{
-        width: 100%;
-        height: 87%;
+        width: inherit;
+        height: 25vh;
+        position: relative;
         display: flex;
+        justify-content: center;
         align-items: center;
+        background-color: #2b3238;
+        color: darkgrey;
+        font-size: 1rem;
+        line-height: 1.2;
+    }
+    .study-card-def{
+        height: inherit;        
+        width: inherit;
+        display: flex;
         justify-content: center;
         background-color: #2b3238;
         color: darkgrey;
+        font-size: 1rem;
+        line-height: 1.2;
     }
 }
