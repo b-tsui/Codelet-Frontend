@@ -1,5 +1,5 @@
 # Codelet
-Codelet is a helpful study tool inspired by Quizlet. Create sets on topics you want to study and add flashcards, or choose from the many pre-made sets available. Cement your knowledge with helpful study tools such as quizzes, matching games, and flip - to - study versions ofcards.  
+Codelet is a helpful study tool inspired by Quizlet. Create sets on any coding related topics you want to study and add flashcards, or choose from the many pre-made sets available. Cement your knowledge with helpful study tools such as quizzes, matching games, and flip - to - study versions of cards.  
 
 Check us out here: [Codelet](https://www.codelet.info/)
 
