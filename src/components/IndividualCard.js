@@ -22,7 +22,6 @@ import TextField from "@material-ui/core/TextField";
 
 //import for TTS
 import Speech from 'react-speech';
-import VolumeUpIcon from '@material-ui/icons/VolumeUp';
 
 
 const useStyles = makeStyles({
@@ -118,20 +117,6 @@ export default function IndividualCard({
       const edit = await res.json();
       updateCard(edit);
       setFetched(false);
-    }
-  };
-  const speechStyle = {
-    play: {
-      button: {
-        width: '28',
-        height: '28',
-        cursor: 'pointer',
-        pointerEvents: 'none',
-        outline: 'none',
-        backgroundColor: 'yellow',
-        border: 'solid 1px rgba(255,255,255,1)',
-        borderRadius: 6
-      },
     }
   };
 
