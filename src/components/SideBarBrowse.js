@@ -59,6 +59,7 @@ export default function SideBarBrowse() {
     "Databases",
     "Frontend",
     "Backend",
+    "Other"
   ];
 
   const handleListItemClick = (event, index) => {
