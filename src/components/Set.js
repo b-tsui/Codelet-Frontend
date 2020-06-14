@@ -57,11 +57,11 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Set({ set,
   sets,
- setSets,
+  setSets,
   setFetched,
-  
-})
-{ const [upvotes, setUpvotes] = useState(
+
+}) {
+  const [upvotes, setUpvotes] = useState(
     set.votes.filter((vote) => vote.is_upvote).length
   );
   const [downvotes, setDownvotes] = useState(
@@ -172,46 +172,46 @@ export default function Set({ set,
     }
   };
 
-   const handleUpdateTitle = async (e) => {
-     setUpdateTitle(e.target.value);
-   };
+  const handleUpdateTitle = async (e) => {
+    setUpdateTitle(e.target.value);
+  };
 
-   const handleUpdateDescription = async (e) => {
-     setUpdateDescription(e.target.value);
-   };
-   const handleOpen = () => {
+  const handleUpdateDescription = async (e) => {
+    setUpdateDescription(e.target.value);
+  };
+  const handleOpen = () => {
     setOpen(true);
   };
 
-   const handleCancelClose = () => {
-     setOpen(false);
-   };
+  const handleCancelClose = () => {
+    setOpen(false);
+  };
 
   const handleEditSet = async (e) => {
     e.preventDefault();
-      const token = await getTokenSilently();
-      const res = await fetch(`${api}/sets/${set.id}`, {
-        method: "PATCH",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          title: updateTitle,
-          description: updateDescription
-        })
-      });
-    
-   if (!res.ok) {
-     alert("authorization denied");
-   } else {
-     alert("Set was successfully edited");
-     setFetched(false);
-   }
+    const token = await getTokenSilently();
+    const res = await fetch(`${api}/sets/${set.id}`, {
+      method: "PATCH",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        title: updateTitle,
+        description: updateDescription
+      })
+    });
+
+    if (!res.ok) {
+      alert("authorization denied");
+    } else {
+      alert("Set was successfully edited");
+      setFetched(false);
+    }
 
   }
 
- 
+
   const handleDeleteSet = async () => {
     const token = await getTokenSilently();
 
@@ -226,9 +226,9 @@ export default function Set({ set,
     } else {
       alert("Set was successfully deleted");
       setFetched(false)
-   
+
     }
-    
+
   };
 
   return (
@@ -316,11 +316,11 @@ export default function Set({ set,
                 className="menu"
                 width="40vw"
               >
-              
-              
+
+
                 <>
                   <MenuItem>
-                    <IconButton onClick={handleOpen}>
+                    <IconButton onClick={handleOpen} style={{ color: '#00897b' }}>
                       <EditOutlinedIcon
                         id="edit-icon-sets"
                       // onClick={handleEditSet}
@@ -328,12 +328,12 @@ export default function Set({ set,
                     </IconButton>
                   </MenuItem>
                   <MenuItem onClick={handleClose}>
-                    <IconButton id="delete-icon-sets" onClick={handleDeleteSet}>
+                    <IconButton id="delete-icon-sets" onClick={handleDeleteSet} style={{ color: '#00897b' }}>
                       <DeleteIcon />
                     </IconButton>
                   </MenuItem>
                 </>
-           
+
               </Menu>
             )}
           </div>

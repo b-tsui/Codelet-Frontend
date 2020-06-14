@@ -76,7 +76,7 @@ const NavBar = () => {
         style={{ backgroundColor: "#000a12" }}
         position="fixed"
       >
-        <Toolbar disableGutters={true}>
+        <Toolbar disableGutters={true} style={{ paddingRight: '10px' }}>
           <SideBarBrowse />
           <Typography variant="h6" className={classes.title}>
             <div>
@@ -104,7 +104,7 @@ const NavBar = () => {
               </Link>
               &nbsp; */}
               <Link to="/profile">
-                <Button style={{ color: "#e8eaf6" }}>
+                <Button style={{ color: "#e8eaf6", padding: '5px', minWidth: 0 }}>
                   <AccountCircleIcon />
                 </Button>
               </Link>

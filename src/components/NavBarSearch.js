@@ -72,7 +72,7 @@ const NavBarSearch = () => {
     <>
       <div className={classes.search}>
         <div className={classes.searchIcon}>
-          <SearchIcon />
+          <SearchIcon style={{ color: '#00897b' }} />
         </div>
         <InputBase
           placeholder="Search…"

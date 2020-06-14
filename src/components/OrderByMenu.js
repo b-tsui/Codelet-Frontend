@@ -58,13 +58,13 @@ export default function OrderByMenu({ sets, setSets }) {
         onClose={handleClose}
       >
         <MenuItem onClick={handlePopularity}>
-          <Link to="/">Popularity</Link>
+          <Link to="/" style={{ color: '#00897b' }}>Popularity</Link>
         </MenuItem>
         <MenuItem onClick={handleDate}>
-          <Link to="/">Newest</Link>
+          <Link to="/" style={{ color: '#00897b' }}>Newest</Link>
         </MenuItem>
         <MenuItem onClick={handleCount}>
-          <Link to="/"># Cards</Link>
+          <Link to="/" style={{ color: '#00897b' }}># Cards</Link>
         </MenuItem>
       </Menu>
     </div>

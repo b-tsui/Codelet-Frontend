@@ -14,16 +14,26 @@
 }
 
 .sets-error {
-    font-size: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.home-content{
+.home-content {
   display: flex;
   justify-content: space-between;
   margin-left: 7%;
   margin-right: 7%;
 }
 
+.home-welcome-message {
+  display: flex;
+  justify-content: center;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 14px;
+  text-align: center;
+}
+
+b {
+  color: #00897b;
+}

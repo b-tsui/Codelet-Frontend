@@ -9,6 +9,8 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import "../styles/cards.css";
+import '../styles/study-card.css'
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -65,6 +67,7 @@ export default function StudyCard({ cards }) {
                 </Typography>
               </CardContent>
             </Card>
+
             <Card id="back-study-card" className={classes.card} onClick={handleClick}>
               <CardContent className={classes.cardText}>
                 <Typography component="h3" variant={classes.title}>
@@ -111,7 +114,8 @@ export default function StudyCard({ cards }) {
             }
           />
         </div>
-      )}
+      )
+      }
     </>
   );
 }
