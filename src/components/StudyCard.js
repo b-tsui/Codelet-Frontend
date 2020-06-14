@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#2b3238",
     display: "flex",
     minWidth: 500,
-    minHeight: 350,
+    minHeight: 300,
     alignItems: "center",
     justifyContent: "center",
     borderRadius: "12px 12px 0px 0px",
