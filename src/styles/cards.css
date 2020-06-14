@@ -138,3 +138,11 @@ span.rs-container {
   text-align: center;
   padding: 15px;
 }
+
+#category-label {
+  width: fit-content;
+}
+
+#select-category {
+  width: inherit;
+}

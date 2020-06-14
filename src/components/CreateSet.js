@@ -17,6 +17,7 @@ import Button from "@material-ui/core/Button";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import InputLabel from "@material-ui/core/InputLabel";
+import FormControl from "@material-ui/core/FormControl";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,6 +26,10 @@ const useStyles = makeStyles((theme) => ({
   media: {
     height: 0,
     paddingTop: "56.25%", // 16:9
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 320,
   },
 }));
 
@@ -121,58 +126,62 @@ export default function CreateSet() {
         }}
       >
         <form onSubmit={handleAddSet}>
-          <DialogTitle id="form-dialog-title" style={{ color: "beige" }}>
+          <DialogTitle id="form-dialog-title" style={{ color: "#00897b" }}>
             Create Set
           </DialogTitle>
           <DialogContent>
             <DialogContentText style={{ color: "lightgray" }}>
               Enter the details of your new set:
             </DialogContentText>
-            <TextField
-              autoFocus
-              InputLabelProps={{ style: { color: "lightgray" } }}
-              margin="dense"
-              id="set-title-input"
-              label="Set Title..."
-              type="text"
-              fullWidth
-              onChange={handleSetName}
-            />
-            <TextField
-              InputLabelProps={{ style: { color: "lightgray" } }}
-              margin="dense"
-              id="set-desc-input"
-              label="Set Description..."
-              type="text"
-              fullWidth
-              onChange={handleSetDesc}
-            />
-            <InputLabel fullWidth htmlFor="category-label">
-              Select a category...
-            </InputLabel>
-            <Select
-              labelId="category-label"
-              label="Select category..."
-              id="demo-simple-select-helper"
-              value={category.title}
-              // onChange={handleCategory}
-              fullWidth
-              MenuProps={{ style: {} }}
-              style={{ padding: "inherit", color: "lightgray" }}
-            >
-              {fetched &&
-                categories.map((category) => (
-                  <MenuItem
-                    onClick={handleCategory}
-                    id={category.id}
-                    value={category.name}
-                    key={category.id}
-                    
-                  >
-                    {category.name}
-                  </MenuItem>
-                ))}
-            </Select>
+            <FormControl className={classes.formControl}>
+              <TextField
+                autoFocus
+                InputLabelProps={{ style: { color: "lightgray" } }}
+                margin="dense"
+                id="set-title-input"
+                label="Set Title..."
+                type="text"
+                fullWidth
+                onChange={handleSetName}
+              />
+            </FormControl>
+            <FormControl className={classes.formControl}>
+              <TextField
+                InputLabelProps={{ style: { color: "lightgray" } }}
+                margin="dense"
+                id="set-desc-input"
+                label="Set Description..."
+                type="text"
+                fullWidth
+                onChange={handleSetDesc}
+              />
+            </FormControl>
+            <FormControl className={classes.formControl}>
+              <InputLabel fullWidth id="category-label">
+                Select a category
+              </InputLabel>
+              <Select
+                labelId="category-label"
+                id="select-category"
+                value={category.title}
+                // onChange={handleCategory}
+                fullWidth
+                MenuProps={{ style: {} }}
+                style={{ padding: "inherit", color: "lightgray" }}
+              >
+                {fetched &&
+                  categories.map((category) => (
+                    <MenuItem
+                      onClick={handleCategory}
+                      id={category.id}
+                      value={category.name}
+                      key={category.id}
+                    >
+                      {category.name}
+                    </MenuItem>
+                  ))}
+              </Select>
+            </FormControl>
           </DialogContent>
           <DialogActions>
             <Button onClick={handleClose} color="primary">

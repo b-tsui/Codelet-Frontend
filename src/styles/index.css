@@ -8,9 +8,12 @@ body {
 .MuiDialog-paperScrollPaper {
   border-radius: 8px;
   background-color: #263238;
+  min-width: auto;
 }
+
 form {
   background-color: #263238;
   /* color: white; */
   border-radius: 8px;
+  max-width: 400px;
 }

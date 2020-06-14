@@ -160,7 +160,7 @@ export default function CustomDrawer({ set, addCard, cards }) {
             }}
           >
             <form onSubmit={handleAddCard}>
-              <DialogTitle id="form-dialog-title" style={{ color: "beige" }}>
+              <DialogTitle id="form-dialog-title" style={{ color: "#00897b" }}>
                 Create New Card
               </DialogTitle>
               <DialogContent>
@@ -206,10 +206,22 @@ export default function CustomDrawer({ set, addCard, cards }) {
         index={1}
         style={{ display: "flex", justifyContent: "center" }}
       >
-        <MatchGame cards={cards} />
+        {cards.length > 0 ? (
+          <MatchGame cards={cards} />
+        ) : (
+          <h2>There are no cards in this set to match.</h2>
+        )}
       </TabPanel>
-      <TabPanel value={value} index={2} style={{ display: "flex", justifyContent: "center" }}>
-        <CardQuiz cards={cards} value={value} />
+      <TabPanel
+        value={value}
+        index={2}
+        style={{ display: "flex", justifyContent: "center" }}
+      >
+        {cards.length > 0 ? (
+          <CardQuiz cards={cards} value={value} />
+        ) : (
+          <h2>There are no cards in this set to quiz.</h2>
+        )}
       </TabPanel>
       <TabPanel
         style={{ display: "flex", justifyContent: "center" }}
@@ -219,8 +231,8 @@ export default function CustomDrawer({ set, addCard, cards }) {
         {cards.length > 0 ? (
           <StudyCard cards={cards} />
         ) : (
-            <h2>There are no cards to study.</h2>
-          )}
+          <h2>There are no cards in this set to study.</h2>
+        )}
       </TabPanel>
     </div>
   );
