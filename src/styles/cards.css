@@ -20,16 +20,19 @@
   max-width: 35vw;
   max-height: 20vh;
 }
+
 #single-card-container-term {
   background-color: #62727b;
   color: #18212b;
   border-radius: 12px 0px 0px 12px;
 }
+
 #single-card-container-def {
   background-color: #62727b;
   color: #18212b;
   border-radius: 0px 12px 12px 0px;
 }
+
 #card-stepper {
   background-color: #000a12;
   border-radius: 0px 0px 12px 12px;
@@ -43,9 +46,10 @@
   display: flex;
   flex-direction: column;
   /* justify-content: flex-end; */
-
 }
-#delete-icon, #edit-icon{
+
+#delete-icon,
+#edit-icon {
   align-items: flex-end;
   padding: 0;
 }
@@ -54,7 +58,7 @@
   justify-content: space-around;
 }
 
-.makeStyles-definitionContainer-36{
+.makeStyles-definitionContainer-36 {
   display: flex;
   justify-content: space-between;
 }
@@ -76,6 +80,7 @@
 .random-term {
   background-color: lightgray;
 }
+
 .selected-card {
   border: red;
 }
@@ -85,13 +90,22 @@
   justify-content: center;
   align-items: center;
 }
+
 #card-stepper > .Mui-disabled {
   color: #004d40;
 }
 
 .search-results {
-    display: flex;
-    justify-content: center;
-    color: rgba(255,255,255, .8)
-    
-  }
+  display: flex;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.game-description {
+  display: flex;
+  justify-content: center;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 14px;
+  text-align: center;
+  padding: 15px;
+}

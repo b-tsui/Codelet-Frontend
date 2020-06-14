@@ -34,7 +34,22 @@ const Home = () => {
       {!loading && (
         <>
           {user && <h1 className="home-welcome">Welcome, {user.name}</h1>}
-          {!user && <h1 className="home-welcome">Welcome to Codelet!</h1>}
+          {!user && (
+            <div>
+              <h1 className="home-welcome">Welcome to Codelet!</h1>
+              <div className="home-welcome-message">
+                Codelet is an app dedicated for creating and studying coding
+                flashcards. To experience the app to its fullest extent, please
+                login, create a new account, or login as the demo user!
+              </div>
+              <pre>
+                <div className="home-welcome-message">
+                  To login as demo, provide an email of <b>demo@demo.com</b> and
+                  password <b>demo123!</b>.
+                </div>
+              </pre>
+            </div>
+          )}
           <div className="home-content">
             <Typography variant="h5" component="h5">
               Browse Sets
