@@ -110,23 +110,23 @@ sets, setSets}) {
           <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal" flipSpeedBackToFront={2.0} flipSpeedFrontToBack={2.0}>
             <Card className={classes.setHeader} onClick={handleClick}>
               <CardContent className={classes.cardText} className={classes.setStyling}>
-                <Typography component="h2" variant="h2" style={{fontFamily:"inherit"}}>
+                  <Typography component="h2" variant="h2" style={{ fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif'}}>
                   {set.title}
                 </Typography>
-                <Typography component="h6" variant="h6" style={{ fontFamily: "inherit" }}>
+                <Typography component="h6" variant="h6" style={{ fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif' }}>
                   Creator: {set.author}
                 </Typography>
               </CardContent>
             </Card>
             <Card className={classes.setHeader} onClick={handleClick}>
               <CardContent className={classes.cardText} className={classes.setStyling} >
-                <Typography component="h5" variant="h5" style={{ fontFamily: "inherit" }}>
+                <Typography component="h5" variant="h5" style={{ fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif' }}>
                   {set.description}
                 </Typography>
-                <Typography component="h5" variant="h5" style={{ fontFamily: "inherit" }}>
+                <Typography component="h5" variant="h5" style={{ fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif' }}>
                   Favorites: {set.favorites.length}
                 </Typography>
-                <Typography component="h5" vvariant="h5" style={{ fontFamily: "inherit" }}>
+                <Typography component="h5" vvariant="h5" style={{ fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif' }}>
                   Cards: {set.card_count}
                 </Typography>
               </CardContent>
