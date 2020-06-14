@@ -93,5 +93,34 @@
     display: flex;
     justify-content: center;
     color: rgba(255,255,255, .8)
-    
+
+  }
+
+  button.rs-play{
+    background-color: cyan;
+  }
+  #speech-button-def{
+    width: 15px;
+    background-color: #004d40;
+  }
+  .definition-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    min-width: 80px;
+  }
+  span.rs-container {
+    max-width: 10px;
+  }
+.rs-play {
+  background-color:#62727b !important;
+  color: none !important;
+  background-image: url('../images/sound-icon.png') !important;
+  border: none !important;
+}
+ .term-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 50px;
   }
