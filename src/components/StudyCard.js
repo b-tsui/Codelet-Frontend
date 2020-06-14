@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 500,
     flexGrow: 1,
+    fontWeight: 400
   },
   card: {
     backgroundColor: "#2b3238",
@@ -28,6 +29,8 @@ const useStyles = makeStyles((theme) => ({
     border: "1px solid #00897b",
     color: "darkgrey",
     boxSizing: "border-box",
+    overflow: "auto",
+    alignSelf: "start"
   },
   title: {
     fontSize: 14,
@@ -58,19 +61,18 @@ export default function StudyCard({ cards }) {
   return (
     <>
       {cards && (
-        <div  className={classes.root}>
+        <div className={classes.root}>
           <ReactCardFlip isFlipped={isFlipped} flipDirection="vertical">
             <Card id="front-study-card" className={classes.card} onClick={handleClick}>
               <CardContent className={classes.cardText}>
-                <Typography component="h3" variant={classes.title}>
+                <Typography component="h3" variant={classes.title} style={{ fontWeight: 400 }}>
                   {cards[activeStep].term}
                 </Typography>
               </CardContent>
             </Card>
-
             <Card id="back-study-card" className={classes.card} onClick={handleClick}>
-              <CardContent className={classes.cardText}>
-                <Typography component="h3" variant={classes.title}>
+              <CardContent className={classes.cardText, 'study-card-def'}>
+                <Typography component="h3" variant={classes.title} style={{ fontWeight: 400 }}>
                   {cards[activeStep].definition}
                 </Typography>
               </CardContent>
