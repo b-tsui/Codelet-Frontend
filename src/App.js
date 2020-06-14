@@ -18,7 +18,7 @@ import { ThemeProvider } from "@material-ui/core/styles";
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme} >
       <div className="App">
         {/* Don't forget to include the history module */}
         <Router history={history}>
@@ -34,7 +34,7 @@ function App() {
             <Route path="/sets/:id" component={Cards} />
           </Switch>
           <footer>
-            <Footer/>
+            <Footer />
           </footer>
         </Router>
       </div>

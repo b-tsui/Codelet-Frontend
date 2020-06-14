@@ -19,34 +19,28 @@ const useStyles = makeStyles((theme) => ({
   footer: {
     marginTop: '30px',
     borderBottom: "10px solid black",
-    backgroundColor:"black",
+    backgroundColor: "black",
     paddingLeft: "40px",
     paddingRight: "40px",
     paddingTop: "8px",
-    borderRadius:"60px 60px 0px 0px",
-    maxHeight: "95px",
+    borderRadius: "60px 60px 0px 0px",
+    // maxHeight: "95px",
   },
-  container: {
+  devInfo: {
     display: "flex",
-    flexDirection: "row",
-    minWidth: "100%",
+    flexDirection: "column",
+    textAlign: "center",
+    height: "60px",
     justifyContent: "space-between",
-    paddingBottom: "15px",
-
-  },
-  devInfo : {
-      display: "flex",
-      flexDirection: "column",
-      textAlign: "center",
-      height: "60px",
-      justifyContent: "space-between"
+    alignItems: "center",
+    paddingBottom: "15px"
   },
   linkContainer: {
-      display: "flex",
-      flexDirection: "row",
-      justifyContent: "space-between",
-      alignItems:"space-between",
-      width: "100px"
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "space-between",
+    width: "100px"
   },
 }));
 
@@ -56,14 +50,14 @@ export default function StickyFooter() {
   return (
     <div className={classes.root}>
       <footer className={classes.footer}>
-        <Typography variant="body1" style={{ fontWeight: "bold", color: "#555555", textAlign: "center", fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif', textDecoration:"underline"}}>About the developers</Typography>
-        <div className={classes.container}>
+        <Typography variant="body1" style={{ fontWeight: "bold", color: "#555555", textAlign: "center", fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif', textDecoration: "underline" }}>About the developers</Typography>
+        <div className={'dev-info-container'}>
           <div className={classes.devInfo}>
-            <Typography variant="body1" style={{ fontWeight: "bold", textAlign: "center",  color: "gray", textAlign: "center", fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif'}}>Brandon Tsui</Typography>
+            <Typography variant="body1" style={{ fontWeight: "bold", textAlign: "center", color: "gray", textAlign: "center", fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif' }}>Brandon Tsui</Typography>
             <div id="footer-link-container-1" className={classes.linkContainer}>
-              <GitHubIcon onClick={() => window.open("https://github.com/b-tsui", "_blank")}/>
+              <GitHubIcon onClick={() => window.open("https://github.com/b-tsui", "_blank")} />
               <LinkedInIcon onClick={() => window.open("https://www.linkedin.com/in/brandon-tsui-72474684/", "_blank")} />
-              <EmailIcon/>
+              <EmailIcon />
             </div>
           </div>
           <div className={classes.devInfo}>
@@ -89,7 +83,7 @@ export default function StickyFooter() {
               <LinkedInIcon onClick={() => window.open("https://www.linkedin.com/in/chris-talley-91814a19b/", "_blank")} />
               <EmailIcon />
             </div>
-        </div>
+          </div>
         </div>
       </footer>
     </div>

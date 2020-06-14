@@ -3,11 +3,13 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: space-around;
+  min-height: calc(100vh - 300px)
 }
 .home-welcome {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   margin-top: 25px;
   font-weight: normal;
   color: #eeeeee;
@@ -28,9 +30,12 @@
 
 .home-welcome-message {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-  font-size: 14px;
+  font-size: 16px;
+  padding: 0px 25px 15px 25px;
+  align-items: center;
   text-align: center;
 }
 

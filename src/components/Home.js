@@ -6,6 +6,7 @@ import CreateSet from "./CreateSet";
 import Loading from "./Loading";
 import "../styles/home-page.css";
 import OrderByMenu from "./OrderByMenu";
+import Footer from "./Footer"
 
 import { Typography } from "@material-ui/core";
 
@@ -38,16 +39,22 @@ const Home = () => {
             <div>
               <h1 className="home-welcome">Welcome to Codelet!</h1>
               <div className="home-welcome-message">
-                Codelet is an app dedicated for creating and studying coding
-                flashcards. To experience the app to its fullest extent, please
+                <div >
+                  Codelet is an app dedicated for creating and studying coding
+                  flashcards.
+                  </div>
+
+                <div>To experience the app to its fullest extent, please
                 login, create a new account, or login as the demo user!
-              </div>
-              <pre>
-                <div className="home-welcome-message">
+                  </div>
+
+
+                <div>
                   To login as demo, provide an email of <b>demo@demo.com</b> and
-                  password <b>demo123!</b>.
+                    password <b>demo123!</b>
                 </div>
-              </pre>
+
+              </div>
             </div>
           )}
           <div className="home-content">
@@ -62,8 +69,11 @@ const Home = () => {
           </div>
           <div className="sets-container">
             <CreateSet />
-            {fetched && sets.map((set) => <Set set={set} key={set.id} setSets={setSets} setFetched={setFetched}/>)}
+            {fetched && sets.map((set) => <Set set={set} key={set.id} setSets={setSets} setFetched={setFetched} />)}
           </div>
+          {/* <footer>
+            <Footer />
+          </footer> */}
         </>
       )}
     </>

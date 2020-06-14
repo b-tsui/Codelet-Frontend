@@ -1,3 +1,9 @@
+footer{
+    position: static;
+    left:0;
+    bottom:0;
+    right:0;
+}
 #github-link {
     color: beige !important;
 }
@@ -34,3 +40,18 @@ div#footer-link-container-4 > .MuiSvgIcon-root:hover {
     opacity: 1.0;
 }
 
+.dev-info-container{
+    display: flex;
+    flex-direction: row;
+    min-width: 100%;
+    justify-content: space-between;
+}
+
+@media only screen and (max-width: 600px) {
+    .dev-info-container{
+        display: flex;
+        flex-direction: column;
+        height: auto;
+
+    }
+  }
