@@ -12,4 +12,3 @@ Backend for app here: [Codelet Backend](https://github.com/christophertalley/cod
 - [Back End Routes](https://github.com/christophertalley/codelet-backend/blob/master/documentation/frontendRoutes.md)
 - [Schema](https://github.com/christophertalley/codelet-backend/blob/master/documentation/schema.md)
 - [Schema Image](https://github.com/christophertalley/codelet-backend/blob/master/documentation/Untitled%20(3).png)
-- [Templates List](TBD)
