@@ -145,6 +145,14 @@ span.rs-container {
   padding: 15px;
 }
 
+#category-label {
+  width: fit-content;
+}
+
+#select-category {
+  width: inherit;
+}
+
 @media only screen and (max-width: 600px) {
   .card-pair-container {
     display: flex;
@@ -174,7 +182,4 @@ span.rs-container {
     border-radius: 12px;
   }
 }
-
-
-
 
