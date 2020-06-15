@@ -17,6 +17,9 @@ Backend for app here: [Codelet Backend](https://github.com/christophertalley/cod
 - [Schema Image](https://github.com/christophertalley/codelet-backend/blob/master/documentation/Untitled%20(3).png)
 
 
+## Screenshots
+![alt text](https://github.com/b-tsui/Codelet-Frontend/blob/master/documentation/images/card-flip.gif?raw=true)
+
 ## Technologies implented:
   - Javascript
   - Python3
