@@ -4,6 +4,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: space-around;
+  min-height: calc(100vh - 604px);
 }
 
 #set-front-title-card{
