@@ -219,10 +219,10 @@ export default function CustomDrawer({ set, addCard, cards }) {
         index={2}
         style={{ display: "flex", justifyContent: "center" }}
       >
-        {cards.length > 0 ? (
+        {cards.length > 3 ? (
           <CardQuiz cards={cards} value={value} />
         ) : (
-          <h2>There are no cards in this set to quiz.</h2>
+          <h2>There are not enough cards in this set to quiz on.</h2>
         )}
       </TabPanel>
       <TabPanel
