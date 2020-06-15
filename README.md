@@ -26,6 +26,9 @@ Backend for app here: [Codelet Backend](https://github.com/christophertalley/cod
 
   ![Matching game gif](https://github.com/b-tsui/Codelet-Frontend/blob/master/documentation/images/matching-game.gif?raw=true)
 
+* Save and vote on sets!
+![favorite and voting](https://github.com/b-tsui/Codelet-Frontend/blob/master/documentation/images/set-manipulation.gif?raw=true)
+
 ## Technologies implented:
   - Javascript
   - Python3
