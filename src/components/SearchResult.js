@@ -7,6 +7,7 @@ import { api } from "../config";
 
 import "../styles/sets.css";
 import "../styles/cards.css";
+import "../styles/search-result-cards.css";
 
 import Typography from "@material-ui/core/Typography";
 
@@ -22,7 +23,7 @@ const SearchResult = ({ location: { search } }) => {
       setLoaded(true);
     };
     loadData();
-  }, []);
+  }, [search]);
 
   return (
     //<div>search here</div>
@@ -40,7 +41,7 @@ const SearchResult = ({ location: { search } }) => {
               >
                 <div className="search-results">Set Search Results:</div>
               </Typography>
-              <div className="sets-container">
+              <div className="sets-container" id='search-result-sets'>
                 {searchData.sets.map((set) => (
                   <Set set={set} key={set.id} />
                 ))}

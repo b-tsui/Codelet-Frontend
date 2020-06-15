@@ -1,0 +1,57 @@
+footer{
+    position: static;
+    left:0;
+    bottom:0;
+    right:0;
+}
+#github-link {
+    color: beige !important;
+}
+div#footer-link-container-1 > .MuiSvgIcon-root {
+    opacity: 0.7;
+    color: #00897B;
+}
+div#footer-link-container-2 > .MuiSvgIcon-root {
+    opacity: 0.7;
+    color: #00897B;
+}
+div#footer-link-container-3 > .MuiSvgIcon-root {
+    opacity: 0.7;
+    color: #00897B;
+}
+div#footer-link-container-4 > .MuiSvgIcon-root {
+    opacity: 0.7;
+    color: #00897B;
+}
+div#footer-link-container-1 > .MuiSvgIcon-root:hover {
+    cursor: pointer;
+    opacity: 1.0;
+}
+div#footer-link-container-2 > .MuiSvgIcon-root:hover {
+    cursor: pointer;
+    opacity: 1.0;
+}
+div#footer-link-container-3 > .MuiSvgIcon-root:hover {
+    cursor: pointer;
+    opacity: 1.0;
+}
+div#footer-link-container-4 > .MuiSvgIcon-root:hover {
+    cursor: pointer;
+    opacity: 1.0;
+}
+
+.dev-info-container{
+    display: flex;
+    flex-direction: row;
+    min-width: 100%;
+    justify-content: space-between;
+}
+
+@media only screen and (max-width: 600px) {
+    .dev-info-container{
+        display: flex;
+        flex-direction: column;
+        height: auto;
+
+    }
+  }

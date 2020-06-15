@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import MatchCard from "./MatchCard";
+import "../styles/match-game.css"
 
 import Button from "@material-ui/core/Button";
 

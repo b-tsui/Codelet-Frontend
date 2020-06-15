@@ -3,9 +3,8 @@ import { Link } from "react-router-dom";
 import "../styles/sets.css";
 import { useAuth0 } from "../react-auth0-spa";
 import { api } from "../config";
-import Cards from './Cards'
-import Profile from './Profile'
-import Home from './Home'
+
+
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -123,7 +122,7 @@ export default function Set({ set,
       }
     };
     getFavorites();
-  }, [user]);
+  }, [user, set.favorites]);
 
 
   const voteHandler = async (e, upvoteButton) => {
@@ -142,7 +141,7 @@ export default function Set({ set,
       }
       const token = await getTokenSilently();
 
-      let res = await fetch(`${api}/sets/${set.id}/votes`, {
+      await fetch(`${api}/sets/${set.id}/votes`, {
         method: "PATCH",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -162,7 +161,7 @@ export default function Set({ set,
 
       const token = await getTokenSilently();
 
-      let res = await fetch(`${api}/sets/${set.id}/favorites`, {
+      await fetch(`${api}/sets/${set.id}/favorites`, {
         method: "PATCH",
         headers: {
           Authorization: `Bearer ${token}`,

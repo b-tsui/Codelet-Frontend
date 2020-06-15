@@ -3,6 +3,7 @@ import { Router, Route, Switch } from "react-router-dom";
 
 import PrivateRoute from "./components/PrivateRoute";
 import NavBar from "./components/NavBar";
+import Footer from "./components/Footer"
 import Home from "./components/Home";
 import Cards from "./components/Cards";
 import Profile from "./components/Profile";
@@ -17,7 +18,7 @@ import { ThemeProvider } from "@material-ui/core/styles";
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme} >
       <div className="App">
         {/* Don't forget to include the history module */}
         <Router history={history}>
@@ -32,6 +33,9 @@ function App() {
             <PrivateRoute path="/external-api" component={ExternalApi} />
             <Route path="/sets/:id" component={Cards} />
           </Switch>
+          <footer>
+            <Footer />
+          </footer>
         </Router>
       </div>
     </ThemeProvider>

@@ -4,6 +4,7 @@
   background-color: #18212b;
   color: lightgray;
   box-shadow: none;
+  flex-shrink: 1;
 }
 .PrivateTabIndicator-colorSecondary-8 {
   background-color: #00897b;

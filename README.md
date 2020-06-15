@@ -1,64 +1,34 @@
 # Codelet
-### Feature List
+Codelet is a helpful study tool inspired by Quizlet. Create sets on any coding related topics you want to study and add flashcards, or choose from the many pre-made sets available. Cement your knowledge with helpful study tools such as quizzes, matching games, and flip - to - study versions of cards.  
 
-- Users
-  - Implemented using Auth0
-  - User Logout/Login
-  - User SignUp
-  - Demo User
+Check us out here: [Codelet](https://www.codelet.info/)
 
-- Home Page
-  - Display popular sets
-  - NavBar
-    - Profile Page
-      - Display all sets for a user
-      - Display starred sets
-    - Search
+To log-in as a user, you can either use your existing github or gmail information via Auth0, or using the email email of demo@demo.com with the password demo123!
 
-- Flashcards
-  - CRUD Flash Card Sets
-    - Title
-    - Description
-    - Contains Flash cards
-    - Can be saved
-    - Can be voted on (up/downvote)
-    - Has a category
-  - CRUD Flash Cards
-    - Term (front)
-    - Definition (back)
-    - Needs to be part of a set
+Frontend for app here: [Codelet Backend](https://github.com/b-tsui/Codelet-Frontend)
 
-- Categories
-  - Name
-  - Filters sets
+Backend for app here: [Codelet Backend](https://github.com/christophertalley/codelet-backend)
 
-- Stretch Goals
-  - Quizzes (Stretch)
-  - Image upload for flashcards
+## Documentation links
+- [Feature List](https://github.com/christophertalley/codelet-backend/blob/master/documentation/featureList.md)
+- [Front End Routes](https://github.com/christophertalley/codelet-backend/blob/master/documentation/frontendRoutes.md)
+- [Back End Routes](https://github.com/christophertalley/codelet-backend/blob/master/documentation/frontendRoutes.md)
+- [Schema](https://github.com/christophertalley/codelet-backend/blob/master/documentation/schema.md)
+- [Schema Image](https://github.com/christophertalley/codelet-backend/blob/master/documentation/Untitled%20(3).png)
 
-### Models:
-- Users
-  - id (PKey)
-  - email:(string(100), unique, allowNull:false)
-  - username:(text(40), unique, allowNull:false)
-  - Associations: User has many sets (many to many)
 
-- Category
-  - id (Pkey)
-  - Name (String(50), unique, allowNull:false)
-  - Associations: Category has many sets
-
-- Flash Cards Sets
-  - id (Pkey)
-  - CategoryId (Fkey)
-  - Title
-  - Description
-  - Associations: set has many flashcards, set has one category
-
-- Flash Card
-  - id (PKey)
-  - Term (string(50), allowNull:false)
-  - Definition (string(500))
-  - Associations:
-
-### Routes
+## Technologies implented:
+  - Javascript
+  - Python3
+  - React.js with hooks
+  - Flask
+  - Alembic
+  - SQLAlchemy
+  - PostgreSQL
+  - Elastic Search
+  - Auth0
+  - HTML5
+  - CSS3
+  - Material UI
+  - AWS 
+  - Heroku

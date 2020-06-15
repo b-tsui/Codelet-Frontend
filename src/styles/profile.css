@@ -5,6 +5,10 @@
     align-items: space-around;
 }
 
+#profile-sets{
+    min-height: calc(100vh - 612px);
+}
+
 .profile-tabs-container{
     display: flex;
     justify-content: center;

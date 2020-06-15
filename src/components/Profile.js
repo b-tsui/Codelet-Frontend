@@ -3,7 +3,6 @@ import { useAuth0 } from "../react-auth0-spa";
 import Set from "./Set";
 import { api } from "../config";
 import "../styles/profile.css";
-import Home from './Home'
 
 import PropTypes from "prop-types";
 import Paper from "@material-ui/core/Paper";
@@ -72,7 +71,7 @@ const Profile = () => {
       setFetched(true);
       setUserSets(data.userSets);
       setFavoriteSets(data.favoriteSets);
-  
+
     };
     loadSets();
   }, [getTokenSilently]);
@@ -113,21 +112,21 @@ const Profile = () => {
       <TabPanel value={value} index={0}>
         <div>
           <h1>Favorited sets:</h1>
-          <div className="sets-container">
+          <div className="sets-container" id='profile-sets'>
             {fetched &&
-              favoriteSets.map((set) => <Set set={set} key={set.id} setFetched={setFetched}/>)}
+              favoriteSets.map((set) => <Set set={set} key={set.id} setFetched={setFetched} />)}
           </div>
         </div>
       </TabPanel>
       <TabPanel value={value} index={1}>
         <div>
           <h1>My sets:</h1>
-          <div className="sets-container">
+          <div className="sets-container" id='profile-sets'>
             {fetched && userSets.map((set) => <Set set={set} key={set.id} setFetched={setFetched} />)}
           </div>
         </div>
       </TabPanel>
-      <TabPanel value={value} index={2}>
+      <TabPanel value={value} index={2} style={{ minHeight: 'calc(100vh - 473px)' }}>
         <div className="logout">
           <Button
             className="logout-button"

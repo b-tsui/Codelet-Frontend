@@ -1,0 +1,15 @@
+
+.random-cards::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+.random-cards::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #2b3238;
+}
+
+.random-cards::-webkit-scrollbar-thumb {
+  background-color: #555555;
+  outline: 2px solid #00897B;
+  border-radius: 15px;
+}
