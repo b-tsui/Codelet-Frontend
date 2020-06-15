@@ -152,6 +152,9 @@ export default function CustomDrawer({ set, addCard, cards }) {
       </TabPanel>
       {user && user.userId === set.user_id && (
         <TabPanel value={value} index={4}>
+          <Typography component="h5" variant="h5" style={{ fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif' }}>
+            Create Cards:
+        </Typography>
           <Dialog
             open={open}
             onClose={handleClose}
@@ -211,8 +214,8 @@ export default function CustomDrawer({ set, addCard, cards }) {
         {cards.length > 0 ? (
           <MatchGame cards={cards} />
         ) : (
-          <h2>There are no cards in this set to match.</h2>
-        )}
+            <h2>There are no cards in this set to match.</h2>
+          )}
       </TabPanel>
       <TabPanel
         value={value}
@@ -222,8 +225,8 @@ export default function CustomDrawer({ set, addCard, cards }) {
         {cards.length > 3 ? (
           <CardQuiz cards={cards} value={value} />
         ) : (
-          <h2>There are not enough cards in this set to quiz on.</h2>
-        )}
+            <h2>There are not enough cards in this set to quiz on.</h2>
+          )}
       </TabPanel>
       <TabPanel
         style={{ display: "flex", justifyContent: "center" }}
@@ -233,8 +236,8 @@ export default function CustomDrawer({ set, addCard, cards }) {
         {cards.length > 0 ? (
           <StudyCard cards={cards} />
         ) : (
-          <h2>There are no cards in this set to study.</h2>
-        )}
+            <h2>There are no cards in this set to study.</h2>
+          )}
       </TabPanel>
     </div>
   );
