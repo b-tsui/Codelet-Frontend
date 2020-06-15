@@ -22,7 +22,9 @@ Backend for app here: [Codelet Backend](https://github.com/christophertalley/cod
 ![Study flash cards!](https://github.com/b-tsui/Codelet-Frontend/blob/master/documentation/images/card-flip.gif?raw=true)
 
 * Play learning games!
-![Play learning games!](https://github.com/b-tsui/Codelet-Frontend/blob/master/documentation/images/quiz-game.gif?raw=true)
+![Quiz game gif](https://github.com/b-tsui/Codelet-Frontend/blob/master/documentation/images/quiz-game.gif?raw=true)
+
+  ![Matching game gif](https://github.com/b-tsui/Codelet-Frontend/blob/master/documentation/images/matching-game.gif?raw=true)
 
 ## Technologies implented:
   - Javascript
