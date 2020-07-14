@@ -68,13 +68,13 @@ const Profile = () => {
         },
       });
       const data = await res.json();
-      setFetched(true);
       setUserSets(data.userSets);
       setFavoriteSets(data.favoriteSets);
+      setFetched(true);
 
     };
     loadSets();
-  }, [getTokenSilently]);
+  }, [getTokenSilently, fetched]);
 
   if (loading || !user) {
     return <div>Loading...</div>;
