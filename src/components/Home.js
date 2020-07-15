@@ -38,21 +38,20 @@ const Home = () => {
             <div>
               <h1 className="home-welcome">Welcome to Codelet!</h1>
               <div className="home-welcome-message">
-                <div >
+                <div>
                   Codelet is an app dedicated for creating and studying coding
                   flashcards.
-                  </div>
+                </div>
 
-                <div>To experience the app to its fullest extent, please
-                login, create a new account, or login as the demo user!
-                  </div>
-
+                <div>
+                  To experience the app to its fullest extent, please login,
+                  create a new account, or login as the demo user!
+                </div>
 
                 <div>
                   To login as demo, provide an email of <b>demo@demo.com</b> and
-                    password <b>demo123!</b>
+                  password <b>demo123!</b>
                 </div>
-
               </div>
             </div>
           )}
@@ -68,7 +67,15 @@ const Home = () => {
           </div>
           <div className="sets-container">
             <CreateSet />
-            {fetched && sets.map((set) => <Set set={set} key={set.id} setSets={setSets} setFetched={setFetched} />)}
+            {fetched &&
+              sets.map((set) => (
+                <Set
+                  set={set}
+                  key={set.id}
+                  setSets={setSets}
+                  setFetched={setFetched}
+                />
+              ))}
           </div>
         </>
       )}
