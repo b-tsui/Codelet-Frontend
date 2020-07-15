@@ -4,7 +4,6 @@ import "../styles/sets.css";
 import { useAuth0 } from "../react-auth0-spa";
 import { api } from "../config";
 
-
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -54,12 +53,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Set({ set,
-  sets,
-  setSets,
-  setFetched,
-
-}) {
+export default function Set({ set, sets, setSets, setFetched }) {
   const [upvotes, setUpvotes] = useState(
     set.votes.filter((vote) => vote.is_upvote).length
   );
@@ -69,13 +63,18 @@ export default function Set({ set,
   // const [fetchedSet, setfetchedSet] = useState(false);
   const [isUpvoted, setIsUpvoted] = useState(null);
   const [isFavorited, setIsFavorited] = useState(false);
-  const { user, getTokenSilently } = useAuth0();
+  const {
+    user,
+    getTokenSilently,
+    loginWithPopup,
+    isAuthenticated,
+  } = useAuth0();
   // const [open, setOpen] = React.useState(false);
   const classes = useStyles();
   let date = Date.parse(set.created_at);
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [updateTitle, setUpdateTitle] = useState(set.title)
-  const [updateDescription, setUpdateDescription] = useState(set.description)
+  const [updateTitle, setUpdateTitle] = useState(set.title);
+  const [updateDescription, setUpdateDescription] = useState(set.description);
   const [open, setOpen] = useState(false);
 
   // const updateSet = (updatedSet) => {
@@ -124,8 +123,11 @@ export default function Set({ set,
     getFavorites();
   }, [user, set.favorites]);
 
-
   const voteHandler = async (e, upvoteButton) => {
+    if (!user) {
+      loginWithPopup({});
+    }
+
     if (user) {
       if (isUpvoted) {
         setIsUpvoted(upvoteButton ? null : false);
@@ -155,6 +157,10 @@ export default function Set({ set,
   };
 
   const favoriteHandler = async (e) => {
+    if (!user) {
+      loginWithPopup({});
+    }
+
     if (user) {
       //updates isFavorite state
       setIsFavorited(isFavorited ? false : true);
@@ -193,12 +199,12 @@ export default function Set({ set,
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         title: updateTitle,
-        description: updateDescription
-      })
+        description: updateDescription,
+      }),
     });
 
     if (!res.ok) {
@@ -207,9 +213,7 @@ export default function Set({ set,
       alert("Set was successfully edited");
       setFetched(false);
     }
-
-  }
-
+  };
 
   const handleDeleteSet = async () => {
     const token = await getTokenSilently();
@@ -224,10 +228,8 @@ export default function Set({ set,
       alert("authorization denied");
     } else {
       alert("Set was successfully deleted");
-      setFetched(false)
-
+      setFetched(false);
     }
-
   };
 
   return (
@@ -315,24 +317,28 @@ export default function Set({ set,
                 className="menu"
                 width="40vw"
               >
-
-
                 <>
                   <MenuItem>
-                    <IconButton onClick={handleOpen} style={{ color: '#00897b' }}>
+                    <IconButton
+                      onClick={handleOpen}
+                      style={{ color: "#00897b" }}
+                    >
                       <EditOutlinedIcon
                         id="edit-icon-sets"
-                      // onClick={handleEditSet}
+                        // onClick={handleEditSet}
                       />
                     </IconButton>
                   </MenuItem>
                   <MenuItem onClick={handleClose}>
-                    <IconButton id="delete-icon-sets" onClick={handleDeleteSet} style={{ color: '#00897b' }}>
+                    <IconButton
+                      id="delete-icon-sets"
+                      onClick={handleDeleteSet}
+                      style={{ color: "#00897b" }}
+                    >
                       <DeleteIcon />
                     </IconButton>
                   </MenuItem>
                 </>
-
               </Menu>
             )}
           </div>
