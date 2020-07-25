@@ -44,3 +44,22 @@ Backend for app here: [Codelet Backend](https://github.com/christophertalley/cod
   - Material UI
   - AWS 
   - Heroku
+  
+ ## Brandon Tsui's Contributions:
+  - Frontend: 
+    * Implemented user authorization and authentication using Auth0
+    * Designed and integrated full-text search component which returns sets and flashcards that match search term user inputs
+    * Created categories sidebar components on homepage that lets user filter all sets by category
+    * Developed filter functionality that lets user sort sets on homepage by popularity, newest, and number of cards.
+    * Created favoriting and voting functionality on homepage
+    * Created profile page components which displays clients favorited and created sets
+    * Created quiz game compontents for users to quiz themselves on flashcards in the set
+  - Backend: 
+    * Integrated Auth0's authentication and authorization for protect backend routes
+    * Integrated Elasticsearch with our database and existing endpoints to create a more performative and scalable full-text search endpoint
+    * Developed mixins that index sets and flashcards in the Elasticsearch server and our database when created or updated.
+    * Developed favoriting and voting endpoints that store a users favorite and vote data in our database
+    * Developed User routes/endpoints that allow the frontend grab user's favorite, set, and vote information upon login
+  - Deployment:
+    * Deployed frontend application on AWS using AWS Amplify
+    * Deployed backend application on Heroku using Heroku CLI, Heroku Postgres Database, and Heroku Seachbox (for hosting Elasticsearch service)
